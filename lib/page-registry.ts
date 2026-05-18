@@ -1,6 +1,6 @@
-// input: template game config route groups
+// input: Wizard Alchemy route groups and completion flags
 // output: canonical route lists for sitemap, robots, footer, and hreflang
-// pos: template route registry
+// pos: site route registry
 
 import { gameConfig } from "@/lib/game-config";
 
@@ -17,7 +17,9 @@ export type RouteEntry = {
 
 export const completedLocales = [...gameConfig.completedLocales];
 export const coreSlugs = [...gameConfig.coreSlugs];
+export const completedCoreSlugs = [...gameConfig.completedCoreSlugs];
 export const englishOnlySlugs = [...gameConfig.englishOnlySlugs];
+export const completedEnglishOnlySlugs = [...gameConfig.completedEnglishOnlySlugs];
 
 export function getTemplateLocalizedPath(locale: string, slug: string): string {
   const cleanSlug = slug.replace(/^\/+|\/+$/g, "");
@@ -62,7 +64,7 @@ function englishOnlyPriority(slug: string): number {
 }
 
 export const completedCoreRoutes: RouteEntry[] = completedLocales.flatMap((locale) =>
-  coreSlugs.map((slug) => ({
+  completedCoreSlugs.map((slug) => ({
     locale,
     slug,
     path: getTemplateLocalizedPath(locale, slug),
@@ -72,7 +74,7 @@ export const completedCoreRoutes: RouteEntry[] = completedLocales.flatMap((local
   }))
 );
 
-export const englishOnlyRoutes: RouteEntry[] = englishOnlySlugs.map((slug) => ({
+export const englishOnlyRoutes: RouteEntry[] = completedEnglishOnlySlugs.map((slug) => ({
   locale: gameConfig.defaultLocale,
   slug,
   path: getTemplateLocalizedPath(gameConfig.defaultLocale, slug),
@@ -92,6 +94,18 @@ export function isCoreSlug(slug: string): boolean {
   return coreSlugs.includes(slug as never);
 }
 
+export function isCompletedCoreSlug(slug: string): boolean {
+  return completedCoreSlugs.includes(slug as never);
+}
+
 export function isEnglishOnlySlug(slug: string): boolean {
   return englishOnlySlugs.includes(slug as never);
+}
+
+export function isCompletedEnglishOnlySlug(slug: string): boolean {
+  return completedEnglishOnlySlugs.includes(slug as never);
+}
+
+export function isCompletedSlug(slug: string): boolean {
+  return isCompletedCoreSlug(slug) || isCompletedEnglishOnlySlug(slug);
 }
