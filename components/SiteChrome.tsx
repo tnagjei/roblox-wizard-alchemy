@@ -1,5 +1,5 @@
-// input: app children, template config, page registry, and shared site data
-// output: locale-aware site navigation and footer shell
+// input: app children, site config, page registry, and shared site data
+// output: locale-aware site navigation and footer shell limited to completed pages
 // pos: global chrome component
 
 "use client";
@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { getSlugFromPath, getLocalizedPath } from "@/lib/i18n/routes";
 import { localeMeta, type Locale } from "@/lib/i18n/locales";
 import { gameConfig } from "@/lib/game-config";
-import { coreSlugs, englishOnlySlugs } from "@/lib/page-registry";
+import { completedCoreSlugs, completedEnglishOnlySlugs } from "@/lib/page-registry";
 import { siteData } from "@/lib/site-data";
 import AdBanner from "./AdBanner";
 import SmartLink from "./SmartLink";
@@ -42,7 +42,7 @@ const completedLocales = gameConfig.completedLocales.map((code) => ({
   shortLabel: shortLocaleLabel(code)
 }));
 
-const englishHighIntentSlugs = englishOnlySlugs.map((slug) => ({
+const englishHighIntentSlugs = completedEnglishOnlySlugs.map((slug) => ({
   href: getLocalizedPath("en", slug),
   label: labelForSlug(slug)
 }));
@@ -68,7 +68,7 @@ function getCurrentLocale(pathname: string): Locale {
 
 function normalizedCurrentSlug(pathname: string) {
   const slug = getSlugFromPath(pathname);
-  return coreSlugs.includes(slug as never) ? slug : "";
+  return completedCoreSlugs.includes(slug as never) ? slug : "";
 }
 
 function brandMark(value: string): string {
@@ -87,7 +87,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
   const currentLocale = getCurrentLocale(pathname);
   const currentSlug = normalizedCurrentSlug(pathname);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const coreNavKeys = ["codes", "tier-list", "units", "beginners-guide", "updates"];
+  const coreNavKeys = completedCoreSlugs.filter((slug) => slug !== "");
   const coreNavItems = coreNavKeys
     .map((key) => siteData.pages.find((p) => p.key === key))
     .filter((p) => p !== undefined)
@@ -148,11 +148,9 @@ export function SiteChrome({ children }: SiteChromeProps) {
         <div className="footer-clusters">
           <div className="footer-cluster">
             <h3>Guides</h3>
-            <Link href={getLocalizedPath(currentLocale, "codes")}>Codes</Link>
-            <Link href={getLocalizedPath(currentLocale, "tier-list")}>Tier List</Link>
-            <Link href={getLocalizedPath(currentLocale, "units")}>Units</Link>
-            <Link href={getLocalizedPath(currentLocale, "beginners-guide")}>Beginner Guide</Link>
-            <Link href={getLocalizedPath(currentLocale, "updates")}>Updates</Link>
+            {coreNavItems.map((item) => (
+              <Link href={item.href} key={item.href}>{item.label}</Link>
+            ))}
             {isEnglish ? englishHighIntentSlugs.map((item) => (
               <Link href={item.href} key={item.href}>{item.label}</Link>
             )) : null}
@@ -172,6 +170,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
             >
               Play on Roblox
             </a>
+            <a href={gameConfig.robloxGroupUrl} target="_blank" rel="noopener noreferrer">Muggle Academy</a>
             <a href={`mailto:${siteData.site.contactEmail}`}>Contact</a>
             <Link href={getLocalizedPath(currentLocale, "codes")}>Code Safety</Link>
           </div>
