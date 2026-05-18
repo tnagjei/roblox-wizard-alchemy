@@ -1,6 +1,6 @@
 /* input: Wizard Alchemy homepage markup */
 /* output: distinct potion-and-spell game visuals for the homepage */
-/* pos: homepage-only visual layer (更新规则：文件变更需同步本注释与所属目录 README) */
+/* pos: homepage-only visual layer（更新规则：文件变更需同步本注释与所属目录 README） */
 
 .wizard-home {
   width: min(1220px, calc(100% - 32px));
@@ -92,7 +92,8 @@
     0 12px 30px rgba(4, 0, 18, 0.5);
 }
 
-.alchemy-hero-copy > p:not(.alchemy-kicker) {
+.alchemy-hero-copy > p:not(.alchemy-kicker),
+.video-guide-lede {
   max-width: 620px;
   margin: 0;
   color: rgba(248, 242, 255, 0.78);
@@ -275,7 +276,8 @@
 .alchemy-loop-section,
 .alchemy-code-section,
 .alchemy-faq-section,
-.first-session-section {
+.first-session-section,
+.video-guide-section {
   background:
     radial-gradient(circle at 88% 20%, rgba(245, 196, 81, 0.18), transparent 30%),
     radial-gradient(circle at 8% 84%, rgba(101, 255, 213, 0.12), transparent 32%),
@@ -286,14 +288,16 @@
 .alchemy-loop-section::before,
 .alchemy-code-section::before,
 .alchemy-faq-section::before,
-.first-session-section::before {
+.first-session-section::before,
+.video-guide-section::before {
   opacity: 0.18;
 }
 
 .alchemy-loop-section .alchemy-section-heading p,
 .alchemy-code-section .alchemy-section-heading p,
 .alchemy-faq-section .alchemy-section-heading p,
-.first-session-section .alchemy-section-heading p {
+.first-session-section .alchemy-section-heading p,
+.video-guide-section .alchemy-section-heading p {
   color: #65ffd5;
 }
 
@@ -345,17 +349,27 @@
 .alchemy-loop-grid,
 .alchemy-evidence-grid,
 .alchemy-boundary-grid,
-.research-queue-grid {
+.research-queue-grid,
+.video-guide-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   margin-top: 30px;
 }
 
+.video-guide-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.video-guide-lede {
+  margin-top: 18px;
+}
+
 .alchemy-loop-card,
 .alchemy-evidence-card,
 .alchemy-boundary-card,
-.research-queue-card {
+.research-queue-card,
+.video-guide-card {
   min-width: 0;
   position: relative;
   overflow: hidden;
@@ -368,10 +382,18 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
+.video-guide-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  text-decoration: none;
+}
+
 .alchemy-loop-card::before,
 .alchemy-evidence-card::before,
 .alchemy-boundary-card::before,
-.research-queue-card::before {
+.research-queue-card::before,
+.video-guide-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -384,11 +406,13 @@
 .alchemy-loop-card:hover::before,
 .alchemy-evidence-card:hover::before,
 .alchemy-boundary-card:hover::before,
-.research-queue-card:hover::before {
+.research-queue-card:hover::before,
+.video-guide-card:hover::before {
   opacity: 1;
 }
 
-.alchemy-loop-card span {
+.alchemy-loop-card span,
+.video-guide-card span {
   display: inline-flex;
   margin-bottom: 42px;
   color: #65ffd5;
@@ -396,10 +420,20 @@
   font-weight: 900;
 }
 
+.video-guide-card span {
+  width: fit-content;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: rgba(101, 255, 213, 0.1);
+  text-transform: uppercase;
+}
+
 .alchemy-loop-card h3,
 .alchemy-evidence-card h3,
 .alchemy-boundary-card h3,
-.research-queue-card h3 {
+.research-queue-card h3,
+.video-guide-card h3 {
   margin: 0 0 10px;
   color: #f8f2ff;
   font-size: 21px;
@@ -407,9 +441,34 @@
 
 .alchemy-loop-card p,
 .alchemy-boundary-card p,
-.research-queue-card p {
+.research-queue-card p,
+.video-guide-card p {
   margin: 0;
   color: rgba(248, 242, 255, 0.66);
+}
+
+.video-guide-card strong {
+  margin-top: auto;
+  color: #f5c451;
+  font-size: 13px;
+}
+
+.video-guide-note {
+  margin: 18px 0 0;
+  border-left: 4px solid #65ffd5;
+  padding: 12px 14px;
+  color: rgba(248, 242, 255, 0.72);
+  background: rgba(101, 255, 213, 0.08);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.video-guide-related {
+  display: inline-flex;
+  margin-top: 16px;
+  color: #65ffd5;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
 }
 
 .alchemy-evidence-section,
@@ -533,6 +592,12 @@
   color: rgba(248, 242, 255, 0.66);
 }
 
+@media (max-width: 1120px) {
+  .video-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .alchemy-hero,
   .quick-facts-grid,
@@ -540,7 +605,8 @@
   .alchemy-loop-grid,
   .alchemy-evidence-grid,
   .alchemy-boundary-grid,
-  .research-queue-grid {
+  .research-queue-grid,
+  .video-guide-grid {
     grid-template-columns: 1fr;
   }
 
@@ -584,7 +650,8 @@
   .alchemy-loop-card::before,
   .alchemy-evidence-card::before,
   .alchemy-boundary-card::before,
-  .research-queue-card::before {
+  .research-queue-card::before,
+  .video-guide-card::before {
     transition: none;
   }
 
