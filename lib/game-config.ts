@@ -1,27 +1,29 @@
-// input: reusable site and game template settings
-// output: single source of truth for template identity, locales, route groups, and optional integrations
-// pos: template configuration boundary
+// input: Wizard Alchemy site and game settings
+// output: single source of truth for site identity, locales, route groups, and optional integrations
+// pos: site configuration boundary
 
 export const gameConfig = {
-  siteName: "Example Game Guide",
-  shortName: "Example Guide",
-  gameName: "Example Roblox Game",
-  gameSlug: "example-game",
-  primaryKeyword: "Example Roblox Game guide",
-  siteDomain: "https://example.com",
-  contactEmail: "example@example.com",
-  copyrightOwner: "example@example.com",
+  siteName: "Wizard Alchemy Guide",
+  shortName: "Wizard Alchemy",
+  gameName: "Wizard Alchemy",
+  gameSlug: "wizard-alchemy",
+  primaryKeyword: "Wizard Alchemy Roblox guide",
+  siteDomain: "https://wizardalchemy.online",
+  contactEmail: "tangjei414@gmail.com",
+  copyrightOwner: "tangjei",
 
   defaultLocale: "en",
   completedLocales: ["en", "zh-tw", "th"],
 
   coreSlugs: ["", "codes", "tier-list", "updates", "beginners-guide", "units"],
+  completedCoreSlugs: ["", "codes", "updates", "beginners-guide"],
   englishOnlySlugs: ["scripts", "value-list", "macros", "discord"],
+  completedEnglishOnlySlugs: [] as string[],
 
-  robloxUrl: "",
-  robloxGroupUrl: "",
-  creatorName: "",
-  creatorType: "",
+  robloxUrl: "https://www.roblox.com/games/118821269826806/Wizard-Alchemy",
+  robloxGroupUrl: "https://www.roblox.com/communities/509055872/Muggle-Academy",
+  creatorName: "Muggle Academy",
+  creatorType: "Group",
 
   analytics: {
     googleAnalyticsId: "",
