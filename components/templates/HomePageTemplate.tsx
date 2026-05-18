@@ -1,7 +1,8 @@
 // input: typed localized homepage content and locale
-// output: Wizard Alchemy homepage with official Roblox visual, player-first modules, and localized source-safe content
-// pos: multilingual homepage template
+// output: Wizard Alchemy homepage with game-toned official visual, player-first modules, and localized source-safe content
+// pos: multilingual homepage template (更新规则：文件变更需同步本注释与所属目录 README)
 
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import type { HomePageContent } from "@/lib/content/page-types";
@@ -324,7 +325,9 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
         </div>
 
         <div className="official-visual-panel" aria-label="Official Wizard Alchemy Roblox thumbnail">
-          <img src="/official-hero-image" alt="Official Wizard Alchemy Roblox thumbnail" />
+          <div className="official-visual-frame">
+            <Image src="/official-hero-image" alt="Official Wizard Alchemy Roblox thumbnail" fill priority unoptimized sizes="(max-width: 900px) 100vw, 54vw" />
+          </div>
           <div className="official-visual-caption">
             <span>{copy.officialVisual}</span>
             <strong>{copy.byDeveloper}</strong>

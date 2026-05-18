@@ -1,23 +1,24 @@
 /* input: Wizard Alchemy homepage markup */
-/* output: distinct alchemy-themed homepage visuals */
-/* pos: homepage-only visual layer */
+/* output: distinct potion-and-spell game visuals for the homepage */
+/* pos: homepage-only visual layer (更新规则：文件变更需同步本注释与所属目录 README) */
 
 .wizard-home {
   width: min(1220px, calc(100% - 32px));
-  padding-top: 28px;
+  padding-top: 30px;
 }
 
 .alchemy-hero,
 .alchemy-section {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(220, 205, 255, 0.18);
+  border: 1px solid rgba(226, 204, 255, 0.2);
   background:
-    radial-gradient(circle at 12% 18%, rgba(155, 92, 255, 0.32), transparent 30%),
-    radial-gradient(circle at 78% 28%, rgba(43, 255, 190, 0.18), transparent 28%),
-    linear-gradient(135deg, #160f2f 0%, #0b1228 48%, #05120f 100%);
-  color: #f7f1ff;
-  box-shadow: 0 28px 90px rgba(12, 8, 32, 0.3);
+    radial-gradient(circle at 12% 18%, rgba(125, 76, 255, 0.38), transparent 30%),
+    radial-gradient(circle at 78% 28%, rgba(101, 255, 213, 0.2), transparent 28%),
+    radial-gradient(circle at 52% 88%, rgba(245, 196, 81, 0.13), transparent 36%),
+    linear-gradient(135deg, #180d34 0%, #0b132b 48%, #061813 100%);
+  color: #f8f2ff;
+  box-shadow: 0 30px 96px rgba(4, 0, 18, 0.38);
 }
 
 .alchemy-hero::before,
@@ -27,10 +28,20 @@
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+}
+
+.alchemy-hero::after,
+.alchemy-section::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid rgba(245, 196, 81, 0.12);
+  border-radius: inherit;
 }
 
 .alchemy-hero {
@@ -38,16 +49,17 @@
   grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1.18fr);
   gap: clamp(26px, 4vw, 52px);
   align-items: center;
-  min-height: 540px;
+  min-height: 560px;
   padding: clamp(30px, 5.5vw, 70px);
-  border-radius: 34px;
+  border-radius: 28px;
 }
 
 .official-hero {
   background:
-    linear-gradient(90deg, rgba(12, 9, 28, 0.95) 0%, rgba(12, 9, 28, 0.84) 42%, rgba(12, 9, 28, 0.52) 100%),
-    radial-gradient(circle at 88% 18%, rgba(255, 125, 46, 0.24), transparent 34%),
-    linear-gradient(135deg, #160f2f 0%, #07100d 100%);
+    linear-gradient(90deg, rgba(12, 7, 26, 0.98) 0%, rgba(12, 7, 26, 0.86) 42%, rgba(12, 7, 26, 0.52) 100%),
+    radial-gradient(circle at 88% 18%, rgba(255, 109, 154, 0.24), transparent 34%),
+    radial-gradient(circle at 70% 72%, rgba(101, 255, 213, 0.18), transparent 30%),
+    linear-gradient(135deg, #180d34 0%, #061813 100%);
 }
 
 .alchemy-hero-copy,
@@ -60,11 +72,11 @@
 .alchemy-kicker,
 .alchemy-section-heading p {
   margin: 0 0 14px;
-  color: #ffd267;
+  color: #f5c451;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -74,13 +86,16 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(50px, 7.6vw, 96px);
   line-height: 0.9;
-  letter-spacing: -0.07em;
+  letter-spacing: 0;
+  text-shadow:
+    0 0 24px rgba(101, 255, 213, 0.26),
+    0 12px 30px rgba(4, 0, 18, 0.5);
 }
 
 .alchemy-hero-copy > p:not(.alchemy-kicker) {
   max-width: 620px;
   margin: 0;
-  color: rgba(247, 241, 255, 0.76);
+  color: rgba(248, 242, 255, 0.78);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(16px, 2vw, 21px);
   line-height: 1.55;
@@ -101,20 +116,21 @@
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  border-radius: 999px;
+  border-radius: 16px;
   padding: 13px 20px;
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
 .alchemy-primary {
-  color: #160b07;
-  background: linear-gradient(135deg, #ffd267, #ff7a32);
-  box-shadow: 0 18px 42px rgba(255, 122, 50, 0.24);
+  color: #120a24;
+  background: linear-gradient(135deg, #65ffd5, #f5c451);
+  box-shadow: 0 18px 48px rgba(101, 255, 213, 0.24);
 }
 
 .alchemy-secondary {
-  color: #f7f1ff;
-  border: 1px solid rgba(247, 241, 255, 0.2);
+  color: #f8f2ff;
+  border: 1px solid rgba(226, 204, 255, 0.22);
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -125,18 +141,21 @@
 
 .official-visual-panel {
   overflow: hidden;
-  border: 1px solid rgba(255, 210, 103, 0.34);
-  border-radius: 30px;
+  border: 1px solid rgba(245, 196, 81, 0.34);
+  border-radius: 24px;
   background: #080b12;
   box-shadow:
     0 34px 90px rgba(0, 0, 0, 0.38),
-    0 0 0 10px rgba(255, 210, 103, 0.06);
+    0 0 0 10px rgba(245, 196, 81, 0.06),
+    0 0 44px rgba(101, 255, 213, 0.12);
 }
 
-.official-visual-panel img {
-  display: block;
-  width: 100%;
+.official-visual-frame {
+  position: relative;
   aspect-ratio: 16 / 9;
+}
+
+.official-visual-frame img {
   object-fit: cover;
 }
 
@@ -146,13 +165,13 @@
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px;
-  color: #f7f1ff;
-  background: linear-gradient(90deg, rgba(12, 9, 28, 0.96), rgba(32, 17, 11, 0.96));
+  color: #f8f2ff;
+  background: linear-gradient(90deg, rgba(12, 7, 26, 0.96), rgba(37, 20, 8, 0.96));
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
 .official-visual-caption span {
-  color: rgba(247, 241, 255, 0.58);
+  color: rgba(248, 242, 255, 0.58);
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -176,20 +195,38 @@
 
 .quick-fact-card,
 .alchemy-status-card {
-  border: 1px solid rgba(33, 20, 58, 0.1);
-  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(226, 204, 255, 0.16);
+  border-radius: 20px;
   padding: 22px;
-  background: #fffdf7;
-  box-shadow: 0 18px 55px rgba(23, 9, 50, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    #171028;
+  box-shadow: 0 18px 55px rgba(4, 0, 18, 0.26);
+}
+
+.quick-fact-card::before,
+.alchemy-status-card::before {
+  content: "";
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  right: -42px;
+  top: -42px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(101, 255, 213, 0.22), transparent 66%);
 }
 
 .quick-fact-card span,
 .alchemy-status-card span {
   display: inline-flex;
+  position: relative;
+  z-index: 1;
   border-radius: 999px;
   padding: 6px 10px;
-  color: #281044;
-  background: rgba(155, 92, 255, 0.12);
+  color: #65ffd5;
+  background: rgba(101, 255, 213, 0.1);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 900;
@@ -198,8 +235,10 @@
 .quick-fact-card strong,
 .alchemy-status-card strong {
   display: block;
+  position: relative;
+  z-index: 1;
   margin-top: 16px;
-  color: #21143a;
+  color: #f8f2ff;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(18px, 2vw, 24px);
   line-height: 1.18;
@@ -207,25 +246,29 @@
 
 .quick-fact-card small {
   display: block;
+  position: relative;
+  z-index: 1;
   margin-top: 10px;
-  color: rgba(33, 20, 58, 0.58);
+  color: rgba(248, 242, 255, 0.62);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
 }
 
 .alchemy-status-card {
   min-height: 170px;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .alchemy-status-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 28px 70px rgba(23, 9, 50, 0.12);
+  border-color: rgba(245, 196, 81, 0.38);
+  box-shadow: 0 28px 70px rgba(245, 196, 81, 0.1);
 }
 
 .alchemy-section {
   margin-top: 18px;
-  border-radius: 30px;
+  border-radius: 24px;
   padding: clamp(28px, 5vw, 56px);
 }
 
@@ -234,9 +277,10 @@
 .alchemy-faq-section,
 .first-session-section {
   background:
-    radial-gradient(circle at 88% 20%, rgba(255, 210, 103, 0.18), transparent 30%),
-    linear-gradient(135deg, #fffdf7, #f6efe7);
-  color: #21143a;
+    radial-gradient(circle at 88% 20%, rgba(245, 196, 81, 0.18), transparent 30%),
+    radial-gradient(circle at 8% 84%, rgba(101, 255, 213, 0.12), transparent 32%),
+    linear-gradient(135deg, #201531, #130d20);
+  color: #f8f2ff;
 }
 
 .alchemy-loop-section::before,
@@ -250,7 +294,7 @@
 .alchemy-code-section .alchemy-section-heading p,
 .alchemy-faq-section .alchemy-section-heading p,
 .first-session-section .alchemy-section-heading p {
-  color: #7b43ff;
+  color: #65ffd5;
 }
 
 .alchemy-section-heading h2 {
@@ -259,7 +303,7 @@
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(32px, 5vw, 66px);
   line-height: 0.96;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
 }
 
 .first-session-list {
@@ -277,11 +321,11 @@
   grid-template-columns: 48px 1fr;
   gap: 14px;
   align-items: center;
-  border: 1px solid rgba(33, 20, 58, 0.1);
+  border: 1px solid rgba(226, 204, 255, 0.16);
   border-radius: 18px;
   padding: 14px;
-  background: rgba(255, 255, 255, 0.7);
-  color: rgba(33, 20, 58, 0.78);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(248, 242, 255, 0.76);
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -292,9 +336,10 @@
   height: 48px;
   place-items: center;
   border-radius: 14px;
-  color: #160b07;
-  background: #ffd267;
-  font-weight: 1000;
+  color: #120a24;
+  background: linear-gradient(135deg, #65ffd5, #f5c451);
+  font-weight: 900;
+  box-shadow: 0 0 20px rgba(101, 255, 213, 0.18);
 }
 
 .alchemy-loop-grid,
@@ -312,19 +357,43 @@
 .alchemy-boundary-card,
 .research-queue-card {
   min-width: 0;
-  border: 1px solid rgba(33, 20, 58, 0.12);
-  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(226, 204, 255, 0.14);
+  border-radius: 18px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(11, 6, 24, 0.54);
   font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.alchemy-loop-card::before,
+.alchemy-evidence-card::before,
+.alchemy-boundary-card::before,
+.research-queue-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(101, 255, 213, 0.12), transparent 42%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.alchemy-loop-card:hover::before,
+.alchemy-evidence-card:hover::before,
+.alchemy-boundary-card:hover::before,
+.research-queue-card:hover::before {
+  opacity: 1;
 }
 
 .alchemy-loop-card span {
   display: inline-flex;
   margin-bottom: 42px;
-  color: #7b43ff;
+  color: #65ffd5;
   font-size: 13px;
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 .alchemy-loop-card h3,
@@ -332,6 +401,7 @@
 .alchemy-boundary-card h3,
 .research-queue-card h3 {
   margin: 0 0 10px;
+  color: #f8f2ff;
   font-size: 21px;
 }
 
@@ -339,14 +409,15 @@
 .alchemy-boundary-card p,
 .research-queue-card p {
   margin: 0;
-  color: rgba(33, 20, 58, 0.66);
+  color: rgba(248, 242, 255, 0.66);
 }
 
 .alchemy-evidence-section,
 .alchemy-boundary-section,
 .research-queue-section {
   background:
-    radial-gradient(circle at 16% 18%, rgba(255, 122, 50, 0.16), transparent 30%),
+    radial-gradient(circle at 16% 18%, rgba(255, 109, 154, 0.16), transparent 30%),
+    radial-gradient(circle at 84% 78%, rgba(101, 255, 213, 0.12), transparent 30%),
     linear-gradient(135deg, #100724, #061713);
 }
 
@@ -358,20 +429,14 @@
 .alchemy-evidence-card,
 .alchemy-boundary-card,
 .research-queue-card {
-  border-color: rgba(247, 241, 255, 0.14);
+  border-color: rgba(226, 204, 255, 0.14);
   background: rgba(255, 255, 255, 0.07);
-  color: #f7f1ff;
-}
-
-.alchemy-evidence-card h3,
-.alchemy-boundary-card h3,
-.research-queue-card h3 {
-  color: #f7f1ff;
+  color: #f8f2ff;
 }
 
 .alchemy-boundary-card p,
 .research-queue-card p {
-  color: rgba(247, 241, 255, 0.68);
+  color: rgba(248, 242, 255, 0.68);
 }
 
 .alchemy-badge {
@@ -380,20 +445,20 @@
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 11px;
-  font-weight: 1000;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .alchemy-badge.verified {
   color: #07100d;
-  background: #6fffd2;
+  background: #65ffd5;
 }
 
 .alchemy-badge.pending,
 .alchemy-badge.needs-verification,
 .alchemy-badge.research-only {
-  color: #21143a;
-  background: #ffd267;
+  color: #120a24;
+  background: #f5c451;
 }
 
 .alchemy-code-table {
@@ -407,39 +472,39 @@
   grid-template-columns: 0.7fr 1.4fr 1fr;
   gap: 12px;
   align-items: center;
-  border: 1px solid rgba(33, 20, 58, 0.1);
+  border: 1px solid rgba(226, 204, 255, 0.16);
   border-radius: 18px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
 .alchemy-code-row code {
-  color: #21143a;
+  color: #f8f2ff;
   font-size: 18px;
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 .alchemy-code-row span {
-  color: rgba(33, 20, 58, 0.62);
+  color: rgba(248, 242, 255, 0.62);
 }
 
 .alchemy-code-row strong {
   justify-self: end;
   border-radius: 999px;
   padding: 6px 10px;
-  color: #160b07;
-  background: #ffd267;
+  color: #120a24;
+  background: #f5c451;
   font-size: 12px;
   text-transform: uppercase;
 }
 
 .alchemy-warning-note {
   margin: 18px 0 0;
-  border-left: 4px solid #ff7a32;
+  border-left: 4px solid #ff6d9a;
   padding: 12px 14px;
-  color: rgba(33, 20, 58, 0.72);
-  background: rgba(255, 122, 50, 0.08);
+  color: rgba(248, 242, 255, 0.72);
+  background: rgba(255, 109, 154, 0.08);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
 }
@@ -455,17 +520,17 @@
 }
 
 .alchemy-faq-list details {
-  border: 1px solid rgba(33, 20, 58, 0.12);
+  border: 1px solid rgba(226, 204, 255, 0.16);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .alchemy-faq-list summary {
-  color: #21143a;
+  color: #f8f2ff;
 }
 
 .alchemy-faq-list details p {
-  color: rgba(33, 20, 58, 0.66);
+  color: rgba(248, 242, 255, 0.66);
 }
 
 @media (max-width: 900px) {
@@ -482,6 +547,7 @@
   .alchemy-hero {
     min-height: auto;
     padding: 30px;
+    border-radius: 22px;
   }
 
   .official-visual-panel {
@@ -508,5 +574,23 @@
 
   .alchemy-section-heading h2 {
     font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alchemy-primary,
+  .alchemy-secondary,
+  .alchemy-status-card,
+  .alchemy-loop-card::before,
+  .alchemy-evidence-card::before,
+  .alchemy-boundary-card::before,
+  .research-queue-card::before {
+    transition: none;
+  }
+
+  .alchemy-primary:hover,
+  .alchemy-secondary:hover,
+  .alchemy-status-card:hover {
+    transform: none;
   }
 }

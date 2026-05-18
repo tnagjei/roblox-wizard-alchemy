@@ -7,6 +7,8 @@
 ## Files
 - README.md：本目录说明
 - globals.css：全站视觉样式
+- home.css：首页炼金游戏调性视觉样式
+- language.css：语言切换与多语言页面补充样式
 - layout.tsx：根布局和全局 metadata
 - page.tsx：首页
 - sitemap.ts：sitemap.xml 生成

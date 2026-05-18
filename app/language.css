@@ -5,6 +5,8 @@
 .language-dropdown {
   position: relative;
   display: inline-block;
+  border: 0;
+  background: transparent;
 }
 
 .language-dropdown summary {
@@ -13,9 +15,10 @@
   gap: 8px;
   min-height: 40px;
   border: 1px solid var(--line);
+  border-radius: 999px;
   padding: 10px 12px;
-  background: rgba(255, 253, 246, 0.86);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+  color: #efe7ff;
   cursor: pointer;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
@@ -34,8 +37,8 @@
 }
 
 .language-dropdown[open] summary {
-  border-color: rgba(27, 127, 98, 0.38);
-  box-shadow: 3px 3px 0 rgba(27, 127, 98, 0.12);
+  border-color: rgba(101, 255, 213, 0.38);
+  box-shadow: 0 0 24px rgba(101, 255, 213, 0.14);
 }
 
 .language-dropdown summary strong {
@@ -52,8 +55,9 @@
   display: grid;
   min-width: 220px;
   border: 1px solid var(--line);
+  border-radius: 18px;
   background: var(--paper);
-  box-shadow: 8px 8px 0 rgba(17, 20, 15, 0.12);
+  box-shadow: 0 18px 44px rgba(4, 0, 18, 0.34);
   padding: 8px;
 }
 
@@ -71,7 +75,7 @@
 }
 
 .language-dropdown-menu a:hover {
-  background: rgba(27, 127, 98, 0.1);
+  background: rgba(101, 255, 213, 0.1);
 }
 
 .language-dropdown-menu a span {
@@ -134,15 +138,16 @@
   gap: 8px;
   min-width: 0;
   border: 1px solid var(--line);
+  border-radius: 18px;
   padding: 18px;
-  background: rgba(255, 253, 246, 0.9);
+  background: rgba(23, 16, 40, 0.86);
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .language-alternate-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(27, 127, 98, 0.32);
-  box-shadow: 5px 5px 0 rgba(27, 127, 98, 0.15);
+  border-color: rgba(101, 255, 213, 0.32);
+  box-shadow: 0 16px 36px rgba(101, 255, 213, 0.1);
 }
 
 .language-alternate-card strong {
@@ -158,10 +163,11 @@
 
 .language-code {
   width: fit-content;
-  border: 1px solid rgba(27, 127, 98, 0.28);
+  border: 1px solid rgba(101, 255, 213, 0.28);
+  border-radius: 999px;
   padding: 3px 8px;
   color: var(--accent);
-  background: rgba(27, 127, 98, 0.1);
+  background: rgba(101, 255, 213, 0.1);
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 11px;
   font-weight: 900;
@@ -195,6 +201,11 @@
 }
 
 @media (max-width: 560px) {
+  .language-dropdown {
+    flex: 1 1 calc(50% - 8px);
+    width: auto;
+  }
+
   .localized-page h1 {
     font-size: 38px;
   }
