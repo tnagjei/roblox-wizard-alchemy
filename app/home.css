@@ -389,6 +389,29 @@
   text-decoration: none;
 }
 
+.video-embed-card {
+  min-height: 0;
+}
+
+.video-embed-frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 16px;
+  border: 1px solid rgba(226, 204, 255, 0.14);
+  border-radius: 14px;
+  background: #05020d;
+}
+
+.video-embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .alchemy-loop-card::before,
 .alchemy-evidence-card::before,
 .alchemy-boundary-card::before,
@@ -429,6 +452,10 @@
   text-transform: uppercase;
 }
 
+.video-embed-card span {
+  margin-bottom: 14px;
+}
+
 .alchemy-loop-card h3,
 .alchemy-evidence-card h3,
 .alchemy-boundary-card h3,
@@ -447,7 +474,8 @@
   color: rgba(248, 242, 255, 0.66);
 }
 
-.video-guide-card strong {
+.video-guide-card strong,
+.video-guide-card a {
   margin-top: auto;
   color: #f5c451;
   font-size: 13px;
@@ -632,14 +660,201 @@
 @media (max-width: 560px) {
   .wizard-home {
     width: min(100% - 20px, 1220px);
+    padding-top: 18px;
+  }
+
+  .alchemy-hero {
+    gap: 20px;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .alchemy-hero::after,
+  .alchemy-section::after {
+    inset: 8px;
+  }
+
+  .official-visual-panel {
+    border-radius: 18px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  }
+
+  .official-visual-caption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+  }
+
+  .alchemy-kicker,
+  .alchemy-section-heading p {
+    margin-bottom: 10px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
   }
 
   .alchemy-hero h1 {
-    font-size: 46px;
+    margin-bottom: 14px;
+    font-size: clamp(38px, 11vw, 46px);
+    line-height: 0.95;
+  }
+
+  .alchemy-hero-copy > p:not(.alchemy-kicker),
+  .video-guide-lede {
+    font-size: 16px;
+    line-height: 1.46;
+  }
+
+  .alchemy-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .alchemy-primary,
+  .alchemy-secondary {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .quick-facts-grid,
+  .alchemy-status-grid,
+  .alchemy-loop-grid,
+  .alchemy-evidence-grid,
+  .alchemy-boundary-grid,
+  .research-queue-grid,
+  .video-guide-grid {
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .quick-fact-card,
+  .alchemy-status-card,
+  .alchemy-loop-card,
+  .alchemy-evidence-card,
+  .alchemy-boundary-card,
+  .research-queue-card,
+  .video-guide-card {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .alchemy-status-card {
+    min-height: auto;
+  }
+
+  .quick-fact-card strong,
+  .alchemy-status-card strong {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .alchemy-section {
+    margin-top: 14px;
+    border-radius: 18px;
+    padding: 22px 16px;
   }
 
   .alchemy-section-heading h2 {
-    font-size: 34px;
+    font-size: clamp(30px, 9vw, 38px);
+    line-height: 1;
+  }
+
+  .first-session-list {
+    margin-top: 18px;
+  }
+
+  .first-session-list li {
+    grid-template-columns: 38px 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .first-session-list li::before {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+
+  .alchemy-loop-card span,
+  .video-guide-card span {
+    margin-bottom: 18px;
+  }
+
+  .alchemy-loop-card h3,
+  .alchemy-evidence-card h3,
+  .alchemy-boundary-card h3,
+  .research-queue-card h3,
+  .video-guide-card h3 {
+    font-size: 18px;
+  }
+
+  .video-guide-card {
+    min-height: auto;
+  }
+
+  .video-embed-frame {
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .video-guide-card p {
+    display: none;
+  }
+
+  .video-guide-card a {
+    margin-top: 10px;
+  }
+
+  .video-guide-note,
+  .alchemy-warning-note {
+    margin-top: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .video-guide-related {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(101, 255, 213, 0.28);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .alchemy-code-row {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .alchemy-code-row code {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 380px) {
+  .wizard-home {
+    width: min(100% - 16px, 1220px);
+  }
+
+  .alchemy-hero {
+    padding: 16px;
+  }
+
+  .alchemy-section {
+    padding: 20px 14px;
+  }
+
+  .alchemy-hero h1 {
+    font-size: 36px;
   }
 }
 
