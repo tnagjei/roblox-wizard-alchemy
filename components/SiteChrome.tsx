@@ -113,31 +113,44 @@ export function SiteChrome({ children }: SiteChromeProps) {
               {item.label}
             </Link>
           ))}
-          <details
-            className="language-dropdown"
-            open={isLanguageOpen}
-            onMouseLeave={() => setIsLanguageOpen(false)}
-            onToggle={(event) => setIsLanguageOpen(event.currentTarget.open)}
-          >
-            <summary
+          <div className="language-dropdown">
+            <button
+              type="button"
+              className="language-dropdown-trigger"
               aria-label="Choose language"
-              onClick={(event) => {
-                event.preventDefault();
-                setIsLanguageOpen((current) => !current);
+              aria-expanded={isLanguageOpen}
+              aria-haspopup="menu"
+              onClick={() => setIsLanguageOpen((current) => !current)}
+              onBlur={(event) => {
+                if (!event.currentTarget.parentElement?.contains(event.relatedTarget as Node | null)) {
+                  setIsLanguageOpen(false);
+                }
               }}
             >
               <span>Language</span>
               <strong>{currentLanguage?.shortLabel || "EN"}</strong>
-            </summary>
-            <div className="language-dropdown-menu" aria-label="Language navigation">
-              {completedLocales.map((item) => (
-                <Link key={item.code} href={getLocalizedPath(item.code, currentSlug)} onClick={() => setIsLanguageOpen(false)}>
-                  <span>{item.shortLabel}</span>
-                  <strong>{item.label}</strong>
-                </Link>
-              ))}
-            </div>
-          </details>
+            </button>
+            {isLanguageOpen ? (
+              <div
+                className="language-dropdown-menu"
+                role="menu"
+                aria-label="Language navigation"
+                onMouseDown={(event) => event.preventDefault()}
+              >
+                {completedLocales.map((item) => (
+                  <Link
+                    key={item.code}
+                    href={getLocalizedPath(item.code, currentSlug)}
+                    role="menuitem"
+                    onClick={() => setIsLanguageOpen(false)}
+                  >
+                    <span>{item.shortLabel}</span>
+                    <strong>{item.label}</strong>
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
           <SmartLink className="nav-cta" label="Open Game" />
         </nav>
       </header>
