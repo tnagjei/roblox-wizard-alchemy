@@ -5,6 +5,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
+import "./home.css";
 import "./language.css";
 import { SiteChrome } from "@/components/SiteChrome";
 import { gameConfig } from "@/lib/game-config";
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#17241f"
+  themeColor: "#160f2f"
 };
 
 export default function RootLayout({
