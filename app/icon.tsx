@@ -10,24 +10,47 @@ export default function Icon() {
         style={{
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(to bottom right, #2d8a4e, #1a522f)',
-          borderRadius: '128px',
+          background: 'radial-gradient(circle at 32% 24%, #f7f1ff 0%, #d8ff6f 18%, #6fffd2 38%, #7b43ff 68%, #160f2f 100%)',
+          borderRadius: '112px',
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
         <div
           style={{
+            position: 'absolute',
+            width: 390,
+            height: 390,
+            border: '10px solid rgba(255,255,255,0.42)',
+            borderRadius: 999,
+            transform: 'rotate(-22deg)'
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            width: 270,
+            height: 270,
+            border: '8px solid rgba(216,255,111,0.44)',
+            borderRadius: 999,
+            transform: 'rotate(28deg)'
+          }}
+        />
+        <div
+          style={{
             display: 'flex',
-            color: '#facc15',
-            fontSize: 320,
-            fontWeight: 900,
-            textShadow: '0 10px 20px rgba(0,0,0,0.4)',
+            color: '#120820',
+            fontSize: 178,
+            fontWeight: 1000,
+            letterSpacing: '-0.12em',
+            paddingRight: 18,
+            textShadow: '0 8px 18px rgba(255,255,255,0.32)'
           }}
         >
-          N
+          WA
         </div>
       </div>
     ),
