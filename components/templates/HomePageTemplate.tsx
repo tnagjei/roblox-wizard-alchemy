@@ -1,10 +1,10 @@
 // input: typed localized homepage content and locale
-// output: full homepage layout without embedded long-form translations
+// output: Wizard Alchemy themed homepage layout with source-safe content
 // pos: multilingual homepage template
 
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
-import type { HomePageContent, StatItem } from "@/lib/content/page-types";
+import type { HomePageContent } from "@/lib/content/page-types";
 import type { Locale } from "@/lib/i18n/locales";
 import { getLocalizedPath } from "@/lib/i18n/routes";
 import { siteData } from "@/lib/site-data";
@@ -21,48 +21,38 @@ type HomePageTemplateProps = {
   locale: Locale;
 };
 
-type YouTubeVideo = {
-  id: string;
-  embedUrl: string;
-  title: string;
-  channel: string;
-  durationSeconds: number;
-  viewCount: number;
-  watchUrl: string;
+type PendingCode = {
+  code: string;
+  seenOn: string;
+  status: string;
 };
-
-function statValue(stat: StatItem): string {
-  switch (stat.valueKey) {
-    case "playing":
-      return siteData.game.playing.toLocaleString();
-    case "visits":
-      return siteData.game.visits.toLocaleString();
-    case "favorites":
-      return siteData.game.favorites.toLocaleString();
-    case "approval":
-      return siteData.game.approvalRate;
-    case "lastFullCheck":
-      return siteData.site.lastFullCheck;
-    case "codesLastChecked":
-      return siteData.codes.lastChecked;
-    case "statsSnapshot":
-      return siteData.game.liveStatsCheckedAt.split("T")[0];
-    case "pageCount":
-      return String(siteData.pages.length);
-    default:
-      return "";
-  }
-}
 
 function actionHref(href: string): string {
   return href === "roblox" ? siteData.game.robloxUrl : href;
 }
 
+function localizedStatus(status: string) {
+  return status
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
-  const youtubeVideos = siteData.youtubeVideos as YouTubeVideo[];
+  const pendingCodes = siteData.codes.pendingCodes as PendingCode[];
+  const completedCards = content.directory.cards;
+  const researchCards = content.research.cards;
+  const sourceConfidence = siteData.game.sourceConfidence as Array<{ label: string; level: string }>;
+
+  const alchemyLoop = [
+    { step: "01", title: "Ingredients", body: "Collect materials and learn what each resource is used for before chasing builds." },
+    { step: "02", title: "Potions", body: "Brew and test potion effects inside the game instead of copying unsupported claims." },
+    { step: "03", title: "Spells", body: "Unlock spells, compare their roles, then wait for verified data before ranking them." },
+    { step: "04", title: "Power", body: "Upgrade power and explore new magical areas with source-checked progression notes." }
+  ];
 
   return (
-    <main className="page-main">
+    <main className="page-main wizard-home">
       <JsonLd data={buildWebsiteJsonLd()} />
       <JsonLd data={buildVideoGameJsonLd()} />
       <JsonLd
@@ -84,142 +74,127 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
       <JsonLd data={buildFaqJsonLd({ faq: content.faq } as any)} />
       <JsonLd data={buildBreadcrumbJsonLd({ path: getLocalizedPath(locale, ""), h1: content.hero.h1 } as any)} />
 
-      <section className="page-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">{content.hero.eyebrow}</p>
+      <section className="alchemy-hero" aria-label={content.hero.h1}>
+        <div className="alchemy-hero-copy">
+          <p className="alchemy-kicker">{content.hero.eyebrow}</p>
           <h1>{content.hero.h1}</h1>
-          <p className="lede">{content.hero.lede}</p>
-          <div className="hero-actions">
+          <p>{content.hero.lede}</p>
+          <div className="alchemy-actions">
             {content.hero.primaryAction ? (
               content.hero.primaryAction.external ? (
-                <a className="primary-link" href={actionHref(content.hero.primaryAction.href)} target="_blank" rel="noopener noreferrer">
+                <a className="alchemy-primary" href={actionHref(content.hero.primaryAction.href)} target="_blank" rel="noopener noreferrer">
                   {content.hero.primaryAction.label}
                 </a>
               ) : (
-                <Link className="primary-link" href={content.hero.primaryAction.href}>{content.hero.primaryAction.label}</Link>
+                <Link className="alchemy-primary" href={content.hero.primaryAction.href}>{content.hero.primaryAction.label}</Link>
               )
             ) : null}
             {content.hero.secondaryAction ? (
               content.hero.secondaryAction.external ? (
-                <a className="secondary-link" href={actionHref(content.hero.secondaryAction.href)} target="_blank" rel="noopener noreferrer">
+                <a className="alchemy-secondary" href={actionHref(content.hero.secondaryAction.href)} target="_blank" rel="noopener noreferrer">
                   {content.hero.secondaryAction.label}
                 </a>
               ) : (
-                <Link className="secondary-link" href={content.hero.secondaryAction.href}>{content.hero.secondaryAction.label}</Link>
+                <Link className="alchemy-secondary" href={content.hero.secondaryAction.href}>{content.hero.secondaryAction.label}</Link>
               )
             ) : null}
           </div>
         </div>
-        <img className="hero-image" src={siteData.assets.hero} alt={`${siteData.game.name} Roblox thumbnail`} />
-      </section>
 
-      <section className="stats-strip" aria-label={content.hero.eyebrow}>
-        {content.stats.map((stat) => (
-          <StatBox key={`${stat.valueKey}-${stat.label}`} value={statValue(stat)} label={stat.label} detail={stat.detail} />
-        ))}
-      </section>
-
-      <section className="section-heading">
-        <p className="eyebrow">{content.directory.eyebrow}</p>
-        <h2>{content.directory.title}</h2>
-      </section>
-      <section className="route-grid" aria-label={content.directory.title}>
-        {content.directory.cards.map((card) => (
-          <Link className="route-card" href={card.href} key={card.href}>
-            <span className="card-rule" />
-            <h2>{card.title}</h2>
-            <p>{card.description}</p>
-          </Link>
-        ))}
-      </section>
-
-      <section className="section-heading">
-        <p className="eyebrow">{content.research.eyebrow}</p>
-        <h2>{content.research.title}</h2>
-      </section>
-      <section className="research-grid">
-        {content.research.cards.map((card) => (
-          <article className="research-card" key={card.title}>
-            <span className="card-rule" />
-            <h2>{card.title}</h2>
-            <p>{card.description}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="section-heading">
-        <p className="eyebrow">{content.verification.eyebrow}</p>
-        <h2>{content.verification.title}</h2>
-      </section>
-      <section className="confidence-grid" aria-label={content.verification.title}>
-        {siteData.game.sourceConfidence.map((source: { label: string; level: string }) => (
-          <div className="confidence-card" key={source.label}>
-            <div className="confidence-label">{source.label}</div>
-            <span className={`confidence-badge ${source.level.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-              {content.verification.labels[source.level] || source.level}
-            </span>
+        <div className="spell-panel" aria-label="Wizard Alchemy status panel">
+          <div className="spell-orb">WA</div>
+          <div className="spell-ring spell-ring-one" />
+          <div className="spell-ring spell-ring-two" />
+          <div className="spell-card spell-card-top">
+            <span>Codes</span>
+            <strong>{pendingCodes.map((item) => item.code).join(" + ") || "Pending"}</strong>
           </div>
-        ))}
+          <div className="spell-card spell-card-bottom">
+            <span>Source</span>
+            <strong>Roblox page checked</strong>
+          </div>
+        </div>
       </section>
 
-      <section className="section-heading">
-        <p className="eyebrow">{content.freshness.eyebrow}</p>
-        <h2>{content.freshness.title}</h2>
-      </section>
-      <section className="stats-strip" aria-label={content.freshness.title}>
-        {content.freshness.stats.map((stat) => (
-          <StatBox key={`${stat.valueKey}-${stat.label}`} value={statValue(stat)} label={stat.label} detail={stat.detail} />
-        ))}
-      </section>
-
-      <section className="section-heading">
-        <p className="eyebrow">{content.videos.eyebrow}</p>
-        <h2>{content.videos.title}</h2>
-      </section>
-      <section className="video-grid" aria-label={content.videos.title}>
-        {youtubeVideos.map((video) => (
-          <article className="video-card" key={video.id}>
-            <div className="video-frame">
-              <iframe
-                src={video.embedUrl}
-                title={video.title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-            <div className="video-meta">
-              <h3>{video.title}</h3>
-              <p>{video.channel} · {formatDuration(video.durationSeconds)} · {video.viewCount.toLocaleString()} {content.videos.viewsLabel}</p>
-              <a href={video.watchUrl}>{content.videos.openLabel}</a>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section className="section-heading">
-        <p className="eyebrow">{locale === "zh-tw" ? "熱門搜尋" : "Popular searches"}</p>
-        <h2>{locale === "zh-tw" ? "玩家正在搜尋什麼" : "What players are looking for"}</h2>
-      </section>
-      <section className="search-entrance-grid" aria-label="Popular searches">
-        {content.popularSearches.map((card) => (
-          <Link className="search-entrance-card" href={card.href} key={card.href}>
-            <span className="card-rule" />
-            <h3>{card.title}</h3>
-            <p>{card.description}</p>
-            <span className="covers-label">{card.coversLabel}</span>
-            <span className="covers-list">{card.covers}</span>
+      <section className="alchemy-status-grid" aria-label="First version status">
+        {completedCards.map((card) => (
+          <Link className="alchemy-status-card" href={card.href} key={card.href}>
+            <span>{card.title}</span>
+            <strong>{card.description}</strong>
           </Link>
         ))}
       </section>
 
-      <section className="faq-section">
-        <div className="section-heading">
-          <p className="eyebrow">FAQ</p>
+      <section className="alchemy-section alchemy-loop-section">
+        <div className="alchemy-section-heading">
+          <p>Gameplay loop</p>
+          <h2>Ingredients to power, without fake stats.</h2>
+        </div>
+        <div className="alchemy-loop-grid">
+          {alchemyLoop.map((item) => (
+            <article className="alchemy-loop-card" key={item.step}>
+              <span>{item.step}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="alchemy-section alchemy-evidence-section">
+        <div className="alchemy-section-heading">
+          <p>{content.verification.eyebrow}</p>
+          <h2>{content.verification.title}</h2>
+        </div>
+        <div className="alchemy-evidence-grid">
+          {sourceConfidence.map((source) => (
+            <article className="alchemy-evidence-card" key={source.label}>
+              <span className={`alchemy-badge ${source.level.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+                {content.verification.labels[source.level] || localizedStatus(source.level)}
+              </span>
+              <h3>{source.label}</h3>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="alchemy-section alchemy-code-section">
+        <div className="alchemy-section-heading">
+          <p>Code evidence</p>
+          <h2>Roblox-page-mentioned, not reward-invented.</h2>
+        </div>
+        <div className="alchemy-code-table" role="table" aria-label="Wizard Alchemy code evidence">
+          {pendingCodes.map((item) => (
+            <div className="alchemy-code-row" role="row" key={item.code}>
+              <code>{item.code}</code>
+              <span>{item.seenOn}</span>
+              <strong>{localizedStatus(item.status)}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="alchemy-section alchemy-boundary-section">
+        <div className="alchemy-section-heading">
+          <p>{content.research.eyebrow}</p>
+          <h2>{content.research.title}</h2>
+        </div>
+        <div className="alchemy-boundary-grid">
+          {researchCards.map((card) => (
+            <article className="alchemy-boundary-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="alchemy-section alchemy-faq-section">
+        <div className="alchemy-section-heading">
+          <p>FAQ</p>
           <h2>{content.hero.h1} FAQ</h2>
         </div>
-        <div className="faq-list">
+        <div className="alchemy-faq-list">
           {content.faq.map((item) => (
             <details key={item.q}>
               <summary>{item.q}</summary>
@@ -230,20 +205,4 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
       </section>
     </main>
   );
-}
-
-function StatBox({ value, label, detail }: { value: string; label: string; detail: string }) {
-  return (
-    <div className="stat-box">
-      <strong>{value}</strong>
-      <span>{label}</span>
-      <small>{detail}</small>
-    </div>
-  );
-}
-
-function formatDuration(seconds: number) {
-  const minutes = Math.floor(seconds / 60);
-  const rest = seconds % 60;
-  return `${minutes}:${String(rest).padStart(2, "0")}`;
 }
