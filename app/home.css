@@ -35,16 +35,23 @@
 
 .alchemy-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: clamp(28px, 5vw, 64px);
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1.18fr);
+  gap: clamp(26px, 4vw, 52px);
   align-items: center;
-  min-height: 590px;
-  padding: clamp(36px, 7vw, 84px);
+  min-height: 540px;
+  padding: clamp(30px, 5.5vw, 70px);
   border-radius: 34px;
 }
 
+.official-hero {
+  background:
+    linear-gradient(90deg, rgba(12, 9, 28, 0.95) 0%, rgba(12, 9, 28, 0.84) 42%, rgba(12, 9, 28, 0.52) 100%),
+    radial-gradient(circle at 88% 18%, rgba(255, 125, 46, 0.24), transparent 34%),
+    linear-gradient(135deg, #160f2f 0%, #07100d 100%);
+}
+
 .alchemy-hero-copy,
-.spell-panel,
+.official-visual-panel,
 .alchemy-section > * {
   position: relative;
   z-index: 1;
@@ -53,7 +60,7 @@
 .alchemy-kicker,
 .alchemy-section-heading p {
   margin: 0 0 14px;
-  color: #6fffd2;
+  color: #ffd267;
   font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 12px;
   font-weight: 900;
@@ -62,20 +69,20 @@
 }
 
 .alchemy-hero h1 {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 0 22px;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(54px, 8.8vw, 112px);
+  font-size: clamp(50px, 7.6vw, 96px);
   line-height: 0.9;
   letter-spacing: -0.07em;
 }
 
 .alchemy-hero-copy > p:not(.alchemy-kicker) {
-  max-width: 680px;
+  max-width: 620px;
   margin: 0;
-  color: rgba(247, 241, 255, 0.74);
+  color: rgba(247, 241, 255, 0.76);
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(17px, 2.2vw, 23px);
+  font-size: clamp(16px, 2vw, 21px);
   line-height: 1.55;
 }
 
@@ -100,9 +107,9 @@
 }
 
 .alchemy-primary {
-  color: #07100d;
-  background: linear-gradient(135deg, #6fffd2, #d8ff6f);
-  box-shadow: 0 18px 42px rgba(111, 255, 210, 0.22);
+  color: #160b07;
+  background: linear-gradient(135deg, #ffd267, #ff7a32);
+  box-shadow: 0 18px 42px rgba(255, 122, 50, 0.24);
 }
 
 .alchemy-secondary {
@@ -116,85 +123,43 @@
   transform: translateY(-2px);
 }
 
-.spell-panel {
-  min-height: 430px;
-  display: grid;
-  place-items: center;
-}
-
-.spell-orb {
-  display: grid;
-  width: clamp(190px, 26vw, 310px);
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  color: #120820;
-  background:
-    radial-gradient(circle at 34% 28%, #ffffff, #d8ff6f 22%, #6fffd2 47%, #7b43ff 74%);
-  font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(48px, 8vw, 86px);
-  font-weight: 1000;
-  letter-spacing: -0.08em;
+.official-visual-panel {
+  overflow: hidden;
+  border: 1px solid rgba(255, 210, 103, 0.34);
+  border-radius: 30px;
+  background: #080b12;
   box-shadow:
-    0 0 90px rgba(111, 255, 210, 0.42),
-    inset 0 -28px 70px rgba(18, 8, 32, 0.36);
+    0 34px 90px rgba(0, 0, 0, 0.38),
+    0 0 0 10px rgba(255, 210, 103, 0.06);
 }
 
-.spell-ring {
-  position: absolute;
-  border: 1px solid rgba(216, 255, 111, 0.42);
-  border-radius: 999px;
-  transform: rotate(-18deg);
+.official-visual-panel img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
-.spell-ring-one {
-  width: 82%;
-  aspect-ratio: 1;
-}
-
-.spell-ring-two {
-  width: 62%;
-  aspect-ratio: 1;
-  border-color: rgba(111, 255, 210, 0.34);
-  transform: rotate(24deg);
-}
-
-.spell-card {
-  position: absolute;
-  min-width: 210px;
-  border: 1px solid rgba(247, 241, 255, 0.18);
-  border-radius: 20px;
-  padding: 16px 18px;
-  background: rgba(10, 13, 28, 0.68);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+.official-visual-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  color: #f7f1ff;
+  background: linear-gradient(90deg, rgba(12, 9, 28, 0.96), rgba(32, 17, 11, 0.96));
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
-.spell-card span {
-  display: block;
-  color: rgba(247, 241, 255, 0.62);
+.official-visual-caption span {
+  color: rgba(247, 241, 255, 0.58);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
-.spell-card strong {
-  display: block;
-  margin-top: 4px;
-  color: #f7f1ff;
-  font-size: 18px;
-}
-
-.spell-card-top {
-  top: 28px;
-  left: 0;
-}
-
-.spell-card-bottom {
-  right: 0;
-  bottom: 34px;
+.official-visual-caption strong {
+  font-size: 14px;
 }
 
 .alchemy-status-grid {
@@ -205,7 +170,7 @@
 }
 
 .alchemy-status-card {
-  min-height: 180px;
+  min-height: 170px;
   border: 1px solid rgba(33, 20, 58, 0.1);
   border-radius: 28px;
   padding: 24px;
@@ -249,8 +214,8 @@
 .alchemy-code-section,
 .alchemy-faq-section {
   background:
-    radial-gradient(circle at 88% 20%, rgba(111, 255, 210, 0.14), transparent 30%),
-    linear-gradient(135deg, #fffdf7, #f5efff);
+    radial-gradient(circle at 88% 20%, rgba(255, 210, 103, 0.18), transparent 30%),
+    linear-gradient(135deg, #fffdf7, #f6efe7);
   color: #21143a;
 }
 
@@ -319,7 +284,7 @@
 .alchemy-evidence-section,
 .alchemy-boundary-section {
   background:
-    radial-gradient(circle at 16% 18%, rgba(216, 255, 111, 0.16), transparent 30%),
+    radial-gradient(circle at 16% 18%, rgba(255, 122, 50, 0.16), transparent 30%),
     linear-gradient(135deg, #100724, #061713);
 }
 
@@ -362,7 +327,7 @@
 .alchemy-badge.needs-verification,
 .alchemy-badge.research-only {
   color: #21143a;
-  background: #d8ff6f;
+  background: #ffd267;
 }
 
 .alchemy-code-table {
@@ -397,8 +362,8 @@
   justify-self: end;
   border-radius: 999px;
   padding: 6px 10px;
-  color: #07100d;
-  background: #d8ff6f;
+  color: #160b07;
+  background: #ffd267;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -441,16 +406,8 @@
     padding: 30px;
   }
 
-  .spell-panel {
-    min-height: 320px;
-  }
-
-  .spell-card-top,
-  .spell-card-bottom {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    margin-top: 12px;
+  .official-visual-panel {
+    order: -1;
   }
 
   .alchemy-code-row {
@@ -468,7 +425,7 @@
   }
 
   .alchemy-hero h1 {
-    font-size: 48px;
+    font-size: 46px;
   }
 
   .alchemy-section-heading h2 {
