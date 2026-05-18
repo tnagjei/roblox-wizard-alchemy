@@ -1,8 +1,9 @@
 // input: locale, slug, title, description, and page localization scope
-// output: Next.js metadata alternates for localized or English-only pages
+// output: Next.js metadata alternates for localized, English-only, or pending pages
 // pos: i18n metadata helper
 
 import { gameConfig } from "@/lib/game-config";
+import { isCompletedSlug } from "@/lib/page-registry";
 import { absoluteUrl } from "@/lib/seo";
 import { localeMeta, type Locale } from "./locales";
 import { getLocalizedPath } from "./routes";
@@ -19,6 +20,19 @@ function localizedLanguages(slug: string) {
   });
 
   return languages;
+}
+
+function pendingRobots(slug: string) {
+  return isCompletedSlug(slug)
+    ? undefined
+    : {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false
+        }
+      };
 }
 
 export function buildLocalizedMetadata({
@@ -38,7 +52,8 @@ export function buildLocalizedMetadata({
     alternates: {
       canonical: absoluteUrl(getLocalizedPath(locale, slug)),
       languages: localizedLanguages(slug)
-    }
+    },
+    robots: pendingRobots(slug)
   };
 }
 
@@ -60,6 +75,7 @@ export function buildEnglishOnlyMetadata({
         en: absoluteUrl(getLocalizedPath(gameConfig.defaultLocale as Locale, slug)),
         "x-default": absoluteUrl(getLocalizedPath(gameConfig.defaultLocale as Locale, slug))
       }
-    }
+    },
+    robots: pendingRobots(slug)
   };
 }
