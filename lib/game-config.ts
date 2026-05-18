@@ -1,6 +1,6 @@
 // input: Wizard Alchemy site and game settings
 // output: single source of truth for site identity, locales, route groups, and optional integrations
-// pos: site configuration boundary
+// pos: site configuration boundary（更新规则：文件变更需同步本注释与所属目录 README）
 
 export const gameConfig = {
   siteName: "Wizard Alchemy Guide",
@@ -28,7 +28,7 @@ export const gameConfig = {
   analytics: {
     googleAnalyticsId: "",
     yandexVerification: "",
-    clarityId: "",
+    clarityId: "wsy7wh8pe6",
     adsenseClient: "",
     thirdPartyAdScripts: [] as string[]
   },
