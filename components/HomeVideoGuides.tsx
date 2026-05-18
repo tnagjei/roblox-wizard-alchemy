@@ -1,14 +1,14 @@
-// input: current locale and official guide homepage context
-// output: homepage-only YouTube video guide discovery section with SEO-safe search links
-// pos: Wizard Alchemy video guide module
+// input: current locale and user-selected YouTube video URLs
+// output: homepage YouTube embed section with SEO-safe VideoObject structured data
+// pos: Wizard Alchemy video guide module（更新规则：文件变更需同步本注释与所属目录 README）
 
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/locales";
 
-type VideoTopic = {
+type VideoItem = {
+  id: string;
   title: string;
   description: string;
-  query: string;
   tag: string;
 };
 
@@ -16,152 +16,89 @@ type VideoCopy = {
   eyebrow: string;
   title: string;
   lede: string;
-  watchLabel: string;
   note: string;
-  topics: VideoTopic[];
+  relatedLabel: string;
+  videos: VideoItem[];
 };
 
-function youtubeSearch(query: string) {
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+const videoIds = ["GYWXYT40GMc", "9Tl38UScWMo", "a9WfOg8Zjiw", "vKn7q_niJeA", "-Hf_fcuIlFI"];
+
+function embedUrl(id: string) {
+  return `https://www.youtube-nocookie.com/embed/${id}`;
+}
+
+function watchUrl(id: string) {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
+function thumbnailUrl(id: string) {
+  return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
 function videoCopy(locale: Locale): VideoCopy {
   if (locale === "zh-tw") {
     return {
       eyebrow: "影片指南",
-      title: "用 YouTube 查找可視化攻略",
-      lede: "影片最適合確認選單位置、地圖路線、Boss 動作和 parry 時機。本站先提供高相關 YouTube 搜尋入口；等確認具體影片品質後，再替換為正式嵌入影片。",
-      watchLabel: "到 YouTube 搜尋",
-      note: "安全規則：不要使用要求 Roblox 密碼、cookie、恢復碼、外掛或 script 下載的影片連結。",
-      topics: [
-        {
-          title: "Codes & beginner guide",
-          description: "查找 Settings、Utilities、Type Here 和 Claim 按鈕位置。",
-          query: "Wizard Alchemy Roblox codes beginner guide",
-          tag: "codes"
-        },
-        {
-          title: "Race tier & reroll strategy",
-          description: "觀察 race reroll 介面與重抽流程，但不要直接照抄 tier 結論。",
-          query: "Wizard Alchemy Roblox race tier list reroll strategy",
-          tag: "races"
-        },
-        {
-          title: "Potion crafting & shards",
-          description: "看 potion、elemental shards 和 spell unlock 的實際流程。",
-          query: "Wizard Alchemy Roblox potion crafting elemental shards",
-          tag: "potions"
-        },
-        {
-          title: "Dwarf King & parry timing",
-          description: "影片比文字更適合學紅色提示、F parry 和 boss 節奏。",
-          query: "Wizard Alchemy Roblox Dwarf King parry timing",
-          tag: "boss"
-        },
-        {
-          title: "Full beginner route walkthrough",
-          description: "查找第一局路線、早期材料、升級與探索順序。",
-          query: "Wizard Alchemy Roblox full beginner route walkthrough",
-          tag: "walkthrough"
-        }
-      ]
+      title: "Wizard Alchemy 影片攻略",
+      lede: "這裡嵌入 5 個你指定的 YouTube 影片，用於補足文字攻略不容易表達的選單位置、地圖路線、戰鬥節奏和新手流程。影片內容仍需人工判斷，不等於本站已驗證所有數值或排名。",
+      note: "安全規則：不要使用影片描述或留言中的 Roblox 密碼、cookie、恢復碼、外掛、script 或自動農怪工具連結。",
+      relatedLabel: "先閱讀文字版新手指南",
+      videos: videoIds.map((id, index) => ({
+        id,
+        title: `Wizard Alchemy 影片攻略 ${index + 1}`,
+        description: "用影片輔助理解 Wizard Alchemy 的玩法、介面、代碼、戰鬥或新手流程。",
+        tag: ["codes", "guide", "potions", "boss", "walkthrough"][index]
+      }))
     };
   }
 
   if (locale === "th") {
     return {
       eyebrow: "Video guides",
-      title: "ค้นหาคู่มือแบบวิดีโอบน YouTube",
-      lede: "วิดีโอเหมาะสำหรับดูตำแหน่งเมนู เส้นทางแผนที่ boss patterns และ parry timing ตอนนี้เว็บนี้ให้ลิงก์ค้นหา YouTube ที่เกี่ยวข้องก่อน หลังจากตรวจคุณภาพวิดีโอแล้วจึงค่อยเปลี่ยนเป็น embedded videos",
-      watchLabel: "Search on YouTube",
-      note: "กฎความปลอดภัย: หลีกเลี่ยงวิดีโอหรือลิงก์ที่ขอ Roblox password, cookie, recovery code, extension หรือ script download",
-      topics: [
-        {
-          title: "Codes & beginner guide",
-          description: "ค้นหาตำแหน่ง Settings, Utilities, Type Here และ Claim button",
-          query: "Wizard Alchemy Roblox codes beginner guide",
-          tag: "codes"
-        },
-        {
-          title: "Race tier & reroll strategy",
-          description: "ดู race reroll UI และ flow แต่ยังไม่ควรคัดลอก tier claim โดยตรง",
-          query: "Wizard Alchemy Roblox race tier list reroll strategy",
-          tag: "races"
-        },
-        {
-          title: "Potion crafting & shards",
-          description: "ดูการใช้งาน potions, elemental shards และ spell unlock flow",
-          query: "Wizard Alchemy Roblox potion crafting elemental shards",
-          tag: "potions"
-        },
-        {
-          title: "Dwarf King & parry timing",
-          description: "วิดีโอเหมาะกับการดู red indicator, F parry และ boss rhythm",
-          query: "Wizard Alchemy Roblox Dwarf King parry timing",
-          tag: "boss"
-        },
-        {
-          title: "Full beginner route walkthrough",
-          description: "ค้นหา first-session route, early materials, upgrades และ exploration order",
-          query: "Wizard Alchemy Roblox full beginner route walkthrough",
-          tag: "walkthrough"
-        }
-      ]
+      title: "Wizard Alchemy video guides",
+      lede: "ส่วนนี้ฝังวิดีโอ YouTube 5 รายการที่คุณเลือก เพื่อช่วยดูเมนู เส้นทาง แพตเทิร์นต่อสู้ และขั้นตอนเริ่มต้น วิดีโอเหล่านี้ไม่ได้แปลว่าทุก stat, tier หรือ reward ได้รับการยืนยันแล้ว",
+      note: "กฎความปลอดภัย: หลีกเลี่ยงลิงก์ในคำอธิบายหรือคอมเมนต์ที่ขอ Roblox password, cookie, recovery code, extension, script หรือ auto farm tool",
+      relatedLabel: "อ่าน beginner guide แบบข้อความก่อน",
+      videos: videoIds.map((id, index) => ({
+        id,
+        title: `Wizard Alchemy video guide ${index + 1}`,
+        description: "Use this video to visually inspect Wizard Alchemy gameplay, UI, codes, combat, or beginner flow.",
+        tag: ["codes", "guide", "potions", "boss", "walkthrough"][index]
+      }))
     };
   }
 
   return {
     eyebrow: "Video guides",
-    title: "Find visual Wizard Alchemy guides on YouTube",
-    lede: "Videos are best for seeing menus, map routes, boss attack patterns, and parry timing. This section uses precise YouTube searches first; after specific videos are quality-checked, they can be replaced with direct embeds.",
-    watchLabel: "Search on YouTube",
-    note: "Safety rule: ignore videos or links that ask for Roblox passwords, cookies, recovery codes, extensions, scripts, or downloads.",
-    topics: [
-      {
-        title: "Codes & beginner guide",
-        description: "Find the Settings cogwheel, Utilities tab, Type Here box, and Claim button.",
-        query: "Wizard Alchemy Roblox codes beginner guide",
-        tag: "codes"
-      },
-      {
-        title: "Race tier & reroll strategy",
-        description: "Watch the race reroll UI and decision flow without copying unverified tier claims.",
-        query: "Wizard Alchemy Roblox race tier list reroll strategy",
-        tag: "races"
-      },
-      {
-        title: "Potion crafting & shards",
-        description: "See potion crafting, elemental shards, and spell unlock flow in action.",
-        query: "Wizard Alchemy Roblox potion crafting elemental shards",
-        tag: "potions"
-      },
-      {
-        title: "Dwarf King & parry timing",
-        description: "Use video to study red indicators, F parry timing, and boss rhythm.",
-        query: "Wizard Alchemy Roblox Dwarf King parry timing",
-        tag: "boss"
-      },
-      {
-        title: "Full beginner route walkthrough",
-        description: "Look for first-session routes, early materials, upgrades, and exploration order.",
-        query: "Wizard Alchemy Roblox full beginner route walkthrough",
-        tag: "walkthrough"
-      }
-    ]
+    title: "Wizard Alchemy video guides",
+    lede: "These 5 user-selected YouTube videos help show menus, map routes, combat timing, and beginner flow. Embedded videos are useful for visual learning, but they do not automatically verify stats, tiers, rewards, or third-party claims.",
+    note: "Safety rule: ignore links in video descriptions or comments that ask for Roblox passwords, cookies, recovery codes, extensions, scripts, or auto farm downloads.",
+    relatedLabel: "Read the written beginner guide first",
+    videos: videoIds.map((id, index) => ({
+      id,
+      title: `Wizard Alchemy video guide ${index + 1}`,
+      description: "Use this video to visually inspect Wizard Alchemy gameplay, UI, codes, combat, or beginner flow.",
+      tag: ["codes", "guide", "potions", "boss", "walkthrough"][index]
+    }))
   };
 }
 
-function itemListJsonLd(copy: VideoCopy) {
+function videoListJsonLd(copy: VideoCopy) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: copy.title,
-    itemListElement: copy.topics.map((topic, index) => ({
+    itemListElement: copy.videos.map((video, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: topic.title,
-      description: topic.description,
-      url: youtubeSearch(topic.query)
+      item: {
+        "@type": "VideoObject",
+        name: video.title,
+        description: video.description,
+        thumbnailUrl: [thumbnailUrl(video.id)],
+        embedUrl: embedUrl(video.id),
+        contentUrl: watchUrl(video.id)
+      }
     }))
   };
 }
@@ -173,32 +110,38 @@ export function HomeVideoGuides({ locale }: { locale: Locale }) {
     <section className="alchemy-section video-guide-section" aria-label={copy.title}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd(copy)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoListJsonLd(copy)) }}
       />
       <div className="alchemy-section-heading">
         <p>{copy.eyebrow}</p>
         <h2>{copy.title}</h2>
       </div>
       <p className="video-guide-lede">{copy.lede}</p>
-      <div className="video-guide-grid">
-        {copy.topics.map((topic) => (
-          <a
-            className="video-guide-card"
-            href={youtubeSearch(topic.query)}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={topic.query}
-          >
-            <span>{topic.tag}</span>
-            <h3>{topic.title}</h3>
-            <p>{topic.description}</p>
-            <strong>{copy.watchLabel}</strong>
-          </a>
+      <div className="video-guide-grid video-embed-grid">
+        {copy.videos.map((video) => (
+          <article className="video-guide-card video-embed-card" key={video.id}>
+            <span>{video.tag}</span>
+            <div className="video-embed-frame">
+              <iframe
+                src={embedUrl(video.id)}
+                title={video.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            <h3>{video.title}</h3>
+            <p>{video.description}</p>
+            <a href={watchUrl(video.id)} target="_blank" rel="noopener noreferrer">
+              YouTube
+            </a>
+          </article>
         ))}
       </div>
       <p className="video-guide-note">{copy.note}</p>
       <Link className="video-guide-related" href={locale === "en" ? "/beginners-guide/" : `/${locale}/beginners-guide/`}>
-        {locale === "zh-tw" ? "先閱讀文字版新手指南" : locale === "th" ? "อ่าน beginner guide แบบข้อความก่อน" : "Read the written beginner guide first"}
+        {copy.relatedLabel}
       </Link>
     </section>
   );
