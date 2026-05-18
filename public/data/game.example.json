@@ -70,18 +70,18 @@
   },
   "assets": {
     "icon": "/icon.png",
-    "hero": "/hero-placeholder.png",
+    "hero": "/official-hero-image",
     "thumbnails": []
   },
   "codes": {
-    "verifiedCountLabel": "2 official-page-mentioned codes",
+    "verifiedCountLabel": "0 in-game verified active codes",
     "officialStatus": "Roblox description mentions RELEASE and WIZARD; in-game testing is still pending.",
     "lastChecked": "2026-05-18",
     "verificationPolicy": "Do not invent codes, rewards, or redemption steps. Promote a code to fully verified only after official-source review and in-game redemption testing.",
     "hasRedeemSystem": "mentioned by official Roblox description, not yet in-game tested by this site",
     "verifiedActiveCodes": [],
     "expiredCodes": [],
-    "thirdPartyConflictSummary": "Third-party sites mention extra details such as race reroll quantities and MACHI, but this first version only treats Roblox-page-mentioned codes as source-backed leads.",
+    "thirdPartyConflictSummary": "Third-party sites mention extra details such as race reroll quantities, MACHI, and Discord links. This site treats those as leads, not proof.",
     "pendingCodes": [
       {
         "code": "RELEASE",
@@ -96,7 +96,13 @@
     ],
     "redeemGuide": {
       "confidence": "pending in-game verification",
-      "steps": [],
+      "steps": [
+        "Open the official Wizard Alchemy Roblox page.",
+        "Launch the game from Roblox.",
+        "Look for a code, settings, rewards, or utility interface inside the game.",
+        "Test source-backed leads inside the game UI only.",
+        "Record the exact result before publishing reward details."
+      ],
       "note": "The Roblox description says to use RELEASE and WIZARD for free launch rewards, but this site has not verified the in-game redemption UI yet."
     },
     "conflictMatrix": [
@@ -105,7 +111,16 @@
         "claims": [
           {
             "source": "third-party guide pages",
-            "verdict": "not official-page verified"
+            "verdict": "not Roblox-page verified"
+          }
+        ]
+      },
+      {
+        "code": "Race reroll quantities",
+        "claims": [
+          {
+            "source": "third-party guide pages",
+            "verdict": "not in-game recorded by this site"
           }
         ]
       }
@@ -119,7 +134,13 @@
     "inGameTestLog": [],
     "screenshotPlaceholder": "No screenshot proof has been added.",
     "whyOtherSitesShowCodes": "Other sites may mix official-page mentions, in-game testing, and community reports. This guide separates those evidence levels.",
-    "communityReportedCodes": []
+    "communityReportedCodes": [
+      {
+        "code": "MACHI",
+        "status": "community reported",
+        "reportedBy": "third-party guide pages"
+      }
+    ]
   },
   "pages": [
     {
@@ -146,10 +167,10 @@
     {
       "key": "codes",
       "path": "/codes/",
-      "title": "Wizard Alchemy Codes | Source-Checked Roblox Code Status",
-      "description": "Wizard Alchemy codes page tracking Roblox-page-mentioned codes, pending code claims, and safe redemption verification boundaries.",
+      "title": "Wizard Alchemy Codes | RELEASE, WIZARD & Pending Claims",
+      "description": "Wizard Alchemy codes page tracking Roblox-page-mentioned codes, pending code claims, MACHI research status, and safe redemption verification boundaries.",
       "h1": "Wizard Alchemy Codes",
-      "lede": "Track Wizard Alchemy codes without inventing rewards. RELEASE and WIZARD are mentioned on the Roblox game page, while in-game redemption testing remains pending.",
+      "lede": "RELEASE and WIZARD are mentioned on the Roblox game page. MACHI and exact reward quantities stay pending until stronger evidence exists.",
       "focus": "Codes",
       "relatedPages": ["updates", "beginners-guide"],
       "sections": [],
