@@ -1,5 +1,5 @@
 // input: typed localized homepage content and locale
-// output: Wizard Alchemy themed homepage layout with source-safe content
+// output: Wizard Alchemy homepage with official Roblox visual and source-safe content
 // pos: multilingual homepage template
 
 import Link from "next/link";
@@ -74,7 +74,7 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
       <JsonLd data={buildFaqJsonLd({ faq: content.faq } as any)} />
       <JsonLd data={buildBreadcrumbJsonLd({ path: getLocalizedPath(locale, ""), h1: content.hero.h1 } as any)} />
 
-      <section className="alchemy-hero" aria-label={content.hero.h1}>
+      <section className="alchemy-hero official-hero" aria-label={content.hero.h1}>
         <div className="alchemy-hero-copy">
           <p className="alchemy-kicker">{content.hero.eyebrow}</p>
           <h1>{content.hero.h1}</h1>
@@ -101,17 +101,11 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
           </div>
         </div>
 
-        <div className="spell-panel" aria-label="Wizard Alchemy status panel">
-          <div className="spell-orb">WA</div>
-          <div className="spell-ring spell-ring-one" />
-          <div className="spell-ring spell-ring-two" />
-          <div className="spell-card spell-card-top">
-            <span>Codes</span>
-            <strong>{pendingCodes.map((item) => item.code).join(" + ") || "Pending"}</strong>
-          </div>
-          <div className="spell-card spell-card-bottom">
-            <span>Source</span>
-            <strong>Roblox page checked</strong>
+        <div className="official-visual-panel" aria-label="Official Wizard Alchemy Roblox thumbnail">
+          <img src="/official-hero-image" alt="Official Wizard Alchemy Roblox thumbnail" />
+          <div className="official-visual-caption">
+            <span>Official Roblox visual</span>
+            <strong>By Muggle Academy</strong>
           </div>
         </div>
       </section>
