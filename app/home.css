@@ -1,0 +1,477 @@
+/* input: Wizard Alchemy homepage markup */
+/* output: distinct alchemy-themed homepage visuals */
+/* pos: homepage-only visual layer */
+
+.wizard-home {
+  width: min(1220px, calc(100% - 32px));
+  padding-top: 28px;
+}
+
+.alchemy-hero,
+.alchemy-section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(220, 205, 255, 0.18);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(155, 92, 255, 0.32), transparent 30%),
+    radial-gradient(circle at 78% 28%, rgba(43, 255, 190, 0.18), transparent 28%),
+    linear-gradient(135deg, #160f2f 0%, #0b1228 48%, #05120f 100%);
+  color: #f7f1ff;
+  box-shadow: 0 28px 90px rgba(12, 8, 32, 0.3);
+}
+
+.alchemy-hero::before,
+.alchemy-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+}
+
+.alchemy-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  min-height: 590px;
+  padding: clamp(36px, 7vw, 84px);
+  border-radius: 34px;
+}
+
+.alchemy-hero-copy,
+.spell-panel,
+.alchemy-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.alchemy-kicker,
+.alchemy-section-heading p {
+  margin: 0 0 14px;
+  color: #6fffd2;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.alchemy-hero h1 {
+  max-width: 760px;
+  margin: 0 0 22px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(54px, 8.8vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.alchemy-hero-copy > p:not(.alchemy-kicker) {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(247, 241, 255, 0.74);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(17px, 2.2vw, 23px);
+  line-height: 1.55;
+}
+
+.alchemy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+}
+
+.alchemy-primary,
+.alchemy-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 13px 20px;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.alchemy-primary {
+  color: #07100d;
+  background: linear-gradient(135deg, #6fffd2, #d8ff6f);
+  box-shadow: 0 18px 42px rgba(111, 255, 210, 0.22);
+}
+
+.alchemy-secondary {
+  color: #f7f1ff;
+  border: 1px solid rgba(247, 241, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.alchemy-primary:hover,
+.alchemy-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.spell-panel {
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+}
+
+.spell-orb {
+  display: grid;
+  width: clamp(190px, 26vw, 310px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #120820;
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff, #d8ff6f 22%, #6fffd2 47%, #7b43ff 74%);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(48px, 8vw, 86px);
+  font-weight: 1000;
+  letter-spacing: -0.08em;
+  box-shadow:
+    0 0 90px rgba(111, 255, 210, 0.42),
+    inset 0 -28px 70px rgba(18, 8, 32, 0.36);
+}
+
+.spell-ring {
+  position: absolute;
+  border: 1px solid rgba(216, 255, 111, 0.42);
+  border-radius: 999px;
+  transform: rotate(-18deg);
+}
+
+.spell-ring-one {
+  width: 82%;
+  aspect-ratio: 1;
+}
+
+.spell-ring-two {
+  width: 62%;
+  aspect-ratio: 1;
+  border-color: rgba(111, 255, 210, 0.34);
+  transform: rotate(24deg);
+}
+
+.spell-card {
+  position: absolute;
+  min-width: 210px;
+  border: 1px solid rgba(247, 241, 255, 0.18);
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: rgba(10, 13, 28, 0.68);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.spell-card span {
+  display: block;
+  color: rgba(247, 241, 255, 0.62);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.spell-card strong {
+  display: block;
+  margin-top: 4px;
+  color: #f7f1ff;
+  font-size: 18px;
+}
+
+.spell-card-top {
+  top: 28px;
+  left: 0;
+}
+
+.spell-card-bottom {
+  right: 0;
+  bottom: 34px;
+}
+
+.alchemy-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.alchemy-status-card {
+  min-height: 180px;
+  border: 1px solid rgba(33, 20, 58, 0.1);
+  border-radius: 28px;
+  padding: 24px;
+  background: #fffdf7;
+  box-shadow: 0 18px 55px rgba(23, 9, 50, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.alchemy-status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(23, 9, 50, 0.12);
+}
+
+.alchemy-status-card span {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #281044;
+  background: rgba(155, 92, 255, 0.12);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.alchemy-status-card strong {
+  display: block;
+  margin-top: 18px;
+  color: #21143a;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.2;
+}
+
+.alchemy-section {
+  margin-top: 18px;
+  border-radius: 30px;
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.alchemy-loop-section,
+.alchemy-code-section,
+.alchemy-faq-section {
+  background:
+    radial-gradient(circle at 88% 20%, rgba(111, 255, 210, 0.14), transparent 30%),
+    linear-gradient(135deg, #fffdf7, #f5efff);
+  color: #21143a;
+}
+
+.alchemy-loop-section::before,
+.alchemy-code-section::before,
+.alchemy-faq-section::before {
+  opacity: 0.18;
+}
+
+.alchemy-loop-section .alchemy-section-heading p,
+.alchemy-code-section .alchemy-section-heading p,
+.alchemy-faq-section .alchemy-section-heading p {
+  color: #7b43ff;
+}
+
+.alchemy-section-heading h2 {
+  max-width: 840px;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(32px, 5vw, 66px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.alchemy-loop-grid,
+.alchemy-evidence-grid,
+.alchemy-boundary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.alchemy-loop-card,
+.alchemy-evidence-card,
+.alchemy-boundary-card {
+  min-width: 0;
+  border: 1px solid rgba(33, 20, 58, 0.12);
+  border-radius: 22px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.alchemy-loop-card span {
+  display: inline-flex;
+  margin-bottom: 42px;
+  color: #7b43ff;
+  font-size: 13px;
+  font-weight: 1000;
+}
+
+.alchemy-loop-card h3,
+.alchemy-evidence-card h3,
+.alchemy-boundary-card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.alchemy-loop-card p,
+.alchemy-boundary-card p {
+  margin: 0;
+  color: rgba(33, 20, 58, 0.66);
+}
+
+.alchemy-evidence-section,
+.alchemy-boundary-section {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(216, 255, 111, 0.16), transparent 30%),
+    linear-gradient(135deg, #100724, #061713);
+}
+
+.alchemy-evidence-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.alchemy-evidence-card,
+.alchemy-boundary-card {
+  border-color: rgba(247, 241, 255, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  color: #f7f1ff;
+}
+
+.alchemy-evidence-card h3,
+.alchemy-boundary-card h3 {
+  color: #f7f1ff;
+}
+
+.alchemy-boundary-card p {
+  color: rgba(247, 241, 255, 0.68);
+}
+
+.alchemy-badge {
+  display: inline-flex;
+  margin-bottom: 36px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.alchemy-badge.verified {
+  color: #07100d;
+  background: #6fffd2;
+}
+
+.alchemy-badge.pending,
+.alchemy-badge.needs-verification,
+.alchemy-badge.research-only {
+  color: #21143a;
+  background: #d8ff6f;
+}
+
+.alchemy-code-table {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.alchemy-code-row {
+  display: grid;
+  grid-template-columns: 0.7fr 1.4fr 1fr;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(33, 20, 58, 0.1);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.alchemy-code-row code {
+  color: #21143a;
+  font-size: 18px;
+  font-weight: 1000;
+}
+
+.alchemy-code-row span {
+  color: rgba(33, 20, 58, 0.62);
+}
+
+.alchemy-code-row strong {
+  justify-self: end;
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #07100d;
+  background: #d8ff6f;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.alchemy-boundary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.alchemy-faq-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.alchemy-faq-list details {
+  border: 1px solid rgba(33, 20, 58, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.alchemy-faq-list summary {
+  color: #21143a;
+}
+
+.alchemy-faq-list details p {
+  color: rgba(33, 20, 58, 0.66);
+}
+
+@media (max-width: 900px) {
+  .alchemy-hero,
+  .alchemy-status-grid,
+  .alchemy-loop-grid,
+  .alchemy-evidence-grid,
+  .alchemy-boundary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alchemy-hero {
+    min-height: auto;
+    padding: 30px;
+  }
+
+  .spell-panel {
+    min-height: 320px;
+  }
+
+  .spell-card-top,
+  .spell-card-bottom {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .alchemy-code-row {
+    grid-template-columns: 1fr;
+  }
+
+  .alchemy-code-row strong {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .wizard-home {
+    width: min(100% - 20px, 1220px);
+  }
+
+  .alchemy-hero h1 {
+    font-size: 48px;
+  }
+
+  .alchemy-section-heading h2 {
+    font-size: 34px;
+  }
+}
