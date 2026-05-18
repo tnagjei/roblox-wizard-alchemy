@@ -1,9 +1,10 @@
 // input: typed localized homepage content and locale
-// output: Wizard Alchemy homepage with game-toned official visual, player-first modules, and localized source-safe content
-// pos: multilingual homepage template (更新规则：文件变更需同步本注释与所属目录 README)
+// output: Wizard Alchemy homepage with game-toned official visual, player-first modules, video discovery, and localized source-safe content
+// pos: multilingual homepage template（更新规则：文件变更需同步本注释与所属目录 README）
 
 import Image from "next/image";
 import Link from "next/link";
+import { HomeVideoGuides } from "@/components/HomeVideoGuides";
 import { JsonLd } from "@/components/JsonLd";
 import type { HomePageContent } from "@/lib/content/page-types";
 import type { Locale } from "@/lib/i18n/locales";
@@ -381,6 +382,8 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
           ))}
         </div>
       </section>
+
+      <HomeVideoGuides locale={locale} />
 
       <section className="alchemy-section alchemy-code-section">
         <div className="alchemy-section-heading">
