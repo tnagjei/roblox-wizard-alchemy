@@ -100,15 +100,29 @@ function validateLocaleRoutes(config) {
 function validateRouteRegistry(config) {
   const completedLocales = extractArray(config, "completedLocales");
   const coreSlugs = extractArray(config, "coreSlugs");
+  const completedCoreSlugs = extractArray(config, "completedCoreSlugs");
   const englishOnlySlugs = extractArray(config, "englishOnlySlugs");
+  const completedEnglishOnlySlugs = extractArray(config, "completedEnglishOnlySlugs");
   const pageRegistry = fs.readFileSync(path.join(root, "lib/page-registry.ts"), "utf8");
   const sitemap = fs.readFileSync(path.join(root, "app/sitemap.ts"), "utf8");
   const robots = fs.readFileSync(path.join(root, "app/robots.ts"), "utf8");
 
-  const expectedSitemapCount = completedLocales.length * coreSlugs.length + englishOnlySlugs.length;
+  const expectedSitemapCount = completedLocales.length * completedCoreSlugs.length + completedEnglishOnlySlugs.length;
+
+  if (!completedCoreSlugs.every((slug) => coreSlugs.includes(slug))) {
+    violations.push("completedCoreSlugs must be a subset of coreSlugs");
+  }
+
+  if (!completedEnglishOnlySlugs.every((slug) => englishOnlySlugs.includes(slug))) {
+    violations.push("completedEnglishOnlySlugs must be a subset of englishOnlySlugs");
+  }
 
   if (!pageRegistry.includes("completedCoreRoutes") || !pageRegistry.includes("englishOnlyRoutes")) {
     violations.push("page-registry must expose completed core routes and English-only routes");
+  }
+
+  if (!pageRegistry.includes("completedCoreSlugs") || !pageRegistry.includes("completedEnglishOnlySlugs")) {
+    violations.push("page-registry must expose completed slug lists");
   }
 
   if (!pageRegistry.includes("sitemapRoutes")) {
@@ -123,8 +137,8 @@ function validateRouteRegistry(config) {
     violations.push("app/robots.ts must read from robotsAllowedRoutes");
   }
 
-  if (expectedSitemapCount !== 22) {
-    violations.push(`expected template sitemap route count to be 22, got ${expectedSitemapCount}`);
+  if (expectedSitemapCount !== 12) {
+    violations.push(`expected Wizard Alchemy first-version sitemap route count to be 12, got ${expectedSitemapCount}`);
   }
 }
 
@@ -138,6 +152,31 @@ function validateEnglishOnlyRoutes(config) {
         violations.push(`English-only route must not exist for ${locale}: ${slug}`);
       }
     }
+  }
+}
+
+function validateProductionData() {
+  const dataPath = path.join(root, "public/data/game.example.json");
+  const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+
+  if (data.site.defaultBaseUrl !== "https://wizardalchemy.online") {
+    violations.push("site defaultBaseUrl must be https://wizardalchemy.online");
+  }
+
+  if (data.game.name !== "Wizard Alchemy") {
+    violations.push("game data must be Wizard Alchemy");
+  }
+
+  if (data.game.creator.name !== "Muggle Academy") {
+    violations.push("game creator must be Muggle Academy, not the site owner");
+  }
+
+  if (data.codes.verifiedActiveCodes.length !== 0) {
+    violations.push("verifiedActiveCodes must stay empty until in-game testing is recorded");
+  }
+
+  if (data.codes.expiredCodes.length !== 0) {
+    violations.push("expiredCodes must stay empty until source evidence exists");
   }
 }
 
@@ -156,6 +195,7 @@ const config = readConfig();
 validateLocaleRoutes(config);
 validateRouteRegistry(config);
 validateEnglishOnlyRoutes(config);
+validateProductionData();
 
 if (violations.length > 0) {
   console.error("Template validation failed:");
