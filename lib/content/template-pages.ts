@@ -107,71 +107,124 @@ export function createTemplateHomePage(locale = "en"): HomePageContent {
 export function createTemplateCodesPage(locale = "en"): CodesPageContent {
   return {
     meta: {
-      title: withLocale(`${gameConfig.gameName} Codes | Source-Checked Roblox Code Status`, locale),
-      description: `${gameConfig.gameName} codes page for source-labeled code status. RELEASE and WIZARD are mentioned on the Roblox page, while in-game redemption testing is still pending.`
+      title: withLocale(`${gameConfig.gameName} Codes | RELEASE, WIZARD & Pending Claims`, locale),
+      description: `${gameConfig.gameName} codes page with source-labeled status for RELEASE, WIZARD, MACHI, reward claims, and safe Roblox redemption checks.`
     },
     slug: "codes",
     hero: {
-      eyebrow: "Codes verification",
+      eyebrow: "Codes evidence desk",
       h1: withLocale(`${gameConfig.gameName} Codes`, locale),
-      lede: "The Roblox game description mentions RELEASE and WIZARD for free launch rewards. This guide keeps them pending until the in-game redemption UI and reward result are checked.",
+      lede: "RELEASE and WIZARD are mentioned in the Roblox game description. MACHI and exact race reroll quantities appear on third-party pages, so this guide keeps them pending until Roblox-page proof or an in-game test confirms them.",
       primaryAction: { label: "Open Roblox page", href: "roblox", external: true },
       secondaryAction: { label: "Back home", href: localizedHref(locale, "") }
     },
     verifiedCodes: {
-      eyebrow: "Fully verified active codes",
-      title: "Fully verified active codes",
-      description: "No code has been promoted to fully verified active status yet because this site has not completed an in-game redemption test.",
-      emptyCode: "No fully verified code yet",
-      emptyReward: "Reward not in-game tested",
-      emptySource: "Roblox page mentions RELEASE and WIZARD"
+      eyebrow: "In-game verified active codes",
+      title: "No in-game verified active codes yet",
+      description: "The active table stays empty until this site records a redemption result inside Wizard Alchemy. Roblox-page mentions are useful, but they are not the same as a completed in-game test.",
+      emptyCode: "No in-game verified code yet",
+      emptyReward: "Exact reward not verified",
+      emptySource: "Waiting for in-game test log"
     },
     communityCodes: {
-      eyebrow: "Community reports",
-      title: "Community-reported codes",
-      description: "Use this section only for clearly labeled unverified leads.",
-      actionLabel: "Test only inside the game UI",
+      eyebrow: "Third-party and community leads",
+      title: "Community-reported code leads",
+      description: "These are research leads, not active-code claims. Test only inside the Roblox game UI and do not use external code tools.",
+      actionLabel: "Keep pending until tested in-game",
       statusLabels: { "community reported": "Community reported", "not verified": "Not verified", pending: "Pending", verified: "Verified", "official-page-mentioned": "Official page mentioned" }
     },
     pendingCodes: {
       eyebrow: "Roblox-page-mentioned leads",
-      title: "Pending code checks",
-      description: "These codes are mentioned by the Roblox game description but are not yet marked as in-game tested by this site.",
-      reasonLabel: "Reason",
-      defaultReason: "In-game redemption result and exact reward need verification.",
+      title: "Codes to test next",
+      description: "These codes are source-backed by the Roblox game description but still need an in-game redemption result and exact reward record.",
+      reasonLabel: "Why pending",
+      defaultReason: "In-game redemption result and exact reward quantity are not recorded yet.",
       statusLabels: { pending: "Pending", verified: "Verified", "not verified": "Not verified", "official-page-mentioned": "Official page mentioned" }
     },
     conflictMatrix: {
-      eyebrow: "Conflict check",
-      title: "Claims held back",
-      description: "Third-party claims stay out of the active table until a stronger source or in-game test supports them.",
-      siteStatusLabel: "Site status",
-      externalClaimsLabel: "External claims",
+      eyebrow: "Claim conflict check",
+      title: "Claims held back from active status",
+      description: "Third-party guide pages may show extra active codes, Discord links, or reward quantities. This site keeps those claims out of the active table until stronger proof exists.",
+      siteStatusLabel: "This site status",
+      externalClaimsLabel: "External claim",
       reasonLabel: "Reason",
-      notVerifiedLabel: "Not verified",
-      defaultReason: "Not confirmed by the Roblox game page in this first source pass."
+      notVerifiedLabel: "Held pending",
+      defaultReason: "Not confirmed by the Roblox game page or an in-game test in this source pass."
     },
     verificationWorkflow: {
-      eyebrow: "Workflow",
-      title: "How this page verifies codes",
+      eyebrow: "Verification workflow",
+      title: "How this page promotes a code to active",
       cards: [
-        { title: "Official source", list: ["Start from the Roblox game page.", "Use the Muggle Academy Roblox community only as a developer identity source unless it links more official channels."] },
-        { title: "In-game test", list: ["Redeem only inside the Roblox game UI.", "Record the exact reward text, date, and result before updating the active table."] },
-        { title: "Safety rule", list: ["Never ask for Roblox passwords, cookies, recovery codes, or external downloads."] }
+        {
+          title: "1. Source check",
+          list: [
+            "Check the Roblox game page first.",
+            "Use Muggle Academy community links only when they clearly point to official channels.",
+            "Treat third-party pages as leads, not proof."
+          ]
+        },
+        {
+          title: "2. In-game test",
+          list: [
+            "Redeem only inside the Wizard Alchemy game UI.",
+            "Record code text, date, server state, and exact reward result.",
+            "Do not use browser extensions, scripts, or code generators."
+          ]
+        },
+        {
+          title: "3. Publish rule",
+          list: [
+            "Move a code to active only after source and in-game evidence agree.",
+            "Do not invent race reroll counts or reward names.",
+            "Keep expired and rejected claims separate."
+          ]
+        }
       ]
     },
     redeemGuide: {
       eyebrow: "Redeem guide",
-      title: "Redemption status",
-      steps: ["Open the Wizard Alchemy Roblox page.", "Launch the game from Roblox.", "Look for the in-game code or rewards interface.", "Test RELEASE and WIZARD only inside the game UI, then record the result."],
-      note: "Do not use external tools, script downloads, or account credentials to redeem codes."
+      title: "Safe redemption path",
+      steps: [
+        "Open the official Wizard Alchemy Roblox page.",
+        "Launch the game from Roblox, not from a third-party tool.",
+        "Look for a code, settings, rewards, or utility interface inside the game.",
+        "Test RELEASE and WIZARD first because they are mentioned on the Roblox page.",
+        "Record the exact result before changing this page from pending to active."
+      ],
+      note: "Never enter Roblox passwords, cookies, recovery codes, or session tokens into any Wizard Alchemy code site or tool."
     },
     sections: [
-      { heading: "Why the table is strict", body: ["A code can be source-backed but still not fully verified. This site separates Roblox-page-mentioned leads from in-game tested active codes."], list: ["No invented reward quantities.", "No copied third-party active status.", "No script download links."] }
+      {
+        heading: "Current code verdict",
+        body: [
+          "RELEASE and WIZARD have the strongest public source signal because they are mentioned in the Roblox game description.",
+          "MACHI is visible in competitor and third-party code lists, but this first version keeps it as a research lead rather than an active code."
+        ],
+        list: [
+          "Active table: empty until in-game test evidence exists.",
+          "Pending table: RELEASE and WIZARD.",
+          "Community leads: MACHI stays unverified.",
+          "Reward quantities: not published until recorded in-game."
+        ]
+      },
+      {
+        heading: "Why exact rewards are not listed yet",
+        body: [
+          "Several third-party pages show race reroll quantities, but copying that number without a recorded in-game test would create fake precision.",
+          "This page will list exact rewards only after the redemption result is checked inside Wizard Alchemy."
+        ],
+        list: [
+          "No invented reroll counts.",
+          "No copied Discord claims.",
+          "No script or macro download links."
+        ]
+      }
     ],
     faq: [
-      { q: "Are RELEASE and WIZARD real Wizard Alchemy codes?", a: "They are mentioned in the Roblox game description, so this site treats them as source-backed leads. They are not marked fully verified until an in-game test is recorded." },
-      { q: "Why is MACHI not in the active code table?", a: "It appears in third-party claims, but this first version did not verify it from the Roblox game page or an in-game test." }
+      { q: "Are RELEASE and WIZARD active Wizard Alchemy codes?", a: "They are mentioned by the Roblox game description, so this guide treats them as source-backed leads. They are not marked in-game verified until a redemption test is recorded." },
+      { q: "Why is MACHI not in the active table?", a: "MACHI appears in third-party claims, but this page has not verified it from the Roblox game page or an in-game redemption result." },
+      { q: "Why do other sites show exact race reroll rewards?", a: "They may have tested the codes or may be copying each other. This guide will not publish exact reward quantities until it records stronger proof." },
+      { q: "Can a code tool redeem Wizard Alchemy codes for me?", a: "Do not use tools that ask for Roblox credentials, cookies, recovery codes, session tokens, browser extensions, or script downloads." }
     ]
   };
 }
