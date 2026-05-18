@@ -1,0 +1,224 @@
+// input: app children, template config, page registry, and shared site data
+// output: locale-aware site navigation and footer shell
+// pos: global chrome component
+
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getSlugFromPath, getLocalizedPath } from "@/lib/i18n/routes";
+import { localeMeta, type Locale } from "@/lib/i18n/locales";
+import { gameConfig } from "@/lib/game-config";
+import { coreSlugs, englishOnlySlugs } from "@/lib/page-registry";
+import { siteData } from "@/lib/site-data";
+import AdBanner from "./AdBanner";
+import SmartLink from "./SmartLink";
+import SmallBanner from "./SmallBanner";
+
+type SiteChromeProps = {
+  children: React.ReactNode;
+};
+
+type FriendLink = {
+  name: string;
+  url: string;
+  badgeUrl?: string;
+};
+
+function shortLocaleLabel(code: string): string {
+  const labels: Record<string, string> = {
+    en: "EN",
+    "zh-tw": "繁中",
+    th: "TH"
+  };
+
+  return labels[code] || code.toUpperCase();
+}
+
+const completedLocales = gameConfig.completedLocales.map((code) => ({
+  code: code as Locale,
+  label: localeMeta[code as Locale]?.nativeName || code,
+  shortLabel: shortLocaleLabel(code)
+}));
+
+const englishHighIntentSlugs = englishOnlySlugs.map((slug) => ({
+  href: getLocalizedPath("en", slug),
+  label: labelForSlug(slug)
+}));
+
+function labelForSlug(slug: string): string {
+  const page = siteData.pages.find((item) => item.key === slug);
+
+  if (page?.focus) {
+    return page.focus;
+  }
+
+  return slug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function getCurrentLocale(pathname: string): Locale {
+  const firstSegment = pathname.split("/").filter(Boolean)[0];
+  const matched = completedLocales.find((item) => item.code === firstSegment)?.code;
+  return matched || (gameConfig.defaultLocale as Locale);
+}
+
+function normalizedCurrentSlug(pathname: string) {
+  const slug = getSlugFromPath(pathname);
+  return coreSlugs.includes(slug as never) ? slug : "";
+}
+
+function brandMark(value: string): string {
+  const initials = value
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 3)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
+
+  return initials || "GG";
+}
+
+export function SiteChrome({ children }: SiteChromeProps) {
+  const pathname = usePathname();
+  const currentLocale = getCurrentLocale(pathname);
+  const currentSlug = normalizedCurrentSlug(pathname);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const coreNavKeys = ["codes", "tier-list", "units", "beginners-guide", "updates"];
+  const coreNavItems = coreNavKeys
+    .map((key) => siteData.pages.find((p) => p.key === key))
+    .filter((p) => p !== undefined)
+    .map((p) => ({ href: getLocalizedPath(currentLocale, p.path), label: p.focus }));
+  const currentLanguage = completedLocales.find((item) => item.code === currentLocale);
+  const isEnglish = currentLocale === gameConfig.defaultLocale;
+  const developerName = siteData.game.creator.name || "the game developer";
+  const friendLinks = siteData.site.friendLinks as FriendLink[];
+
+  return (
+    <div className="site-shell">
+      <header className="site-header">
+        <Link className="brand" href={getLocalizedPath(currentLocale, "")} aria-label={`${siteData.site.name} home`}>
+          <span className="brand-mark">{brandMark(siteData.site.shortName)}</span>
+          <span>
+            <strong>{siteData.site.shortName}</strong>
+            <small>Roblox guide</small>
+          </span>
+        </Link>
+        <nav className="site-nav" aria-label="Main navigation">
+          {coreNavItems.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+          <details
+            className="language-dropdown"
+            open={isLanguageOpen}
+            onMouseLeave={() => setIsLanguageOpen(false)}
+            onToggle={(event) => setIsLanguageOpen(event.currentTarget.open)}
+          >
+            <summary
+              aria-label="Choose language"
+              onClick={(event) => {
+                event.preventDefault();
+                setIsLanguageOpen((current) => !current);
+              }}
+            >
+              <span>Language</span>
+              <strong>{currentLanguage?.shortLabel || "EN"}</strong>
+            </summary>
+            <div className="language-dropdown-menu" aria-label="Language navigation">
+              {completedLocales.map((item) => (
+                <Link key={item.code} href={getLocalizedPath(item.code, currentSlug)} onClick={() => setIsLanguageOpen(false)}>
+                  <span>{item.shortLabel}</span>
+                  <strong>{item.label}</strong>
+                </Link>
+              ))}
+            </div>
+          </details>
+          <SmartLink className="nav-cta" label="Open Game" />
+        </nav>
+      </header>
+      <SmallBanner />
+      {children}
+      <AdBanner />
+      <footer className="site-footer">
+        <div className="footer-clusters">
+          <div className="footer-cluster">
+            <h3>Guides</h3>
+            <Link href={getLocalizedPath(currentLocale, "codes")}>Codes</Link>
+            <Link href={getLocalizedPath(currentLocale, "tier-list")}>Tier List</Link>
+            <Link href={getLocalizedPath(currentLocale, "units")}>Units</Link>
+            <Link href={getLocalizedPath(currentLocale, "beginners-guide")}>Beginner Guide</Link>
+            <Link href={getLocalizedPath(currentLocale, "updates")}>Updates</Link>
+            {isEnglish ? englishHighIntentSlugs.map((item) => (
+              <Link href={item.href} key={item.href}>{item.label}</Link>
+            )) : null}
+          </div>
+          <div className="footer-cluster">
+            <h3>Languages</h3>
+            {completedLocales.map((item) => (
+              <Link href={getLocalizedPath(item.code, currentSlug)} key={item.code}>{item.label}</Link>
+            ))}
+          </div>
+          <div className="footer-cluster">
+            <h3>Official & Contact</h3>
+            <a
+              href={siteData.game.robloxUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Play on Roblox
+            </a>
+            <a href={`mailto:${siteData.site.contactEmail}`}>Contact</a>
+            <Link href={getLocalizedPath(currentLocale, "codes")}>Code Safety</Link>
+          </div>
+        </div>
+        {friendLinks.length > 0 && (
+          <section className="friend-links-section">
+            <div className="friend-links-container">
+              <div className="friend-links-scroller">
+                {[
+                  ...friendLinks,
+                  ...friendLinks,
+                  ...friendLinks,
+                  ...friendLinks
+                ].map((link, i) => (
+                  <a
+                    key={`${link.url}-${i}`}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="friend-link-item"
+                  >
+                    {link.badgeUrl ? (
+                      <img src={link.badgeUrl} alt={link.name} />
+                    ) : (
+                      <span className="friend-link-text">{link.name}</span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+        <div className="footer-summary">
+          <strong>{siteData.site.name}</strong>
+          <p>
+            Independent fan guide. Not affiliated with Roblox Corporation or {developerName}.
+          </p>
+        </div>
+        <div className="footer-meta">
+          <span>Contact: {siteData.site.contactEmail}</span>
+          <span>Last full check: {siteData.site.lastFullCheck}</span>
+        </div>
+        <p className="copyright">
+          © 2026 {siteData.site.copyrightOwner}. All Roblox trademarks belong
+          to their respective owners.
+        </p>
+      </footer>
+    </div>
+  );
+}

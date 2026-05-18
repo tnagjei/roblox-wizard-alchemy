@@ -1,0 +1,179 @@
+{
+  "site": {
+    "name": "Example Game Guide",
+    "shortName": "Example Guide",
+    "description": "A verification-aware Roblox game guide template for codes, tier lists, units, updates, beginner guidance, and high-intent safety pages.",
+    "contactEmail": "example@example.com",
+    "copyrightOwner": "example@example.com",
+    "lastFullCheck": "2026-01-01",
+    "defaultBaseUrl": "https://example.com",
+    "aliases": ["Example Guide"],
+    "friendLinks": []
+  },
+  "game": {
+    "name": "Example Roblox Game",
+    "officialDisplayName": "Example Roblox Game",
+    "alternateNames": ["Example Game"],
+    "creator": {
+      "id": null,
+      "name": "Example Creator",
+      "type": "Group",
+      "ownerName": "",
+      "memberCount": null
+    },
+    "robloxUrl": "https://www.roblox.com/",
+    "rootPlaceId": null,
+    "universeId": null,
+    "created": "",
+    "updated": "",
+    "visits": 0,
+    "playing": 0,
+    "favorites": 0,
+    "maxPlayers": 0,
+    "upVotes": 0,
+    "downVotes": 0,
+    "approvalRate": "Unknown",
+    "genre": "Roblox game",
+    "descriptionSummary": "Replace this summary with verified game information from official sources.",
+    "codeSystemSignal": "Unknown until verified from official or in-game evidence.",
+    "liveStatsCheckedAt": "2026-01-01T00:00:00Z",
+    "officialLinks": [
+      {
+        "label": "Roblox Game Page",
+        "url": "https://www.roblox.com/",
+        "status": "pending"
+      }
+    ],
+    "sourceConfidence": [
+      {
+        "label": "Roblox game page",
+        "level": "pending"
+      },
+      {
+        "label": "Official social links",
+        "level": "pending"
+      },
+      {
+        "label": "In-game checks",
+        "level": "pending"
+      }
+    ]
+  },
+  "assets": {
+    "icon": "/icon.png",
+    "hero": "/hero-placeholder.png",
+    "thumbnails": []
+  },
+  "codes": {
+    "verifiedCountLabel": "0 verified codes",
+    "officialStatus": "No verified official codes yet",
+    "lastChecked": "2026-01-01",
+    "verificationPolicy": "Do not publish active codes without official or in-game proof.",
+    "hasRedeemSystem": "unknown",
+    "verifiedActiveCodes": [],
+    "expiredCodes": [],
+    "thirdPartyConflictSummary": "No third-party code claims have been reviewed for this template.",
+    "pendingCodes": [],
+    "redeemGuide": {
+      "confidence": "unknown",
+      "steps": [],
+      "note": "Replace with verified in-game redemption steps only after checking the game."
+    },
+    "conflictMatrix": [],
+    "verificationChecklist": [
+      "Check the official Roblox game page.",
+      "Check developer-linked official channels only after source verification.",
+      "Run an in-game redemption test before promoting any code to active.",
+      "Record source, date, and result for every code change."
+    ],
+    "inGameTestLog": [],
+    "screenshotPlaceholder": "No screenshot proof has been added.",
+    "whyOtherSitesShowCodes": "Other sites may publish unverified codes. This template keeps unverified claims separate from verified active codes.",
+    "communityReportedCodes": []
+  },
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "title": "Example Game Guide | Codes, Tier List, Units, Updates",
+      "description": "Example Roblox game guide template with source-aware codes, tier list, units, updates, beginner tips, and safety notes.",
+      "h1": "Example Game Guide",
+      "lede": "Replace this homepage with verified game information, source notes, and practical guide sections.",
+      "focus": "Hub",
+      "relatedPages": ["codes", "tier-list", "units", "beginners-guide", "updates"],
+      "faq": [
+        {
+          "q": "Is this an official website?",
+          "a": "No. This template is for an independent fan guide unless official ownership is verified."
+        }
+      ],
+      "primaryKeyword": "Example Game guide"
+    },
+    {
+      "key": "codes",
+      "path": "/codes/",
+      "title": "Example Game Codes | Verification-Aware Guide",
+      "description": "Example codes page template that separates verified active codes from pending or community-reported claims.",
+      "h1": "Example Game Codes",
+      "lede": "Use this page to document verified codes, pending claims, and safe redemption guidance without inventing rewards.",
+      "focus": "Codes",
+      "relatedPages": ["tier-list", "updates", "beginners-guide", "units"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Example Game codes"
+    },
+    {
+      "key": "tier-list",
+      "path": "/tier-list/",
+      "title": "Example Game Tier List Guide",
+      "description": "Example tier list template for verified unit roles, ranking logic, and update risk notes.",
+      "h1": "Example Game Tier List",
+      "lede": "Replace this with verified role-based ranking logic and source notes.",
+      "focus": "Tier List",
+      "relatedPages": ["codes", "units", "beginners-guide", "updates"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Example Game tier list"
+    },
+    {
+      "key": "updates",
+      "path": "/updates/",
+      "title": "Example Game Updates Guide",
+      "description": "Example updates page template for tracking official changes and recheck notes.",
+      "h1": "Example Game Updates",
+      "lede": "Replace this with official update notes and verified change tracking.",
+      "focus": "Updates",
+      "relatedPages": ["codes", "tier-list", "units", "beginners-guide"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Example Game updates"
+    },
+    {
+      "key": "beginners-guide",
+      "path": "/beginners-guide/",
+      "title": "Example Game Beginner Guide",
+      "description": "Example beginner guide template for safe first steps, basic progression, and source-aware recommendations.",
+      "h1": "Example Game Beginner Guide",
+      "lede": "Replace this with beginner guidance based on verified gameplay and official information.",
+      "focus": "Beginner Guide",
+      "relatedPages": ["codes", "tier-list", "units", "updates"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Example Game beginner guide"
+    },
+    {
+      "key": "units",
+      "path": "/units/",
+      "title": "Example Game Units Guide",
+      "description": "Example units page template for verified unit roles, usage notes, and source boundaries.",
+      "h1": "Example Game Units",
+      "lede": "Replace this with verified unit information. Do not invent stats, values, or rankings.",
+      "focus": "Units",
+      "relatedPages": ["tier-list", "codes", "beginners-guide", "updates"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Example Game units"
+    }
+  ],
+  "youtubeVideos": []
+}
