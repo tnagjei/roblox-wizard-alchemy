@@ -162,28 +162,28 @@
   font-size: 14px;
 }
 
+.quick-facts-grid,
 .alchemy-status-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   margin-top: 18px;
 }
 
+.alchemy-status-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quick-fact-card,
 .alchemy-status-card {
-  min-height: 170px;
   border: 1px solid rgba(33, 20, 58, 0.1);
-  border-radius: 28px;
-  padding: 24px;
+  border-radius: 24px;
+  padding: 22px;
   background: #fffdf7;
   box-shadow: 0 18px 55px rgba(23, 9, 50, 0.08);
-  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.alchemy-status-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 28px 70px rgba(23, 9, 50, 0.12);
-}
-
+.quick-fact-card span,
 .alchemy-status-card span {
   display: inline-flex;
   border-radius: 999px;
@@ -195,13 +195,32 @@
   font-weight: 900;
 }
 
+.quick-fact-card strong,
 .alchemy-status-card strong {
   display: block;
-  margin-top: 18px;
+  margin-top: 16px;
   color: #21143a;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(19px, 2vw, 25px);
-  line-height: 1.2;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.18;
+}
+
+.quick-fact-card small {
+  display: block;
+  margin-top: 10px;
+  color: rgba(33, 20, 58, 0.58);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+}
+
+.alchemy-status-card {
+  min-height: 170px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.alchemy-status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(23, 9, 50, 0.12);
 }
 
 .alchemy-section {
@@ -212,7 +231,8 @@
 
 .alchemy-loop-section,
 .alchemy-code-section,
-.alchemy-faq-section {
+.alchemy-faq-section,
+.first-session-section {
   background:
     radial-gradient(circle at 88% 20%, rgba(255, 210, 103, 0.18), transparent 30%),
     linear-gradient(135deg, #fffdf7, #f6efe7);
@@ -221,13 +241,15 @@
 
 .alchemy-loop-section::before,
 .alchemy-code-section::before,
-.alchemy-faq-section::before {
+.alchemy-faq-section::before,
+.first-session-section::before {
   opacity: 0.18;
 }
 
 .alchemy-loop-section .alchemy-section-heading p,
 .alchemy-code-section .alchemy-section-heading p,
-.alchemy-faq-section .alchemy-section-heading p {
+.alchemy-faq-section .alchemy-section-heading p,
+.first-session-section .alchemy-section-heading p {
   color: #7b43ff;
 }
 
@@ -240,9 +262,45 @@
   letter-spacing: -0.06em;
 }
 
+.first-session-list {
+  display: grid;
+  gap: 10px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: first-session;
+}
+
+.first-session-list li {
+  counter-increment: first-session;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid rgba(33, 20, 58, 0.1);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(33, 20, 58, 0.78);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.first-session-list li::before {
+  content: counter(first-session, decimal-leading-zero);
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  color: #160b07;
+  background: #ffd267;
+  font-weight: 1000;
+}
+
 .alchemy-loop-grid,
 .alchemy-evidence-grid,
-.alchemy-boundary-grid {
+.alchemy-boundary-grid,
+.research-queue-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
@@ -251,7 +309,8 @@
 
 .alchemy-loop-card,
 .alchemy-evidence-card,
-.alchemy-boundary-card {
+.alchemy-boundary-card,
+.research-queue-card {
   min-width: 0;
   border: 1px solid rgba(33, 20, 58, 0.12);
   border-radius: 22px;
@@ -270,41 +329,48 @@
 
 .alchemy-loop-card h3,
 .alchemy-evidence-card h3,
-.alchemy-boundary-card h3 {
+.alchemy-boundary-card h3,
+.research-queue-card h3 {
   margin: 0 0 10px;
   font-size: 21px;
 }
 
 .alchemy-loop-card p,
-.alchemy-boundary-card p {
+.alchemy-boundary-card p,
+.research-queue-card p {
   margin: 0;
   color: rgba(33, 20, 58, 0.66);
 }
 
 .alchemy-evidence-section,
-.alchemy-boundary-section {
+.alchemy-boundary-section,
+.research-queue-section {
   background:
     radial-gradient(circle at 16% 18%, rgba(255, 122, 50, 0.16), transparent 30%),
     linear-gradient(135deg, #100724, #061713);
 }
 
-.alchemy-evidence-grid {
+.alchemy-evidence-grid,
+.research-queue-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .alchemy-evidence-card,
-.alchemy-boundary-card {
+.alchemy-boundary-card,
+.research-queue-card {
   border-color: rgba(247, 241, 255, 0.14);
   background: rgba(255, 255, 255, 0.07);
   color: #f7f1ff;
 }
 
 .alchemy-evidence-card h3,
-.alchemy-boundary-card h3 {
+.alchemy-boundary-card h3,
+.research-queue-card h3 {
   color: #f7f1ff;
 }
 
-.alchemy-boundary-card p {
+.alchemy-boundary-card p,
+.research-queue-card p {
   color: rgba(247, 241, 255, 0.68);
 }
 
@@ -368,6 +434,16 @@
   text-transform: uppercase;
 }
 
+.alchemy-warning-note {
+  margin: 18px 0 0;
+  border-left: 4px solid #ff7a32;
+  padding: 12px 14px;
+  color: rgba(33, 20, 58, 0.72);
+  background: rgba(255, 122, 50, 0.08);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+}
+
 .alchemy-boundary-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -394,10 +470,12 @@
 
 @media (max-width: 900px) {
   .alchemy-hero,
+  .quick-facts-grid,
   .alchemy-status-grid,
   .alchemy-loop-grid,
   .alchemy-evidence-grid,
-  .alchemy-boundary-grid {
+  .alchemy-boundary-grid,
+  .research-queue-grid {
     grid-template-columns: 1fr;
   }
 
