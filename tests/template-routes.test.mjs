@@ -21,23 +21,23 @@ function routePath(locale, slug) {
   return cleanSlug ? `/${locale}/${cleanSlug}/` : `/${locale}/`;
 }
 
-test("sitemap route count matches completed core pages plus English-only pages", () => {
+test("sitemap route count matches completed core pages plus completed English-only pages", () => {
   const config = read("lib/game-config.ts");
   const completedLocales = extractArray(config, "completedLocales");
-  const coreSlugs = extractArray(config, "coreSlugs");
-  const englishOnlySlugs = extractArray(config, "englishOnlySlugs");
+  const completedCoreSlugs = extractArray(config, "completedCoreSlugs");
+  const completedEnglishOnlySlugs = extractArray(config, "completedEnglishOnlySlugs");
 
-  const expectedCount = completedLocales.length * coreSlugs.length + englishOnlySlugs.length;
-  assert.equal(expectedCount, 22);
+  const expectedCount = completedLocales.length * completedCoreSlugs.length + completedEnglishOnlySlugs.length;
+  assert.equal(expectedCount, 12);
 });
 
-test("localized core routes exist for completed locales", () => {
+test("localized route files exist for completed core slugs", () => {
   const config = read("lib/game-config.ts");
   const completedLocales = extractArray(config, "completedLocales");
-  const coreSlugs = extractArray(config, "coreSlugs");
+  const completedCoreSlugs = extractArray(config, "completedCoreSlugs");
 
   for (const locale of completedLocales) {
-    for (const slug of coreSlugs) {
+    for (const slug of completedCoreSlugs) {
       if (locale === "en") continue;
       const target = slug ? path.join(root, "app", locale, slug, "page.tsx") : path.join(root, "app", locale, "page.tsx");
       assert.ok(fs.existsSync(target), `Missing localized route file for ${routePath(locale, slug)}`);
@@ -45,11 +45,24 @@ test("localized core routes exist for completed locales", () => {
   }
 });
 
-test("English-only route files exist only at root English paths", () => {
+test("all English-only route files exist only at root English paths", () => {
   const config = read("lib/game-config.ts");
   const englishOnlySlugs = extractArray(config, "englishOnlySlugs");
 
   for (const slug of englishOnlySlugs) {
     assert.ok(fs.existsSync(path.join(root, "app", slug, "page.tsx")), `Missing app/${slug}/page.tsx`);
   }
+});
+
+test("pending high-risk pages are not completed", () => {
+  const config = read("lib/game-config.ts");
+  const completedCoreSlugs = extractArray(config, "completedCoreSlugs");
+  const completedEnglishOnlySlugs = extractArray(config, "completedEnglishOnlySlugs");
+
+  assert.equal(completedCoreSlugs.includes("tier-list"), false);
+  assert.equal(completedCoreSlugs.includes("units"), false);
+  assert.equal(completedEnglishOnlySlugs.includes("scripts"), false);
+  assert.equal(completedEnglishOnlySlugs.includes("value-list"), false);
+  assert.equal(completedEnglishOnlySlugs.includes("macros"), false);
+  assert.equal(completedEnglishOnlySlugs.includes("discord"), false);
 });
