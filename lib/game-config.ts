@@ -26,7 +26,7 @@ export const gameConfig = {
   creatorType: "Group",
 
   analytics: {
-    googleAnalyticsId: "",
+    googleAnalyticsId: "G-HNK0BQ06B7",
     yandexVerification: "",
     clarityId: "wsy7wh8pe6",
     adsenseClient: "",
