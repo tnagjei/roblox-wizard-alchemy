@@ -7,3 +7,5 @@
 ## Files
 - README.md：本目录说明
 - data/：站点公开 JSON 数据
+- ads.txt：Google AdSense 授权发布商声明文件，防范欺诈广告并保护广告收入
+- favicon.svg / logo.png / logo.webp：网站图标与品牌静态图片资源

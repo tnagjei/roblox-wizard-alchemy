@@ -29,7 +29,7 @@ export const gameConfig = {
     googleAnalyticsId: "G-HNK0BQ06B7",
     yandexVerification: "",
     clarityId: "wsy7wh8pe6",
-    adsenseClient: "",
+    adsenseClient: "ca-pub-3083296102953963",
     thirdPartyAdScripts: [] as string[]
   },
 
