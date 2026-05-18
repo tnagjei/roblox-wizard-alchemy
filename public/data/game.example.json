@@ -1,29 +1,29 @@
 {
   "site": {
-    "name": "Example Game Guide",
-    "shortName": "Example Guide",
-    "description": "A verification-aware Roblox game guide template for codes, tier lists, units, updates, beginner guidance, and high-intent safety pages.",
-    "contactEmail": "example@example.com",
-    "copyrightOwner": "example@example.com",
-    "lastFullCheck": "2026-01-01",
-    "defaultBaseUrl": "https://example.com",
-    "aliases": ["Example Guide"],
+    "name": "Wizard Alchemy Guide",
+    "shortName": "Wizard Alchemy",
+    "description": "An independent Wizard Alchemy Roblox guide focused on source-checked codes, update notes, beginner guidance, and safe research boundaries.",
+    "contactEmail": "tangjei414@gmail.com",
+    "copyrightOwner": "tangjei",
+    "lastFullCheck": "2026-05-18",
+    "defaultBaseUrl": "https://wizardalchemy.online",
+    "aliases": ["Wizard Alchemy", "Wizard Alchemy Roblox Guide"],
     "friendLinks": []
   },
   "game": {
-    "name": "Example Roblox Game",
-    "officialDisplayName": "Example Roblox Game",
-    "alternateNames": ["Example Game"],
+    "name": "Wizard Alchemy",
+    "officialDisplayName": "Wizard Alchemy[Released]",
+    "alternateNames": ["Wizard Alchemy Roblox"],
     "creator": {
-      "id": null,
-      "name": "Example Creator",
+      "id": 509055872,
+      "name": "Muggle Academy",
       "type": "Group",
       "ownerName": "",
       "memberCount": null
     },
-    "robloxUrl": "https://www.roblox.com/",
-    "rootPlaceId": null,
-    "universeId": null,
+    "robloxUrl": "https://www.roblox.com/games/118821269826806/Wizard-Alchemy",
+    "rootPlaceId": 118821269826806,
+    "universeId": 10006104044,
     "created": "",
     "updated": "",
     "visits": 0,
@@ -33,28 +33,37 @@
     "upVotes": 0,
     "downVotes": 0,
     "approvalRate": "Unknown",
-    "genre": "Roblox game",
-    "descriptionSummary": "Replace this summary with verified game information from official sources.",
-    "codeSystemSignal": "Unknown until verified from official or in-game evidence.",
-    "liveStatsCheckedAt": "2026-01-01T00:00:00Z",
+    "genre": "Roblox wizard RPG",
+    "descriptionSummary": "Wizard Alchemy is a Roblox wizard RPG by Muggle Academy where players collect ingredients, brew potions, unlock spells, upgrade power, and explore magical areas.",
+    "codeSystemSignal": "The Roblox game description mentions RELEASE and WIZARD as launch reward codes, but this site has not completed an in-game redemption test.",
+    "liveStatsCheckedAt": "2026-05-18T00:00:00Z",
     "officialLinks": [
       {
         "label": "Roblox Game Page",
-        "url": "https://www.roblox.com/",
-        "status": "pending"
+        "url": "https://www.roblox.com/games/118821269826806/Wizard-Alchemy",
+        "status": "verified"
+      },
+      {
+        "label": "Muggle Academy Roblox Community",
+        "url": "https://www.roblox.com/communities/509055872/Muggle-Academy",
+        "status": "verified"
       }
     ],
     "sourceConfidence": [
       {
         "label": "Roblox game page",
+        "level": "verified"
+      },
+      {
+        "label": "Developer community",
+        "level": "verified"
+      },
+      {
+        "label": "Official Discord link",
         "level": "pending"
       },
       {
-        "label": "Official social links",
-        "level": "pending"
-      },
-      {
-        "label": "In-game checks",
+        "label": "In-game code redemption test",
         "level": "pending"
       }
     ]
@@ -65,114 +74,139 @@
     "thumbnails": []
   },
   "codes": {
-    "verifiedCountLabel": "0 verified codes",
-    "officialStatus": "No verified official codes yet",
-    "lastChecked": "2026-01-01",
-    "verificationPolicy": "Do not publish active codes without official or in-game proof.",
-    "hasRedeemSystem": "unknown",
+    "verifiedCountLabel": "2 official-page-mentioned codes",
+    "officialStatus": "Roblox description mentions RELEASE and WIZARD; in-game testing is still pending.",
+    "lastChecked": "2026-05-18",
+    "verificationPolicy": "Do not invent codes, rewards, or redemption steps. Promote a code to fully verified only after official-source review and in-game redemption testing.",
+    "hasRedeemSystem": "mentioned by official Roblox description, not yet in-game tested by this site",
     "verifiedActiveCodes": [],
     "expiredCodes": [],
-    "thirdPartyConflictSummary": "No third-party code claims have been reviewed for this template.",
-    "pendingCodes": [],
+    "thirdPartyConflictSummary": "Third-party sites mention extra details such as race reroll quantities and MACHI, but this first version only treats Roblox-page-mentioned codes as source-backed leads.",
+    "pendingCodes": [
+      {
+        "code": "RELEASE",
+        "seenOn": "Roblox game description",
+        "status": "official-page-mentioned"
+      },
+      {
+        "code": "WIZARD",
+        "seenOn": "Roblox game description",
+        "status": "official-page-mentioned"
+      }
+    ],
     "redeemGuide": {
-      "confidence": "unknown",
+      "confidence": "pending in-game verification",
       "steps": [],
-      "note": "Replace with verified in-game redemption steps only after checking the game."
+      "note": "The Roblox description says to use RELEASE and WIZARD for free launch rewards, but this site has not verified the in-game redemption UI yet."
     },
-    "conflictMatrix": [],
+    "conflictMatrix": [
+      {
+        "code": "MACHI",
+        "claims": [
+          {
+            "source": "third-party guide pages",
+            "verdict": "not official-page verified"
+          }
+        ]
+      }
+    ],
     "verificationChecklist": [
-      "Check the official Roblox game page.",
-      "Check developer-linked official channels only after source verification.",
-      "Run an in-game redemption test before promoting any code to active.",
-      "Record source, date, and result for every code change."
+      "Use the Roblox game page as the primary source.",
+      "Check the Muggle Academy Roblox community for developer-linked sources.",
+      "Run an in-game redemption test before moving a code from pending to verified active.",
+      "Record source, date, reward text, and result for every code change."
     ],
     "inGameTestLog": [],
     "screenshotPlaceholder": "No screenshot proof has been added.",
-    "whyOtherSitesShowCodes": "Other sites may publish unverified codes. This template keeps unverified claims separate from verified active codes.",
+    "whyOtherSitesShowCodes": "Other sites may mix official-page mentions, in-game testing, and community reports. This guide separates those evidence levels.",
     "communityReportedCodes": []
   },
   "pages": [
     {
       "key": "home",
       "path": "/",
-      "title": "Example Game Guide | Codes, Tier List, Units, Updates",
-      "description": "Example Roblox game guide template with source-aware codes, tier list, units, updates, beginner tips, and safety notes.",
-      "h1": "Example Game Guide",
-      "lede": "Replace this homepage with verified game information, source notes, and practical guide sections.",
+      "title": "Wizard Alchemy Guide | Roblox Codes, Updates & Beginner Tips",
+      "description": "Independent Wizard Alchemy Roblox guide with source-checked codes, update notes, beginner guidance, and safe research boundaries.",
+      "h1": "Wizard Alchemy Guide",
+      "lede": "A source-aware Wizard Alchemy guide for Roblox players. Start with the official game page, track codes carefully, and keep unverified claims separate from facts.",
       "focus": "Hub",
-      "relatedPages": ["codes", "tier-list", "units", "beginners-guide", "updates"],
+      "relatedPages": ["codes", "updates", "beginners-guide"],
       "faq": [
         {
-          "q": "Is this an official website?",
-          "a": "No. This template is for an independent fan guide unless official ownership is verified."
+          "q": "Is this an official Wizard Alchemy website?",
+          "a": "No. This is an independent fan guide and is not affiliated with Roblox Corporation or Muggle Academy."
+        },
+        {
+          "q": "Does this guide publish untested codes?",
+          "a": "No. Codes are separated by evidence level. Roblox-page-mentioned codes are not treated as fully in-game tested until redemption is checked."
         }
       ],
-      "primaryKeyword": "Example Game guide"
+      "primaryKeyword": "Wizard Alchemy Roblox guide"
     },
     {
       "key": "codes",
       "path": "/codes/",
-      "title": "Example Game Codes | Verification-Aware Guide",
-      "description": "Example codes page template that separates verified active codes from pending or community-reported claims.",
-      "h1": "Example Game Codes",
-      "lede": "Use this page to document verified codes, pending claims, and safe redemption guidance without inventing rewards.",
+      "title": "Wizard Alchemy Codes | Source-Checked Roblox Code Status",
+      "description": "Wizard Alchemy codes page tracking Roblox-page-mentioned codes, pending code claims, and safe redemption verification boundaries.",
+      "h1": "Wizard Alchemy Codes",
+      "lede": "Track Wizard Alchemy codes without inventing rewards. RELEASE and WIZARD are mentioned on the Roblox game page, while in-game redemption testing remains pending.",
       "focus": "Codes",
-      "relatedPages": ["tier-list", "updates", "beginners-guide", "units"],
+      "relatedPages": ["updates", "beginners-guide"],
       "sections": [],
       "faq": [],
-      "primaryKeyword": "Example Game codes"
+      "primaryKeyword": "Wizard Alchemy codes"
     },
     {
       "key": "tier-list",
       "path": "/tier-list/",
-      "title": "Example Game Tier List Guide",
-      "description": "Example tier list template for verified unit roles, ranking logic, and update risk notes.",
-      "h1": "Example Game Tier List",
-      "lede": "Replace this with verified role-based ranking logic and source notes.",
+      "title": "Wizard Alchemy Tier List Guide",
+      "description": "Wizard Alchemy tier list placeholder. Rankings are pending until unit, race, spell, and balance data can be verified.",
+      "h1": "Wizard Alchemy Tier List",
+      "lede": "Tier rankings are pending. This page should not be indexed as a complete tier list until evidence is added.",
       "focus": "Tier List",
-      "relatedPages": ["codes", "units", "beginners-guide", "updates"],
+      "relatedPages": ["codes", "beginners-guide", "updates"],
       "sections": [],
       "faq": [],
-      "primaryKeyword": "Example Game tier list"
+      "primaryKeyword": "Wizard Alchemy tier list"
     },
     {
       "key": "updates",
       "path": "/updates/",
-      "title": "Example Game Updates Guide",
-      "description": "Example updates page template for tracking official changes and recheck notes.",
-      "h1": "Example Game Updates",
-      "lede": "Replace this with official update notes and verified change tracking.",
+      "title": "Wizard Alchemy Updates | Roblox Patch & Source Tracker",
+      "description": "Wizard Alchemy updates tracker for official Roblox description changes, developer source checks, and future patch notes.",
+      "h1": "Wizard Alchemy Updates",
+      "lede": "Track Wizard Alchemy changes with source labels. This first version records the release-page description and keeps unsupported update claims pending.",
       "focus": "Updates",
-      "relatedPages": ["codes", "tier-list", "units", "beginners-guide"],
+      "relatedPages": ["codes", "beginners-guide"],
       "sections": [],
       "faq": [],
-      "primaryKeyword": "Example Game updates"
+      "primaryKeyword": "Wizard Alchemy updates"
     },
     {
       "key": "beginners-guide",
       "path": "/beginners-guide/",
-      "title": "Example Game Beginner Guide",
-      "description": "Example beginner guide template for safe first steps, basic progression, and source-aware recommendations.",
-      "h1": "Example Game Beginner Guide",
-      "lede": "Replace this with beginner guidance based on verified gameplay and official information.",
+      "title": "Wizard Alchemy Beginner Guide | Roblox First Steps",
+      "description": "Wizard Alchemy beginner guide for safe first steps, source-aware progression notes, and early-game research boundaries.",
+      "h1": "Wizard Alchemy Beginner Guide",
+      "lede": "Start with the verified Roblox description: collect ingredients, brew potions, unlock spells, upgrade power, and explore magical areas. Detailed mechanics remain pending until checked.",
       "focus": "Beginner Guide",
-      "relatedPages": ["codes", "tier-list", "units", "updates"],
+      "relatedPages": ["codes", "updates"],
       "sections": [],
       "faq": [],
-      "primaryKeyword": "Example Game beginner guide"
+      "primaryKeyword": "Wizard Alchemy beginner guide"
     },
     {
       "key": "units",
       "path": "/units/",
-      "title": "Example Game Units Guide",
-      "description": "Example units page template for verified unit roles, usage notes, and source boundaries.",
-      "h1": "Example Game Units",
-      "lede": "Replace this with verified unit information. Do not invent stats, values, or rankings.",
+      "title": "Wizard Alchemy Units Guide",
+      "description": "Wizard Alchemy units placeholder. Unit and stat data are pending until verified.",
+      "h1": "Wizard Alchemy Units",
+      "lede": "Unit and stat data are pending. Do not invent stats, values, or rankings.",
       "focus": "Units",
-      "relatedPages": ["tier-list", "codes", "beginners-guide", "updates"],
+      "relatedPages": ["codes", "updates", "beginners-guide"],
       "sections": [],
       "faq": [],
-      "primaryKeyword": "Example Game units"
+      "primaryKeyword": "Wizard Alchemy units"
     }
   ],
   "youtubeVideos": []
