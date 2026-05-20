@@ -1,5 +1,5 @@
 // input: current locale and user-selected YouTube video URLs
-// output: homepage YouTube embed section with SEO-safe VideoObject structured data
+// output: homepage YouTube embed section with SEO-safe ItemList data, without unverifiable VideoObject fields
 // pos: Wizard Alchemy video guide module（更新规则：文件变更需同步本注释与所属目录 README）
 
 import Link from "next/link";
@@ -29,10 +29,6 @@ function embedUrl(id: string) {
 
 function watchUrl(id: string) {
   return `https://www.youtube.com/watch?v=${id}`;
-}
-
-function thumbnailUrl(id: string) {
-  return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
 function videoCopy(locale: Locale): VideoCopy {
@@ -91,14 +87,9 @@ function videoListJsonLd(copy: VideoCopy) {
     itemListElement: copy.videos.map((video, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      item: {
-        "@type": "VideoObject",
-        name: video.title,
-        description: video.description,
-        thumbnailUrl: [thumbnailUrl(video.id)],
-        embedUrl: embedUrl(video.id),
-        contentUrl: watchUrl(video.id)
-      }
+      name: video.title,
+      description: video.description,
+      url: watchUrl(video.id)
     }))
   };
 }
