@@ -1,6 +1,6 @@
 // input: typed localized homepage content and locale
-// output: Wizard Alchemy homepage with game-toned official visual, player-first modules, video discovery, and localized source-safe content
-// pos: multilingual homepage template（更新规则：文件变更需同步本注释与所属目录 README）
+// output: Wizard Alchemy homepage with official visual, player-first modules, video discovery, localized source-safe content, and embedded ad banners
+// pos: components/templates/HomePageTemplate.tsx (更新规则：首页布局或广告位置调整需同步更新此文件与所属目录 README)
 
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +17,7 @@ import {
   buildVideoGameJsonLd,
   buildWebsiteJsonLd
 } from "@/lib/seo";
+import SmallBanner from "@/components/SmallBanner";
 
 type HomePageTemplateProps = {
   content: HomePageContent;
@@ -335,6 +336,10 @@ export function HomePageTemplate({ content, locale }: HomePageTemplateProps) {
           </div>
         </div>
       </section>
+
+      <div className="my-6">
+        <SmallBanner placement="inline" />
+      </div>
 
       <section className="quick-facts-grid" aria-label={copy.quickFactsAria}>
         {copy.quickFacts.map((item) => (

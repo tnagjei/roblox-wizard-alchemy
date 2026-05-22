@@ -1,8 +1,7 @@
-// input: app children, site config, page registry, and shared site data
-// output: locale-aware site navigation and footer shell limited to completed pages
-// pos: global chrome component
-
 "use client";
+// input: app children, site config, page registry, and shared site data
+// output: locale-aware site navigation and footer shell limited to completed pages with top ad banners
+// pos: components/SiteChrome.tsx (更新规则：全局布局或头部/底部导航项变更需同步此文件与所属目录 README)
 
 import { useState } from "react";
 import Link from "next/link";
@@ -154,7 +153,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
           <SmartLink className="nav-cta" label="Open Game" />
         </nav>
       </header>
-      <SmallBanner />
+      <SmallBanner placement="top" />
       <AdBanner placement="top" />
       {children}
       <AdBanner />

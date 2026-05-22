@@ -1,24 +1,22 @@
-// input: optional inline placement flag for 468x60 banner
-// output: 468x60 banner only when explicitly rendered inline, not in the top header slot
-// pos: components/SmallBanner.tsx (更新规则：广告 ID 变更需同步更新此文件)
-
 "use client";
+// input: optional placement flag ("inline" or "top") for 468x60 banner
+// output: 468x60 banner rendered dynamically inside the referencing component
+// pos: components/SmallBanner.tsx (更新规则：广告 ID 或脚本 URL 变更需同步更新此文件)
 
 import { useEffect, useRef } from "react";
 
 type SmallBannerProps = {
-  placement?: "inline";
+  placement?: "inline" | "top";
 };
 
-export default function SmallBanner({ placement }: SmallBannerProps) {
+export default function SmallBanner({ placement = "inline" }: SmallBannerProps) {
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (placement !== "inline") return;
     if (typeof window === "undefined" || !bannerRef.current) return;
 
     (window as any).atOptions = {
-      key: "2b724caac0e693d73173f940d7280f5a",
+      key: "03b6674b965bacba74dd1da7fd8cf8c6",
       format: "iframe",
       height: 60,
       width: 468,
@@ -26,9 +24,10 @@ export default function SmallBanner({ placement }: SmallBannerProps) {
     };
 
     const script = document.createElement("script");
-    script.src = "https://www.highperformanceformat.com/2b724caac0e693d73173f940d7280f5a/invoke.js";
+    script.src = "https://www.highperformanceformat.com/03b6674b965bacba74dd1da7fd8cf8c6/invoke.js";
     script.async = true;
-    script.id = "small-banner-script-inline";
+    const randomId = Math.random().toString(36).substring(2, 11);
+    script.id = `small-banner-script-${randomId}`;
 
     bannerRef.current.appendChild(script);
 
@@ -38,10 +37,6 @@ export default function SmallBanner({ placement }: SmallBannerProps) {
       }
     };
   }, [placement]);
-
-  if (placement !== "inline") {
-    return null;
-  }
 
   return (
     <div className="small-banner-wrapper flex flex-col items-center justify-center w-full py-4 bg-gray-50/50 border-y border-gray-100 min-h-[90px]">

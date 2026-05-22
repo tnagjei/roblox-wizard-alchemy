@@ -1,6 +1,6 @@
 // input: typed localized strategy page content and locale
-// output: generic strategy guide page layout for tier list, updates, beginner guide, and units
-// pos: multilingual strategy page template
+// output: generic strategy guide page layout for tier list, updates, beginner guide, units, and embedded ad banners
+// pos: components/templates/StrategyPageTemplate.tsx (更新规则：指南页面布局或广告位置调整需同步更新此文件与所属目录 README)
 
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
@@ -9,6 +9,7 @@ import type { Locale } from "@/lib/i18n/locales";
 import { getLocalizedPath } from "@/lib/i18n/routes";
 import { siteData } from "@/lib/site-data";
 import { absoluteUrl } from "@/lib/seo";
+import SmallBanner from "@/components/SmallBanner";
 
 type StrategyPageTemplateProps = {
   content: StrategyPageContent;
@@ -81,6 +82,10 @@ export function StrategyPageTemplate({ content, locale }: StrategyPageTemplatePr
         </div>
         <img className="hero-image" src={siteData.assets.hero} alt={`${siteData.game.name} Roblox thumbnail`} />
       </section>
+
+      <div className="my-6">
+        <SmallBanner placement="inline" />
+      </div>
 
       <section className="research-grid" aria-label={content.hero.eyebrow}>
         {content.summaryCards.map((card) => (

@@ -1,6 +1,6 @@
 // input: typed localized codes page content and locale
-// output: full codes page layout without embedded long-form translations
-// pos: multilingual codes page template
+// output: full codes page layout without embedded long-form translations, including embedded ad banners
+// pos: components/templates/CodesPageTemplate.tsx (更新规则：代码展示布局或广告位置调整需同步更新此文件与所属目录 README)
 
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
@@ -9,6 +9,7 @@ import type { Locale } from "@/lib/i18n/locales";
 import { getLocalizedPath } from "@/lib/i18n/routes";
 import { siteData } from "@/lib/site-data";
 import { absoluteUrl } from "@/lib/seo";
+import SmallBanner from "@/components/SmallBanner";
 
 type CodesPageTemplateProps = {
   content: CodesPageContent;
@@ -122,6 +123,9 @@ export function CodesPageTemplate({ content, locale }: CodesPageTemplateProps) {
           <p className="eyebrow">{content.verifiedCodes.eyebrow}</p>
           <h2 id="verified-codes-heading">{content.verifiedCodes.title}</h2>
           <p>{content.verifiedCodes.description}</p>
+        </div>
+        <div className="my-6">
+          <SmallBanner placement="inline" />
         </div>
         <div className="status-table" role="table" aria-label={content.verifiedCodes.title}>
           <div role="row" className="status-row status-head">
