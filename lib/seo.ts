@@ -1,6 +1,6 @@
 // input: page data, route paths, and environment site URL
 // output: Next metadata and schema.org JSON-LD objects
-// pos: SEO contract layer
+// pos: SEO contract layer（更新规则：文件变更需同步本注释与所属目录 README）
 
 import type { Metadata } from "next";
 import { siteData, type SitePage } from "@/lib/site-data";
@@ -22,8 +22,17 @@ export function absoluteUrl(path: string): string {
   return `${siteUrl}${normalizedPath}`;
 }
 
+function absoluteAssetUrl(value: string): string {
+  if (value.startsWith("https://") || value.startsWith("http://")) {
+    return value;
+  }
+
+  return absoluteUrl(value);
+}
+
 export function buildMetadata(page: SitePage): Metadata {
   const canonical = absoluteUrl(page.path);
+  const heroImage = absoluteAssetUrl(siteData.assets.hero);
 
   return {
     metadataBase: new URL(siteUrl),
@@ -39,7 +48,7 @@ export function buildMetadata(page: SitePage): Metadata {
       siteName: siteData.site.name,
       images: [
         {
-          url: siteData.assets.hero,
+          url: heroImage,
           width: 768,
           height: 432,
           alt: `${siteData.game.name} Roblox thumbnail`
@@ -51,7 +60,7 @@ export function buildMetadata(page: SitePage): Metadata {
       card: "summary_large_image",
       title: page.title,
       description: page.description,
-      images: [siteData.assets.hero]
+      images: [heroImage]
     }
   };
 }
@@ -62,7 +71,7 @@ export function buildArticleJsonLd(page: SitePage) {
     "@type": "Article",
     headline: page.h1,
     description: page.description,
-    image: [siteData.assets.hero],
+    image: [absoluteAssetUrl(siteData.assets.hero)],
     datePublished: siteData.site.lastFullCheck,
     dateModified: siteData.site.lastFullCheck,
     author: {
@@ -75,7 +84,7 @@ export function buildArticleJsonLd(page: SitePage) {
       name: siteData.site.name,
       logo: {
         "@type": "ImageObject",
-        url: siteData.assets.icon
+        url: absoluteAssetUrl(siteData.assets.icon)
       }
     },
     mainEntityOfPage: absoluteUrl(page.path)
@@ -194,7 +203,7 @@ export function buildVideoGameJsonLd() {
     description: siteData.game.descriptionSummary,
     genre: siteData.game.genre,
     url: siteData.game.robloxUrl,
-    image: siteData.assets.hero,
+    image: absoluteAssetUrl(siteData.assets.hero),
     publisher: {
       "@type": "Organization",
       name: siteData.game.creator.name
