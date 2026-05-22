@@ -225,6 +225,15 @@ export function SiteChrome({ children }: SiteChromeProps) {
         <div className="footer-meta">
           <span>Contact: {siteData.site.contactEmail}</span>
           <span>Last full check: {siteData.site.lastFullCheck}</span>
+          <span>
+            <a
+              href="https://www.effectivecpmnetwork.com/xcu7wqum?key=d2d7124679fe91cc600cd5d747b904c6"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+            >
+              Sponsored
+            </a>
+          </span>
         </div>
         <p className="copyright">
           © 2026 {siteData.site.copyrightOwner}. All Roblox trademarks belong
