@@ -8,7 +8,7 @@ export const gameConfig = {
   gameName: "Wizard Alchemy",
   gameSlug: "wizard-alchemy",
   primaryKeyword: "Wizard Alchemy Roblox guide",
-  siteDomain: "https://wizardalchemy.online",
+  siteDomain: "https://www.wizardalchemy.online",
   contactEmail: "tangjei414@gmail.com",
   copyrightOwner: "tangjei",
 
