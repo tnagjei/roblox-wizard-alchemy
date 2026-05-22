@@ -83,6 +83,10 @@ export default function RootLayout({
           <Script key={src} src={src} strategy="lazyOnload" />
         ))}
         <SiteChrome>{children}</SiteChrome>
+        <Script
+          src="https://pl29519331.effectivecpmnetwork.com/d9/0d/b3/d90db38fc00234bfa45ca1e2d47a456d.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
