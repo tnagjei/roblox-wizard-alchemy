@@ -1,5 +1,5 @@
 // input: advertising code scripts and container IDs
-// output: deferred ad section below page content with 468x60 banner and native banner
+// output: deferred ad section below page content with small banner and native banner placements
 // pos: components/AdBanner.tsx (更新规则：广告供应商变更或ID变更时修改此文件)
 
 "use client";
@@ -18,6 +18,15 @@ export default function AdBanner() {
       />
       <Script
         src="https://pl29384218.profitablecpmratenetwork.com/31e0ddb2852e4099df42447b213111ebee/invoke.js"
+        strategy="afterInteractive"
+        data-cfasync="false"
+      />
+      <div
+        id="container-70fc3293d724d70844e9131ab4e6ff26"
+        className="w-full max-w-4xl mx-auto flex justify-center"
+      />
+      <Script
+        src="https://pl29519330.effectivecpmnetwork.com/70fc3293d724d70844e9131ab4e6ff26/invoke.js"
         strategy="afterInteractive"
         data-cfasync="false"
       />
