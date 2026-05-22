@@ -155,6 +155,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
         </nav>
       </header>
       <SmallBanner />
+      <AdBanner placement="top" />
       {children}
       <AdBanner />
       <footer className="site-footer">
