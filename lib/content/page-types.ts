@@ -144,6 +144,12 @@ export type CodesPageContent = {
   faq: FaqItem[];
 };
 
+export type StrategyVideo = {
+  id: string;
+  title: string;
+  note: string;
+};
+
 export type StrategyPageContent = {
   meta: SeoMeta;
   slug: "tier-list" | "updates" | "beginners-guide" | "units" | "scripts" | "value-list" | "macros" | "discord" | "chest-locations" | "race-tier-list" | "potions";
@@ -152,6 +158,12 @@ export type StrategyPageContent = {
     title: string;
     description: string;
   }>;
+  videos?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: StrategyVideo[];
+  };
   sections: TextSection[];
   relatedLinks: Array<{
     href: string;
