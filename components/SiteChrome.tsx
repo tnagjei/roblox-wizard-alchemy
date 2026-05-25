@@ -104,6 +104,151 @@ export function SiteChrome({ children }: SiteChromeProps) {
 
   return (
     <div className="site-shell">
+      <style jsx global>{`
+        .site-header-topline {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .mobile-nav-toggle {
+          display: none;
+          border: 1px solid rgba(226, 204, 255, 0.18);
+          border-radius: 999px;
+          padding: 9px 13px;
+          color: #efe7ff;
+          background: rgba(255, 255, 255, 0.08);
+          font-family: ui-sans-serif, system-ui, sans-serif;
+          font-size: 13px;
+          font-weight: 900;
+          cursor: pointer;
+        }
+
+        .language-dropdown {
+          position: relative;
+        }
+
+        .language-dropdown-trigger {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          min-height: 42px;
+          border: 1px solid rgba(226, 204, 255, 0.16);
+          border-radius: 999px;
+          padding: 10px 13px;
+          color: #efe7ff;
+          background: rgba(255, 255, 255, 0.06);
+          font-family: ui-sans-serif, system-ui, sans-serif;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        .language-dropdown-menu {
+          position: absolute;
+          top: calc(100% + 8px);
+          right: 0;
+          z-index: 30;
+          display: grid;
+          min-width: 180px;
+          gap: 6px;
+          border: 1px solid rgba(226, 204, 255, 0.18);
+          border-radius: 16px;
+          padding: 8px;
+          background: rgba(12, 7, 26, 0.96);
+          box-shadow: 0 18px 60px rgba(4, 0, 18, 0.38);
+        }
+
+        .language-dropdown-menu a {
+          display: flex;
+          justify-content: space-between;
+          gap: 12px;
+          border-radius: 12px;
+        }
+
+        @media (max-width: 560px) {
+          .site-header {
+            top: 8px;
+            width: min(100% - 20px, 1180px);
+            padding: 10px;
+            border-radius: 18px;
+          }
+
+          .site-header-topline {
+            width: 100%;
+          }
+
+          .site-header .brand-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            font-size: 12px;
+          }
+
+          .site-header .brand strong {
+            font-size: 15px;
+          }
+
+          .site-header .brand small {
+            font-size: 11px;
+          }
+
+          .mobile-nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .site-nav {
+            display: none;
+            width: 100%;
+            padding-top: 10px;
+          }
+
+          .site-nav.mobile-open {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            animation: mobile-nav-in 160ms ease-out;
+          }
+
+          .site-nav.mobile-open > a,
+          .site-nav.mobile-open .language-dropdown,
+          .site-nav.mobile-open .smart-link-btn {
+            width: 100%;
+          }
+
+          .site-nav.mobile-open > a,
+          .site-nav.mobile-open .language-dropdown-trigger,
+          .site-nav.mobile-open .smart-link-btn {
+            min-height: 44px;
+            padding: 10px 12px;
+            text-align: center;
+          }
+
+          .site-nav.mobile-open .smart-link-btn {
+            grid-column: 1 / -1;
+          }
+
+          .language-dropdown-menu {
+            left: 0;
+            right: auto;
+            width: min(260px, calc(100vw - 44px));
+          }
+        }
+
+        @keyframes mobile-nav-in {
+          from {
+            opacity: 0;
+            transform: translateY(-6px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
       <header className="site-header">
         <div className="site-header-topline">
           <Link className="brand" href={getLocalizedPath(currentLocale, "")} aria-label={`${siteData.site.name} home`} onClick={closeMobileNav}>
