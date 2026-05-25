@@ -1,114 +1,164 @@
-// input: English Wizard Alchemy chest locations requirements
-// output: typed English chest locations guide content with evidence boundaries
+// input: English Wizard Alchemy chest locations requirements and video reference IDs
+// output: typed English chest locations guide content with evidence boundaries and embedded video references
 // pos: English chest-locations SEO content（更新规则：文件变更需同步本注释与所属目录 README）
 
 import type { StrategyPageContent } from "@/lib/content/page-types";
 
 export const enChestLocationsPage: StrategyPageContent = {
   meta: {
-    title: "Wizard Alchemy Chest Locations | All 10 Chests Route",
-    description: "Wizard Alchemy chest locations guide with an all 10 chests route, hidden chest notes, respawn status, and source-labeled farming cautions."
+    title: "Wizard Alchemy Chest Locations Guide | World 1 & World 2 Route",
+    description: "Video-assisted Wizard Alchemy chest locations guide with source-reported World 1 and World 2 routes, opening notes, and verification cautions."
   },
   slug: "chest-locations",
   hero: {
-    eyebrow: "Chest route",
-    h1: "Wizard Alchemy Chest Locations",
-    lede: "Use this Wizard Alchemy chest locations page as a route-first checklist. The public research signal says players look for all 10 chests, hidden chest notes, and respawn timing, but this guide keeps exact coordinates pending until screenshot proof or an in-game route log is added.",
-    primaryAction: { label: "Start beginner route", href: "/beginners-guide/" },
-    secondaryAction: { label: "Check updates", href: "/updates/" }
+    eyebrow: "Video-assisted chest route draft",
+    h1: "Wizard Alchemy Chest Locations Guide",
+    lede: "This independent fan guide organizes source-reported Wizard Alchemy chest locations into a practical World 1 and World 2 route. The page uses third-party embedded videos as visual references, but it does not claim every chest spot, respawn timer, or reward has been fully verified by this site.",
+    primaryAction: { label: "Check codes", href: "/codes/" },
+    secondaryAction: { label: "Back home", href: "/" }
   },
   summaryCards: [
     {
-      title: "Route before coordinates",
-      description: "The first version gives a practical route order and landmark checklist without inventing exact chest coordinates."
+      title: "Status",
+      description: "Source-reported and video-assisted. Kept noindex until stronger in-game verification exists."
     },
     {
-      title: "Hidden chest caution",
-      description: "Hidden chest claims are useful leads, but they stay labeled pending until the location is confirmed in-game."
+      title: "Route split",
+      description: "Current route draft covers 10 World 1 chest leads and 11 World 2 chest leads."
     },
     {
-      title: "Respawn not verified",
-      description: "Chest respawn time is a high-demand query, but exact minutes are not published without a timed test."
+      title: "No copied images",
+      description: "This page does not use Beebom images, YouTube screenshots, or AI-generated fake game screenshots."
     }
   ],
+  videos: {
+    eyebrow: "Video references",
+    title: "Video-assisted chest route checks",
+    description: "These embedded YouTube videos are third-party visual references. They help players compare landmarks, but they do not make every chest spot fully verified by this site.",
+    items: [
+      {
+        id: "jRwxytBiVcY",
+        title: "Wizard Alchemy chest route video reference 1",
+        note: "Use this as a visual landmark aid while following the written route. Do not treat it as this site's full verification log."
+      },
+      {
+        id: "oYwP4rmLdLc",
+        title: "Wizard Alchemy chest route video reference 2",
+        note: "Use this as a secondary reference if the first video does not show the area you need clearly."
+      }
+    ]
+  },
   sections: [
     {
-      heading: "All 10 chests route plan",
+      heading: "Verification status",
       body: [
-        "The safest first route is a loop, not a coordinate dump. Start from the spawn or main safe area, clear nearby low-risk landmarks, move outward into new magical areas, then return to the hub after the final outer check.",
-        "This page does not claim exact coordinates yet. It gives a route structure that can be updated with screenshots after an in-game pass confirms each chest."
+        "This page is not an official Wizard Alchemy map. It is a source-reported route draft built for players who want a checklist before this site can collect its own screenshots.",
+        "Chest count, exact route details, respawn timing, and reward claims remain pending until checked inside the Roblox game. The embedded videos are supporting references, not proof owned by this site."
       ],
       list: [
-        "Step 1: start from the main spawn or nearest hub landmark.",
-        "Step 2: check obvious building corners, stair landings, and potion-related rooms first.",
-        "Step 3: move to outer paths only after nearby chests are cleared.",
-        "Step 4: mark any chest near enemies or hazards as a later pickup.",
-        "Step 5: return to the hub and repeat only after respawn timing is tested."
+        "Route list: source-reported.",
+        "Videos: third-party embedded references.",
+        "Screenshots: not added yet.",
+        "Rewards and respawn timer: pending verification."
       ]
     },
     {
-      heading: "Route table to fill during testing",
+      heading: "Quick route summary",
       body: [
-        "Use this table format while checking the game. It prevents fake precision because every chest needs a landmark, reach note, danger note, and evidence status before it becomes final.",
-        "A screenshot should be added before any exact route claim is treated as verified."
+        "The route draft is split into World 1 and World 2. Start with World 1 if you are new, because the landmarks are easier to read and the route loops around spawn, river, cave, beach, lighthouse, and treehouse areas."
       ],
       list: [
-        "Chest 1: hub-adjacent landmark, status pending screenshot.",
-        "Chest 2: potion or crafting area landmark, status pending screenshot.",
-        "Chest 3: first outer path landmark, status pending screenshot.",
-        "Chest 4: elevated or stair landmark, status pending screenshot.",
-        "Chest 5: enemy-adjacent landmark, status pending screenshot.",
-        "Chest 6-10: keep as pending route slots until checked in-game."
+        "World 1: 10 source-reported chest leads.",
+        "World 2: 11 source-reported chest leads.",
+        "Best use: follow the written route while comparing landmarks in the embedded videos."
       ]
     },
     {
-      heading: "Hidden chest and danger notes",
+      heading: "World 1 chest route",
       body: [
-        "Hidden chest pages often rank because players miss one or two pickups. That demand is real, but a hidden chest claim can be wrong if it was copied after an update or recorded on a different game version.",
-        "For now, hidden chest notes should describe where to look broadly: behind large landmarks, around dead ends, under stairs, inside side rooms, and near path turns."
+        "World 1 should be treated as the learning loop. Move from spawn outward, clear the cave side, then finish through the beach and treehouse route."
       ],
       list: [
-        "Do not call a chest hidden unless the route log explains why players miss it.",
-        "Do not publish a dangerous shortcut unless the enemy or hazard nearby is known.",
-        "Do not use scripts, macros, or auto farm tools to discover chest paths.",
-        "Add screenshots later so the route can earn links instead of copying competitor text."
+        "Behind Spawn: turn around after spawning and inspect the shore-side area near the potion brewing and mushroom landmarks.",
+        "Spawn River: follow the nearby river toward the first farming area and check the rock edges beside the water.",
+        "First Miner Cave: enter the miner cave route and inspect the cave side near the miner path and barrier area.",
+        "Secret Cave: continue inside the cave route and look for a hidden wall-side passage. This spot needs in-game confirmation because hidden paths can change.",
+        "Miner Cave Mountain: leave the cave and climb toward the nearby mountain top to inspect upper ledges around the cave area.",
+        "Goblin Campfire: follow the river toward its end and check the goblin campfire area near the mountain side.",
+        "Traveller Tent: return to the main road toward the beach and inspect the back side of the traveller tent.",
+        "Dwarf King Throne: move to the beach-side boss throne area and check behind nearby rock cover.",
+        "Behind Lighthouse: circle behind the beach lighthouse and look back toward the main island direction.",
+        "Treehouse: return to the central island and check near the large treehouse door and platform edges."
       ]
     },
     {
-      heading: "Chest farming loop",
+      heading: "World 2 chest route",
       body: [
-        "A farming loop should minimize backtracking. Clear easy chests first, skip risky combat-adjacent chests if your build is weak, then return after upgrades or potion unlocks make the route safer.",
-        "Exact respawn time is still pending. A useful test needs a start time, pickup time, return time, server state, and whether the chest reappears after leaving the area."
+        "World 2 is more vertical and more dangerous. Expect lava routes, waterfall routes, boss-side checks, and island edges. Movement tools may help, but this page does not claim they are required."
       ],
       list: [
-        "Begin with low-risk nearby chests.",
-        "Save enemy-heavy chests for after power upgrades.",
-        "Record respawn tests in minutes instead of guessing.",
-        "Treat server-hop claims as unverified unless tested."
+        "Sea of Oblivion Spawn: start near the World 2 spawn and check the mountain area close to the alchemy table.",
+        "Enchantment Area: move toward the enchantment table route and inspect the upper-right side around the elevated area.",
+        "Small Volcano Triple Chest: return toward the main island and check the small volcano area, which is source-reported as a three-chest cluster.",
+        "Top of Waterfall Arch: climb toward the arch above the waterfall and inspect the top before dropping down.",
+        "Behind the Behemoth: enter the lava boss route and inspect the cliff and wall-side areas behind the Behemoth zone.",
+        "Lava Stream: check the lava stream near the Axe Orc route while watching enemy and terrain hazards.",
+        "Magma Hat Platform: move from the boss route toward the lava wizard hat landmark and inspect the platform and moving-rock side.",
+        "Mutant Axe Orc Island: look for the isolated island route near the Mutant Axe Orc area and check the smaller land section.",
+        "Right-Side Magma House: from spawn, take the right-side route instead of going straight to the volcano and check the house near magma.",
+        "Waterfall Cave: enter the waterfall cave, check the inner right side, then follow the left exit route and inspect the rock cavity.",
+        "Left of Volcano Beach: finish by moving to the beach left of the volcano and checking near the coconut tree landmark."
+      ]
+    },
+    {
+      heading: "Best route order",
+      body: [
+        "For a first pass, do not jump randomly between islands. Use one loop per world and write down which spots actually contain a chest in your server."
+      ],
+      list: [
+        "World 1 order: Spawn back, river, miner cave, secret cave, mountain, goblin campfire, traveller tent, Dwarf King throne, lighthouse, treehouse.",
+        "World 2 order: spawn mountain, enchantment area, small volcano, waterfall arch, Behemoth route, lava stream, magma hat, Mutant Axe Orc island, right-side magma house, waterfall cave, volcano-left beach.",
+        "If a chest is missing, note the server time and return later instead of assuming the route is wrong."
+      ]
+    },
+    {
+      heading: "How to open chests",
+      body: [
+        "Walk close to a chest and use the in-game interaction prompt when it appears. Keep inventory space available before opening because reward handling is not fully documented by this site yet."
+      ],
+      list: [
+        "Open chests only inside the Roblox game UI.",
+        "Do not use chest finder scripts or browser tools.",
+        "Do not enter Roblox passwords, cookies, recovery codes, or session tokens anywhere.",
+        "Record any reward result before treating it as verified data."
       ]
     }
   ],
   relatedLinks: [
-    { href: "/beginners-guide/", title: "Beginner Guide", description: "Learn the basic collection, potion, spell, and upgrade loop before routing chest farms." },
-    { href: "/potions/", title: "Potions Guide", description: "Plan which potion unlocks or materials may affect safer chest routes." },
-    { href: "/updates/", title: "Updates", description: "Check whether route or respawn claims changed after a new Wizard Alchemy update." }
+    { href: "/codes/", title: "Codes", description: "Check source-labeled code status before testing race reroll or reward claims." },
+    { href: "/beginners-guide/", title: "Beginner Guide", description: "Learn the basic game loop before running long chest routes." },
+    { href: "/updates/", title: "Updates", description: "Watch for map or route changes that could move chest locations." }
   ],
   faq: [
     {
-      q: "Where are all 10 chests in Wizard Alchemy?",
-      a: "This first version gives a route checklist but keeps exact chest locations pending until an in-game screenshot route is recorded."
+      q: "Is this Wizard Alchemy chest locations page fully verified?",
+      a: "No. It is a source-reported and video-assisted draft. The page does not claim every spot has been verified by this site."
     },
     {
-      q: "Does Wizard Alchemy have hidden chests?",
-      a: "Hidden chest demand appears in competitor research, but this page does not mark any exact hidden chest verified until location proof is added."
+      q: "Why does this page use videos instead of screenshots?",
+      a: "This page avoids copied images and does not yet have original in-game screenshots. Embedded videos provide visual reference while the written route remains clearly marked as source-reported."
     },
     {
-      q: "What is the Wizard Alchemy chest respawn time?",
-      a: "The exact respawn time is not verified here yet. It needs a timed in-game test before minutes are published."
+      q: "How many Wizard Alchemy chest spots are listed here?",
+      a: "The current draft lists 21 source-reported chest leads: 10 in World 1 and 11 in World 2."
     },
     {
-      q: "Can I use auto farm scripts for chests?",
-      a: "No. This guide does not provide scripts, macros, downloads, or auto farm instructions."
+      q: "How often do chests respawn?",
+      a: "Some third-party sources report fixed respawn timing, but this site has not verified the timer. Treat respawn timing as pending verification."
+    },
+    {
+      q: "What rewards do chests give?",
+      a: "This page does not publish exact reward quantities, drop rates, or guaranteed items without in-game proof."
     }
   ]
 };
