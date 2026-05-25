@@ -1,7 +1,7 @@
 "use client";
 // input: app children, site config, page registry, and shared site data
-// output: locale-aware site navigation and footer shell limited to completed pages with top ad banners
-// pos: components/SiteChrome.tsx (更新规则：全局布局或头部/底部导航项变更需同步此文件与所属目录 README)
+// output: locale-aware site navigation and footer shell limited to completed pages with mobile-collapsed header and top ad banners
+// pos: components/SiteChrome.tsx (更新规则：全局布局、移动端导航或头部/底部导航项变更需同步此文件与所属目录 README)
 
 import { useState } from "react";
 import Link from "next/link";
@@ -86,6 +86,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
   const currentLocale = getCurrentLocale(pathname);
   const currentSlug = normalizedCurrentSlug(pathname);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const coreNavKeys = completedCoreSlugs.filter((slug) => slug !== "");
   const coreNavItems = coreNavKeys
     .map((key) => siteData.pages.find((p) => p.key === key))
@@ -96,19 +97,36 @@ export function SiteChrome({ children }: SiteChromeProps) {
   const developerName = siteData.game.creator.name || "the game developer";
   const friendLinks = siteData.site.friendLinks as FriendLink[];
 
+  function closeMobileNav() {
+    setIsMobileNavOpen(false);
+    setIsLanguageOpen(false);
+  }
+
   return (
     <div className="site-shell">
       <header className="site-header">
-        <Link className="brand" href={getLocalizedPath(currentLocale, "")} aria-label={`${siteData.site.name} home`}>
-          <span className="brand-mark">{brandMark(siteData.site.shortName)}</span>
-          <span>
-            <strong>{siteData.site.shortName}</strong>
-            <small>Roblox guide</small>
-          </span>
-        </Link>
-        <nav className="site-nav" aria-label="Main navigation">
+        <div className="site-header-topline">
+          <Link className="brand" href={getLocalizedPath(currentLocale, "")} aria-label={`${siteData.site.name} home`} onClick={closeMobileNav}>
+            <span className="brand-mark">{brandMark(siteData.site.shortName)}</span>
+            <span>
+              <strong>{siteData.site.shortName}</strong>
+              <small>Roblox guide</small>
+            </span>
+          </Link>
+          <button
+            type="button"
+            className="mobile-nav-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded={isMobileNavOpen}
+            aria-controls="site-nav"
+            onClick={() => setIsMobileNavOpen((current) => !current)}
+          >
+            <span>{isMobileNavOpen ? "Close" : "Menu"}</span>
+          </button>
+        </div>
+        <nav id="site-nav" className={isMobileNavOpen ? "site-nav mobile-open" : "site-nav"} aria-label="Main navigation">
           {coreNavItems.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} onClick={closeMobileNav}>
               {item.label}
             </Link>
           ))}
@@ -141,7 +159,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
                     key={item.code}
                     href={getLocalizedPath(item.code, currentSlug)}
                     role="menuitem"
-                    onClick={() => setIsLanguageOpen(false)}
+                    onClick={closeMobileNav}
                   >
                     <span>{item.shortLabel}</span>
                     <strong>{item.label}</strong>
