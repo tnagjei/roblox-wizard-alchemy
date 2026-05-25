@@ -28,6 +28,7 @@ export const gameConfig = {
   analytics: {
     googleAnalyticsId: "G-HNK0BQ06B7",
     yandexVerification: "a8ec5c781c023eac",
+    bingVerification: "CCDF273298A8B64EE24BA7EA87487F7C",
     clarityId: "wsy7wh8pe6",
     adsenseClient: "ca-pub-3083296102953963",
     thirdPartyAdScripts: [] as string[]

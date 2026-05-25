@@ -1,6 +1,6 @@
 // input: Next.js App Router children, template config, and site data
-// output: root HTML layout with shared chrome and optional integrations
-// pos: app root layout
+// output: root HTML layout with shared chrome, optional integrations, and search engine verifications
+// pos: app/layout.tsx (更新规则：全局脚本、集成或元数据更改需同步此文件与所属目录 README)
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
@@ -16,6 +16,7 @@ const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID || gameConfig.analytics.
 const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || gameConfig.analytics.adsenseClient;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || gameConfig.analytics.clarityId;
 const yandexVerification = process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || gameConfig.analytics.yandexVerification;
+const bingVerification = process.env.NEXT_PUBLIC_BING_VERIFICATION || gameConfig.analytics.bingVerification;
 const thirdPartyAdScripts = gameConfig.analytics.thirdPartyAdScripts;
 
 export const metadata: Metadata = {
@@ -30,7 +31,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl
   },
-  verification: yandexVerification ? { yandex: yandexVerification } : undefined
+  verification: {
+    yandex: yandexVerification || undefined,
+    other: {
+      ...(bingVerification ? { "msvalidate.01": bingVerification } : {})
+    }
+  }
 };
 
 export const viewport: Viewport = {
