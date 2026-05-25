@@ -18,7 +18,7 @@ export const gameConfig = {
   coreSlugs: ["", "codes", "tier-list", "updates", "beginners-guide", "units"],
   completedCoreSlugs: ["", "codes", "updates", "beginners-guide"],
   englishOnlySlugs: ["scripts", "value-list", "macros", "discord", "chest-locations", "race-tier-list", "potions"],
-  completedEnglishOnlySlugs: ["chest-locations"],
+  completedEnglishOnlySlugs: ["chest-locations", "potions"],
 
   robloxUrl: "https://www.roblox.com/games/118821269826806/Wizard-Alchemy",
   robloxGroupUrl: "https://www.roblox.com/communities/509055872/Muggle-Academy",
