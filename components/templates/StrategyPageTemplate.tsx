@@ -1,5 +1,5 @@
 // input: typed localized strategy page content and locale
-// output: generic strategy guide page layout for tier list, updates, beginner guide, units, and embedded ad banners
+// output: generic strategy guide page layout for tier list, updates, beginner guide, units, optional videos, and embedded ad banners
 // pos: components/templates/StrategyPageTemplate.tsx (更新规则：指南页面布局或广告位置调整需同步更新此文件与所属目录 README)
 
 import Link from "next/link";
@@ -18,6 +18,14 @@ type StrategyPageTemplateProps = {
 
 function actionHref(href: string): string {
   return href === "roblox" ? siteData.game.robloxUrl : href;
+}
+
+function embedUrl(id: string) {
+  return `https://www.youtube-nocookie.com/embed/${id}`;
+}
+
+function watchUrl(id: string) {
+  return `https://www.youtube.com/watch?v=${id}`;
 }
 
 function articleJsonLd(content: StrategyPageContent, locale: Locale) {
@@ -96,6 +104,38 @@ export function StrategyPageTemplate({ content, locale }: StrategyPageTemplatePr
           </article>
         ))}
       </section>
+
+      {content.videos && content.videos.items.length > 0 ? (
+        <section className="home-video-section" aria-label={content.videos.title}>
+          <div className="section-heading">
+            <p className="eyebrow">{content.videos.eyebrow}</p>
+            <h2>{content.videos.title}</h2>
+          </div>
+          <p className="home-video-lede">{content.videos.description}</p>
+          <div className="home-video-grid video-embed-grid">
+            {content.videos.items.map((video) => (
+              <article className="home-video-card video-embed-card" key={video.id}>
+                <span>video-assisted</span>
+                <div className="home-video-frame video-embed-frame">
+                  <iframe
+                    src={embedUrl(video.id)}
+                    title={video.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <h3>{video.title}</h3>
+                <p>{video.note}</p>
+                <a href={watchUrl(video.id)} target="_blank" rel="noopener noreferrer">
+                  Open on YouTube
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="content-grid">
         {content.sections.map((section) => (
