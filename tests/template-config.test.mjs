@@ -49,7 +49,7 @@ test("Wizard Alchemy data uses production domain and no copied old game data fil
   assert.equal(fs.existsSync(path.join(root, "public/data/noob-tower-defense.json")), false);
 
   const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-  assert.equal(data.site.defaultBaseUrl, "https://wizardalchemy.online");
+  assert.equal(data.site.defaultBaseUrl, "https://www.wizardalchemy.online");
   assert.equal(data.game.name, "Wizard Alchemy");
   assert.equal(data.game.creator.name, "Muggle Academy");
   assert.equal(data.codes.verifiedActiveCodes.length, 0);

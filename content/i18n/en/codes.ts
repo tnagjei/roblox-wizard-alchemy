@@ -58,6 +58,7 @@ export const enCodesPage: CodesPageContent = {
         title: "1. Source check",
         list: [
           "Check the official Roblox game page first.",
+          "Treat New Mainland code claims as update leads, not verified active codes.",
           "Keep third-party code lists as research leads only.",
           "Do not treat Discord or video comments as official unless developer-linked proof exists."
         ]
@@ -97,13 +98,27 @@ export const enCodesPage: CodesPageContent = {
       heading: "Current Wizard Alchemy code verdict",
       body: [
         "RELEASE and WIZARD are the best starting points because they are mentioned in the Roblox game description.",
-        "MACHI is still useful as a research lead, but this page does not mark it active without stronger evidence."
+        "MACHI is still useful as a research lead, but this page does not mark it active without stronger evidence.",
+        "New Mainland is tracked as an update context for future checks, not as proof that a new verified code exists."
       ],
       list: [
         "Active table: empty until in-game test evidence exists.",
         "Pending table: RELEASE and WIZARD.",
         "Community leads: MACHI stays unverified.",
+        "New Mainland claims: research queue only until official or in-game proof exists.",
         "Reward quantities: not published until recorded in-game."
+      ]
+    },
+    {
+      heading: "Race reroll and progression links",
+      body: [
+        "Race reroll rewards matter because they affect whether players should spend or save rerolls. This codes page now links to the race tier list and potions guide so code research supports real progression decisions.",
+        "Do not treat any code as a reroll source until the redemption result is recorded inside Wizard Alchemy."
+      ],
+      list: [
+        "Use the race tier list before spending scarce rerolls.",
+        "Use the potions guide to understand spell and material progression.",
+        "Use the chest route when checking whether materials or rewards appear in chests."
       ]
     },
     {
@@ -122,6 +137,7 @@ export const enCodesPage: CodesPageContent = {
   faq: [
     { q: "What are the current Wizard Alchemy codes?", a: "RELEASE and WIZARD are mentioned on the Roblox game page and are the first codes to test. They are still pending here until this site records an in-game redemption result." },
     { q: "Is MACHI an active Wizard Alchemy code?", a: "MACHI appears in third-party code lists, but this page keeps it as community-reported until Roblox-page proof or an in-game test confirms it." },
+    { q: "Are there New Mainland Wizard Alchemy codes?", a: "New Mainland is treated as an update-related research signal here. It is not listed as a verified active code until official or in-game proof confirms a redeemable code." },
     { q: "Why are there no verified rewards listed?", a: "Exact rewards are not listed because this site has not recorded the in-game result yet. Publishing reward quantities without a test would be fake precision." },
     { q: "Can a code tool redeem Wizard Alchemy codes for me?", a: "Do not use tools that ask for Roblox credentials, cookies, recovery codes, session tokens, browser extensions, or script downloads." }
   ]

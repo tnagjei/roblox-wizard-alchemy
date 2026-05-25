@@ -5,7 +5,7 @@
     "description": "An independent Wizard Alchemy Roblox guide focused on source-checked codes, update notes, beginner guidance, and safe research boundaries.",
     "contactEmail": "tangjei414@gmail.com",
     "copyrightOwner": "tangjei",
-    "lastFullCheck": "2026-05-18",
+    "lastFullCheck": "2026-05-25",
     "defaultBaseUrl": "https://www.wizardalchemy.online",
     "aliases": ["Wizard Alchemy", "Wizard Alchemy Roblox Guide"],
     "friendLinks": []
@@ -76,12 +76,12 @@
   "codes": {
     "verifiedCountLabel": "0 in-game verified active codes",
     "officialStatus": "Roblox description mentions RELEASE and WIZARD; in-game testing is still pending.",
-    "lastChecked": "2026-05-18",
+    "lastChecked": "2026-05-25",
     "verificationPolicy": "Do not invent codes, rewards, or redemption steps. Promote a code to fully verified only after official-source review and in-game redemption testing.",
     "hasRedeemSystem": "mentioned by official Roblox description, not yet in-game tested by this site",
     "verifiedActiveCodes": [],
     "expiredCodes": [],
-    "thirdPartyConflictSummary": "Third-party sites mention extra details such as race reroll quantities, MACHI, and Discord links. This site treats those as leads, not proof.",
+    "thirdPartyConflictSummary": "Third-party sites mention extra details such as race reroll quantities, MACHI, New Mainland code claims, and Discord links. This site treats those as leads, not proof.",
     "pendingCodes": [
       {
         "code": "RELEASE",
@@ -123,6 +123,15 @@
             "verdict": "not in-game recorded by this site"
           }
         ]
+      },
+      {
+        "code": "New Mainland codes",
+        "claims": [
+          {
+            "source": "third-party and Reddit-style update chatter",
+            "verdict": "tracked as update context, not verified active code"
+          }
+        ]
       }
     ],
     "verificationChecklist": [
@@ -151,7 +160,7 @@
       "h1": "Wizard Alchemy Guide",
       "lede": "A source-aware Wizard Alchemy guide for Roblox players. Start with the official game page, track codes carefully, and keep unverified claims separate from facts.",
       "focus": "Hub",
-      "relatedPages": ["codes", "updates", "beginners-guide"],
+      "relatedPages": ["codes", "chest-locations", "race-tier-list", "potions", "updates", "beginners-guide"],
       "faq": [
         {
           "q": "Is this an official Wizard Alchemy website?",
@@ -172,7 +181,7 @@
       "h1": "Wizard Alchemy Codes",
       "lede": "RELEASE and WIZARD are mentioned on the Roblox game page. MACHI and exact reward quantities stay pending until stronger evidence exists.",
       "focus": "Codes",
-      "relatedPages": ["updates", "beginners-guide"],
+      "relatedPages": ["race-tier-list", "potions", "updates", "beginners-guide"],
       "sections": [],
       "faq": [],
       "primaryKeyword": "Wizard Alchemy codes"
@@ -198,7 +207,7 @@
       "h1": "Wizard Alchemy Updates",
       "lede": "Track Wizard Alchemy changes with source labels. This first version records the release-page description and keeps unsupported update claims pending.",
       "focus": "Updates",
-      "relatedPages": ["codes", "beginners-guide"],
+      "relatedPages": ["codes", "chest-locations", "race-tier-list", "potions", "beginners-guide"],
       "sections": [],
       "faq": [],
       "primaryKeyword": "Wizard Alchemy updates"
@@ -211,10 +220,49 @@
       "h1": "Wizard Alchemy Beginner Guide",
       "lede": "Start with the verified Roblox description: collect ingredients, brew potions, unlock spells, upgrade power, and explore magical areas. Detailed mechanics remain pending until checked.",
       "focus": "Beginner Guide",
-      "relatedPages": ["codes", "updates"],
+      "relatedPages": ["codes", "chest-locations", "race-tier-list", "potions", "updates"],
       "sections": [],
       "faq": [],
       "primaryKeyword": "Wizard Alchemy beginner guide"
+    },
+    {
+      "key": "chest-locations",
+      "path": "/chest-locations/",
+      "title": "Wizard Alchemy Chest Locations | All 10 Chests Route",
+      "description": "Wizard Alchemy chest locations guide with all 10 chests route planning, hidden chest notes, respawn status, and source-labeled farming cautions.",
+      "h1": "Wizard Alchemy Chest Locations",
+      "lede": "Plan a route for all 10 chests while exact coordinates, hidden chest claims, and respawn timing stay pending until in-game proof exists.",
+      "focus": "Chest Locations",
+      "relatedPages": ["beginners-guide", "potions", "updates"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Wizard Alchemy chest locations"
+    },
+    {
+      "key": "race-tier-list",
+      "path": "/race-tier-list/",
+      "title": "Wizard Alchemy Race Tier List | Best Races & Reroll Guide",
+      "description": "Wizard Alchemy race tier list with best race targets, reroll priority, Thestrals, Stellar Ambassador, Death Eater, and pending evidence labels.",
+      "h1": "Wizard Alchemy Race Tier List",
+      "lede": "Plan race rerolls with reported race targets separated from verified in-game evidence.",
+      "focus": "Race Tier List",
+      "relatedPages": ["codes", "potions", "beginners-guide"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Wizard Alchemy race tier list"
+    },
+    {
+      "key": "potions",
+      "path": "/potions/",
+      "title": "Wizard Alchemy Potions Guide | Spells, Recipes & Materials",
+      "description": "Wizard Alchemy potions guide for spell unlocks, recipe status, material planning, beginner brewing route, and source-labeled progression notes.",
+      "h1": "Wizard Alchemy Potions Guide",
+      "lede": "Understand potion progression, spell unlocks, and material planning without invented recipes.",
+      "focus": "Potions",
+      "relatedPages": ["chest-locations", "race-tier-list", "updates"],
+      "sections": [],
+      "faq": [],
+      "primaryKeyword": "Wizard Alchemy potions guide"
     },
     {
       "key": "units",

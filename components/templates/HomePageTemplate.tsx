@@ -228,6 +228,9 @@ function buildHomeCopy(locale: Locale): HomeCopy {
     ],
     completedCards: [
       { href: href("codes"), title: "Codes", description: "Track RELEASE and WIZARD as Roblox-page-mentioned codes while in-game testing remains pending." },
+      { href: href("chest-locations"), title: "Chest Locations", description: "Follow a source-labeled chest route with hidden chest and respawn notes kept pending until screenshots are added." },
+      { href: href("race-tier-list"), title: "Race Tier List", description: "Plan rerolls with reported race targets separated from verified in-game evidence." },
+      { href: href("potions"), title: "Potions", description: "Understand potion progression, spell unlocks, and material planning without invented recipes." },
       { href: href("beginners-guide"), title: "Beginner Guide", description: "Start from the verified official description: collect ingredients, brew potions, unlock spells, upgrade power, and explore magical areas." },
       { href: href("updates"), title: "Updates", description: "Record source-labeled release notes and keep unsupported patch claims out of the index." }
     ],

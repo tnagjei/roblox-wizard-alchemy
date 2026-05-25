@@ -68,6 +68,7 @@ export const enUpdatesPage: StrategyPageContent = {
       list: [
         "Where the code redemption UI is located.",
         "Whether MACHI is accepted in-game.",
+        "Whether New Mainland introduced any official code, route, race, or potion changes.",
         "Exact reward results for RELEASE and WIZARD.",
         "Whether the claimed Discord invite is developer-linked.",
         "Whether parry, ascension, shards, races, and boss farming are core mechanics."
@@ -90,6 +91,9 @@ export const enUpdatesPage: StrategyPageContent = {
   ],
   relatedLinks: [
     { href: "/codes/", title: "Codes", description: "Review RELEASE, WIZARD, MACHI, and the evidence level for each code claim." },
+    { href: "/chest-locations/", title: "Chest Locations", description: "Use the new route page to track chest and respawn claims after updates." },
+    { href: "/race-tier-list/", title: "Race Tier List", description: "Keep race changes source-labeled before changing reroll advice." },
+    { href: "/potions/", title: "Potions Guide", description: "Track whether updates change potion recipes, materials, or spell unlocks." },
     { href: "/beginners-guide/", title: "Beginner Guide", description: "Start the game safely before following unverified race or reroll advice." },
     { href: "/", title: "Guide hub", description: "Return to the homepage for quick facts, source status, and research backlog." }
   ],

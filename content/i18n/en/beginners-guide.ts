@@ -89,6 +89,9 @@ export const enBeginnersGuidePage: StrategyPageContent = {
   ],
   relatedLinks: [
     { href: "/codes/", title: "Codes", description: "Review RELEASE, WIZARD, MACHI, and the current evidence status before redeeming anything." },
+    { href: "/chest-locations/", title: "Chest Locations", description: "Follow the chest route checklist once you understand the early UI and safe movement." },
+    { href: "/race-tier-list/", title: "Race Tier List", description: "Read the reroll cautions before spending scarce race reroll resources." },
+    { href: "/potions/", title: "Potions Guide", description: "Use potion progression notes to plan ingredients, spell unlocks, and upgrades." },
     { href: "/updates/", title: "Updates", description: "Track verified public source changes before trusting patch or balance claims." },
     { href: "/", title: "Guide hub", description: "Return to the homepage for source status, pending topics, and research backlog." }
   ],

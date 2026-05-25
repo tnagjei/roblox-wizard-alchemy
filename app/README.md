@@ -20,6 +20,9 @@
 - privacy/：隐私政策页面
 - terms/：使用条款页面
 - codes/：codes 页面
+- chest-locations/：英文宝箱位置页面
+- potions/：英文药水攻略页面
+- race-tier-list/：英文种族排行页面
 - tier-list/：tier list 页面
 - units/：units 页面
 - upgrades/：traits/upgrades 页面

@@ -146,7 +146,7 @@ export type CodesPageContent = {
 
 export type StrategyPageContent = {
   meta: SeoMeta;
-  slug: "tier-list" | "updates" | "beginners-guide" | "units" | "scripts" | "value-list" | "macros" | "discord";
+  slug: "tier-list" | "updates" | "beginners-guide" | "units" | "scripts" | "value-list" | "macros" | "discord" | "chest-locations" | "race-tier-list" | "potions";
   hero: HeroBlock;
   summaryCards: Array<{
     title: string;
