@@ -99,7 +99,7 @@ export function createTemplateHomePage(locale = "en"): HomePageContent {
     ],
     faq: [
       { q: "Is this an official Wizard Alchemy website?", a: "No. This is an independent fan guide and is not affiliated with Roblox Corporation or Muggle Academy." },
-      { q: "Why are some pages missing from the footer and sitemap?", a: "Tier list, units, scripts, macros, value list, and Discord pages are not complete enough to index yet." }
+      { q: "Why are some pages missing from the footer and sitemap?", a: "Tier list, units, scripts, macros, value list, Discord, race, potion, and chest pages are not complete enough to index yet." }
     ]
   };
 }
@@ -155,30 +155,9 @@ export function createTemplateCodesPage(locale = "en"): CodesPageContent {
       eyebrow: "Verification workflow",
       title: "How this page promotes a code to active",
       cards: [
-        {
-          title: "1. Source check",
-          list: [
-            "Check the Roblox game page first.",
-            "Use Muggle Academy community links only when they clearly point to official channels.",
-            "Treat third-party pages as leads, not proof."
-          ]
-        },
-        {
-          title: "2. In-game test",
-          list: [
-            "Redeem only inside the Wizard Alchemy game UI.",
-            "Record code text, date, server state, and exact reward result.",
-            "Do not use browser extensions, scripts, or code generators."
-          ]
-        },
-        {
-          title: "3. Publish rule",
-          list: [
-            "Move a code to active only after source and in-game evidence agree.",
-            "Do not invent race reroll counts or reward names.",
-            "Keep expired and rejected claims separate."
-          ]
-        }
+        { title: "1. Source check", list: ["Check the Roblox game page first.", "Use Muggle Academy community links only when they clearly point to official channels.", "Treat third-party pages as leads, not proof."] },
+        { title: "2. In-game test", list: ["Redeem only inside the Wizard Alchemy game UI.", "Record code text, date, server state, and exact reward result.", "Do not use browser extensions, scripts, or code generators."] },
+        { title: "3. Publish rule", list: ["Move a code to active only after source and in-game evidence agree.", "Do not invent race reroll counts or reward names.", "Keep expired and rejected claims separate."] }
       ]
     },
     redeemGuide: {
@@ -196,28 +175,13 @@ export function createTemplateCodesPage(locale = "en"): CodesPageContent {
     sections: [
       {
         heading: "Current code verdict",
-        body: [
-          "RELEASE and WIZARD have the strongest public source signal because they are mentioned in the Roblox game description.",
-          "MACHI is visible in competitor and third-party code lists, but this first version keeps it as a research lead rather than an active code."
-        ],
-        list: [
-          "Active table: empty until in-game test evidence exists.",
-          "Pending table: RELEASE and WIZARD.",
-          "Community leads: MACHI stays unverified.",
-          "Reward quantities: not published until recorded in-game."
-        ]
+        body: ["RELEASE and WIZARD have the strongest public source signal because they are mentioned in the Roblox game description.", "MACHI is visible in competitor and third-party code lists, but this first version keeps it as a research lead rather than an active code."],
+        list: ["Active table: empty until in-game test evidence exists.", "Pending table: RELEASE and WIZARD.", "Community leads: MACHI stays unverified.", "Reward quantities: not published until recorded in-game."]
       },
       {
         heading: "Why exact rewards are not listed yet",
-        body: [
-          "Several third-party pages show race reroll quantities, but copying that number without a recorded in-game test would create fake precision.",
-          "This page will list exact rewards only after the redemption result is checked inside Wizard Alchemy."
-        ],
-        list: [
-          "No invented reroll counts.",
-          "No copied Discord claims.",
-          "No script or macro download links."
-        ]
+        body: ["Several third-party pages show race reroll quantities, but copying that number without a recorded in-game test would create fake precision.", "This page will list exact rewards only after the redemption result is checked inside Wizard Alchemy."],
+        list: ["No invented reroll counts.", "No copied Discord claims.", "No script or macro download links."]
       }
     ],
     faq: [
@@ -282,6 +246,56 @@ export function createTemplateStrategyPage(slug: StrategySlug, locale = "en"): S
       faq: [
         { q: "Does this page include a full build path?", a: "Not yet. Builds require verified mechanics, stats, and balance information." },
         { q: "Can I trust external code tools?", a: "Do not use tools that ask for Roblox account data, cookies, recovery codes, or downloads." }
+      ]
+    },
+    "race-tier-list": {
+      hero: {
+        eyebrow: "Source-reported race ranking",
+        h1: "Wizard Alchemy Race Tier List",
+        lede: "This is a source-reported draft for Wizard Alchemy race rankings. It is not a final in-game verified tier list. Use it as a research checklist while race effects, reroll behavior, and build fit remain pending verification.",
+        primaryAction: { label: "Check codes", href: localizedHref(locale, "codes") },
+        secondaryAction: { label: "Back home", href: localizedHref(locale, "") }
+      },
+      summaryCards: [
+        { title: "Status", description: "Draft page. Rankings are source-reported and kept noindex until stronger evidence exists." },
+        { title: "Best lead", description: "Thestrals is the strongest race lead from third-party tier data, not a site-verified final answer." },
+        { title: "Do not fake stats", description: "No hidden multipliers, reroll odds, or exact race effects are invented on this page." }
+      ],
+      sections: [
+        {
+          heading: "How to read this race tier list",
+          body: [
+            "Race rankings in Wizard Alchemy are judgment-heavy. A race can look strong for farming, but weaker for boss fights or early progression.",
+            "This draft uses third-party ranking signals as leads and rewrites them into a safer evidence-aware format. Treat every tier as pending until checked in-game."
+          ],
+          list: ["S tier means strongest source-reported lead.", "A tier means strong alternative, not guaranteed best.", "Lower tiers need more testing before being dismissed.", "Do not spend currency or rerolls based only on this draft."]
+        },
+        {
+          heading: "Source-reported race tiers",
+          body: ["The table below is a research draft. It should not be treated as an official or fully verified Wizard Alchemy ranking."],
+          list: ["S tier lead: Thestrals.", "A tier leads: Stellar Ambassador, Fiendish Demon, Ice Crystal.", "B to D tier entries need more cross-source checks before this site publishes stronger advice."]
+        },
+        {
+          heading: "Beginner recommendation",
+          body: ["If you are new, do not chase a perfect race immediately. Learn the potion loop, combat timing, and map routes before spending heavily on rerolls."],
+          list: ["Use codes only inside the Roblox game UI.", "Do not trust external race reroll tools.", "Record your current race, effect text, and test result before drawing conclusions."]
+        },
+        {
+          heading: "What still needs verification",
+          body: ["This page needs in-game screenshots, exact race effect text, and repeated testing before it should become a completed indexed page."],
+          list: ["Exact race effects.", "Reroll odds.", "Best race by farming, bossing, and early game.", "Whether future updates change the ranking."]
+        }
+      ],
+      relatedLinks: [
+        { href: localizedHref(locale, "codes"), title: "Codes", description: "Check source-labeled code and race reroll claims." },
+        { href: localizedHref(locale, "beginners-guide"), title: "Beginner Guide", description: "Learn the verified early-game loop first." },
+        { href: localizedHref(locale, "updates"), title: "Updates", description: "Watch for balance or race changes before trusting old rankings." }
+      ],
+      faq: [
+        { q: "Is this Wizard Alchemy race tier list official?", a: "No. This is an independent fan guide and is not affiliated with Roblox Corporation or Muggle Academy." },
+        { q: "Is Thestrals definitely the best race?", a: "Thestrals is the strongest source-reported lead in this draft, but this site has not fully verified every race effect in-game." },
+        { q: "Should I use race rerolls immediately?", a: "Not based only on this draft. Wait until you understand the game loop and verify what your current race actually gives you." },
+        { q: "Why is this page noindex?", a: "The page contains useful research text, but it is not ready for sitemap or footer promotion until more in-game verification exists." }
       ]
     }
   };
