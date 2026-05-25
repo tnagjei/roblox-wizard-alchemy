@@ -1,113 +1,147 @@
-// input: English Wizard Alchemy race tier list requirements
-// output: typed English race tier list guide content with source labels
+// input: English Wizard Alchemy race tier list requirements and source-reported race leads
+// output: typed English race tier list guide content with evidence labels, reroll caution, and original tier structure
 // pos: English race-tier-list SEO content（更新规则：文件变更需同步本注释与所属目录 README）
 
 import type { StrategyPageContent } from "@/lib/content/page-types";
 
 export const enRaceTierListPage: StrategyPageContent = {
   meta: {
-    title: "Wizard Alchemy Race Tier List | Best Races & Reroll Guide",
-    description: "Wizard Alchemy race tier list with best race targets, reroll priority, Thestrals, Stellar Ambassador, Death Eater, and pending evidence labels."
+    title: "Wizard Alchemy Race Tier List | Best Races, Reroll Priority & Evidence Notes",
+    description: "Independent Wizard Alchemy race tier list with source-reported S/A/B/C/D leads, reroll priority, beginner advice, and pending verification labels."
   },
   slug: "race-tier-list",
   hero: {
-    eyebrow: "Race reroll planning",
+    eyebrow: "Source-reported race tier guide",
     h1: "Wizard Alchemy Race Tier List",
-    lede: "This Wizard Alchemy race tier list is deliberately source-labeled. It helps you decide whether to save or spend rerolls, but it does not pretend that reported race names, buffs, or exact rankings are verified until in-game evidence is recorded.",
+    lede: "This independent fan guide organizes Wizard Alchemy race ranking leads into a safer S/A/B/C/D framework. It helps players decide whether to save or spend rerolls, but it does not invent hidden stats, reroll odds, or final race effects without in-game proof.",
     primaryAction: { label: "Check code status", href: "/codes/" },
-    secondaryAction: { label: "Beginner guide", href: "/beginners-guide/" }
+    secondaryAction: { label: "Potions guide", href: "/potions/" }
   },
   summaryCards: [
     {
-      title: "Best race claims are pending",
-      description: "Thestrals, Stellar Ambassador, and Death Eater appear in competitor research, but exact ranking evidence is not verified here."
+      title: "Top source-reported lead",
+      description: "Thestrals is treated as the strongest race lead, but this site still marks it as pending verification."
     },
     {
-      title: "Rerolls are scarce",
-      description: "Do not spend rerolls just because a table looks confident. Wait for stronger source or in-game performance evidence."
+      title: "Strong alternatives",
+      description: "Stellar Ambassador, Fiendish Demon, and Ice Crystal are useful A-tier research leads, not final tested rankings."
     },
     {
-      title: "Codes affect race planning",
-      description: "RELEASE and WIZARD are source-backed leads, while MACHI remains community-reported until stronger proof exists."
+      title: "No fake odds",
+      description: "This page does not invent reroll probabilities, hidden multipliers, race buffs, or exact stat values."
     }
   ],
   sections: [
     {
-      heading: "Current tier list verdict",
+      heading: "Verification status",
       body: [
-        "The honest verdict is that Wizard Alchemy race data is useful but not fully verified by this site yet. A public table can still help if it separates reported race names from tested race performance.",
-        "Use the tiers below as a research framework, not as final in-game truth."
+        "Race rankings in Wizard Alchemy are useful, but they are not the same as verified game data. A race can be real, a ranking can be popular, and the practical value can still change after updates, spell unlocks, or potion choices.",
+        "This page uses source-reported tiers as a research map. Treat the list as a decision aid, not as an official or fully tested ranking."
       ],
       list: [
-        "S tier candidates: Thestrals and Stellar Ambassador are reported by competitor coverage, status pending.",
-        "A tier candidates: Death Eater and other advanced races are reported, status pending.",
-        "Starter races: Human and common races need a baseline test before being ranked.",
-        "Exact buffs: pending until screenshots, tooltips, or repeated tests are available.",
-        "Final reroll advice: save rare rerolls until the race effect is verified."
+        "Race names and tier positions: source-reported leads.",
+        "Exact race effects: pending verification.",
+        "Reroll odds: not published.",
+        "Best race by farming, bossing, or beginner progression: pending testing.",
+        "Official status: this is an independent fan guide, not an official Wizard Alchemy page."
       ]
     },
     {
-      heading: "How to read source-labeled tiers",
+      heading: "S/A/B/C/D race tier framework",
       body: [
-        "A race tier list can be wrong in two ways: the race name can be real but the ranking can be copied, or the ranking can be reasonable but changed by a balance update.",
-        "That is why this page uses evidence labels instead of publishing a fake definitive meta."
+        "The tier framework below is written for practical decision-making. S tier means the strongest reported target. A tier means strong alternatives. Lower tiers should not be dismissed until their actual effects are checked in-game.",
+        "Do not spend rare rerolls only because a tier table looks confident. First check whether the race supports your current spell, potion role, and progression stage."
       ],
       list: [
-        "Verified means this site has in-game proof or official source proof.",
-        "Reported means third-party pages mention the race or rank.",
-        "Pending means the race needs an in-game tooltip, stat, or performance test.",
-        "Rejected means the claim failed a source or in-game check."
+        "S tier lead: Thestrals. Strongest source-reported race target, pending in-game effect confirmation.",
+        "A tier leads: Stellar Ambassador, Fiendish Demon, Ice Crystal. Strong alternatives, pending exact effect checks.",
+        "B tier: playable or situational races should be tested against farming, bossing, and survival routes before being ranked lower.",
+        "C tier: weak-looking races may still be useful early if rerolls are scarce or their effect fits your build.",
+        "D tier: avoid calling any race truly bad until its tooltip, combat value, and update status are checked."
       ]
     },
     {
-      heading: "Reroll priority",
+      heading: "Best race for beginners",
       body: [
-        "Race rerolls are tied to code and progression decisions, so wasting them early can slow a new account. The safest advice is to avoid rerolling until you understand what your current race changes.",
-        "If a code grants rerolls, record the exact reward before spending them. RELEASE and WIZARD are still treated as source-backed leads, not verified reward quantities."
+        "The safest beginner advice is not to chase a perfect race immediately. Early players usually need to understand ingredient collection, potion brewing, spell unlocks, and basic combat before spending heavily on rerolls.",
+        "If you already have a race that feels usable, keep it long enough to create a baseline. Compare how fast you farm, how often you die, and whether your spells feel easier to use."
       ],
       list: [
-        "Do not reroll only because a competitor page says a race is S tier.",
-        "Check whether the race effect helps your current spell, potion, or combat route.",
-        "Keep one baseline race long enough to compare damage, survival, or farming speed.",
-        "Do not treat MACHI as a verified reroll code until tested."
+        "Keep your first usable race until you understand the game loop.",
+        "Use codes only inside the Roblox game UI.",
+        "Do not trust external reroll tools or script downloads.",
+        "Record your current race name and visible effect before changing it.",
+        "Only reroll aggressively after you know what role you are trying to improve."
       ]
     },
     {
-      heading: "What evidence would upgrade this page",
+      heading: "Reroll priority guide",
       body: [
-        "The next step is not more copied tables. The next step is evidence: screenshots of race names, race effects, reroll UI, and repeated play checks that show whether a race changes progression.",
-        "Once those records exist, this page can move from reported tiers to tested tiers."
+        "Rerolls are valuable because a race choice may affect how you farm, fight, survive, or move through routes. The problem is that exact reroll rewards and race probabilities are not verified here yet.",
+        "The clean rule: save rerolls unless the new race clearly improves your current bottleneck. If your bottleneck is material farming, a bossing-focused race may not help. If your bottleneck is survival, a damage-only race may still feel bad."
+      ],
+      list: [
+        "High priority reroll: your current race does not help your main route, and you have enough rerolls to absorb bad outcomes.",
+        "Medium priority reroll: you are stuck in progression and already understand your potion and spell path.",
+        "Low priority reroll: you are still early, still learning the UI, or only have one or two reroll chances.",
+        "Do not reroll based on unverified reward quantities from third-party code pages.",
+        "Do not enter Roblox credentials, cookies, recovery codes, or session tokens into any reroll tool."
+      ]
+    },
+    {
+      heading: "How race choice connects to potions and chests",
+      body: [
+        "Race choice should not be judged in isolation. In Wizard Alchemy, potions, spell unlocks, material routes, chest routes, and combat comfort all affect whether a race feels strong.",
+        "A race that speeds up one part of the game may be less useful if your real problem is missing materials, weak potions, or risky boss routes."
+      ],
+      list: [
+        "Use the potions guide to understand whether your build needs damage, control, mobility, or survival.",
+        "Use the chest locations guide to test whether route speed or survival matters more for your account.",
+        "Use the updates page to watch for race balance changes.",
+        "Do not treat a copied race table as final if your potion path or playstyle is different."
+      ]
+    },
+    {
+      heading: "Evidence needed to upgrade this page",
+      body: [
+        "The next improvement is not more confident wording. The next improvement is evidence. This page becomes stronger when each race has visible effect text, in-game screenshots, and repeated tests across real progression routes.",
+        "Until those records exist, the honest version is better than a fake final meta."
       ],
       list: [
         "Race selection or reroll UI screenshot.",
-        "Race tooltip showing exact effect.",
-        "Before and after comparison for damage, cooldown, farming, or movement.",
-        "Update note showing race balance changes.",
-        "Code redemption test proving whether any code grants race rerolls."
+        "Race tooltip showing exact effect text.",
+        "Before and after comparison for damage, cooldown, movement, survival, or farming speed.",
+        "Code redemption test proving whether any code grants race rerolls.",
+        "Update note showing whether race balance changed."
       ]
     }
   ],
   relatedLinks: [
     { href: "/codes/", title: "Codes", description: "Check RELEASE, WIZARD, MACHI, and whether reroll rewards are verified." },
-    { href: "/potions/", title: "Potions Guide", description: "Connect race choices with spell unlocks and potion progression." },
-    { href: "/beginners-guide/", title: "Beginner Guide", description: "Avoid wasting rerolls before you understand the early game loop." }
+    { href: "/potions/", title: "Potions Guide", description: "Connect race choices with spell unlocks and potion roles." },
+    { href: "/chest-locations/", title: "Chest Locations", description: "Use chest routes to decide whether mobility or survival matters more for your account." },
+    { href: "/updates/", title: "Updates", description: "Watch for balance or race changes before trusting old rankings." }
   ],
   faq: [
     {
       q: "What is the best race in Wizard Alchemy?",
-      a: "Thestrals, Stellar Ambassador, and Death Eater appear as reported high-interest races, but this site keeps exact best-race claims pending until in-game evidence is recorded."
+      a: "Thestrals is the strongest source-reported lead in this guide, but this site has not fully verified every race effect in-game. Treat it as the top research target, not an official final answer."
+    },
+    {
+      q: "Which races are strong alternatives?",
+      a: "Stellar Ambassador, Fiendish Demon, and Ice Crystal are treated as strong A-tier leads. Their exact value still needs visible race effect text and repeated play checks."
     },
     {
       q: "Should I reroll my race as a beginner?",
-      a: "Usually no. Save rerolls until race effects and code rewards are verified, especially if you are still learning potions, spells, and basic combat."
+      a: "Usually no. Save rerolls until you understand potions, spells, material routes, and what your current race actually changes."
     },
     {
-      q: "Is Human a bad race in Wizard Alchemy?",
-      a: "Human is treated as a baseline starter race here, not as a confirmed bad race. It needs comparison data before being ranked."
+      q: "Does this page show reroll odds?",
+      a: "No. Reroll probabilities are not published here because this site does not have verified odds or official drop-rate evidence."
     },
     {
-      q: "Does MACHI give race rerolls?",
-      a: "MACHI is community-reported by third-party pages. This site does not treat its reward as verified until stronger proof or an in-game redemption result exists."
+      q: "Is this Wizard Alchemy race tier list official?",
+      a: "No. This is an independent fan guide and is not affiliated with Roblox Corporation or Muggle Academy."
     }
   ]
 };
