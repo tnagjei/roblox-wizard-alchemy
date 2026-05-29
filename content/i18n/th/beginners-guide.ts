@@ -1,21 +1,21 @@
-// input: Thai Wizard Alchemy beginner guide requirements
-// output: typed Thai beginner guide content object
-// pos: th beginners-guide SEO content
+// input: Thai Wizard Alchemy beginner guide requirements plus week-1 Thai search signals
+// output: typed Thai beginner guide content object with stronger internal links to updates and codes
+// pos: th beginners-guide SEO content（更新规则：泰语新手页标题、首屏或内链调整需同步此文件与所属目录 README）
 
 import type { StrategyPageContent } from "@/lib/content/page-types";
 
 export const thBeginnersGuidePage: StrategyPageContent = {
   meta: {
-    title: "Wizard Alchemy Beginner Guide | First Session, Codes & Safe Progression",
-    description: "คู่มือเริ่มต้น Wizard Alchemy สำหรับเส้นทางเล่นครั้งแรก การใช้โค้ดอย่างระวัง การพัฒนา Potion การต่อสู้พื้นฐาน และขอบเขตความปลอดภัยของบัญชี Roblox"
+    title: "Wizard Alchemy Beginner Guide | Thai First Session, Updates & Codes",
+    description: "คู่มือเริ่มต้น Wizard Alchemy ภาษาไทย สำหรับเส้นทางเล่นครั้งแรก อัปเดต โค้ด Potion การต่อสู้พื้นฐาน และขอบเขตความปลอดภัยของบัญชี Roblox"
   },
   slug: "beginners-guide",
   hero: {
-    eyebrow: "Beginner route",
+    eyebrow: "Thai beginner route",
     h1: "Wizard Alchemy Beginner Guide",
-    lede: "เริ่มจากข้อมูลที่ตรวจสอบได้: เก็บวัตถุดิบ ปรุง Potion ปลดล็อก Spell เพิ่มพลัง และสำรวจพื้นที่เวทมนตร์ คู่มือนี้ให้เส้นทางเล่นครั้งแรกแบบปลอดภัย โดยไม่แต่ง race tier, จำนวนรางวัล หรือ build ranking เอง",
-    primaryAction: { label: "Check codes", href: "/th/codes/" },
-    secondaryAction: { label: "Open Roblox page", href: "roblox", external: true }
+    lede: "เริ่มจากข้อมูลที่ตรวจสอบได้: เก็บวัตถุดิบ ปรุง Potion ปลดล็อก Spell เพิ่มพลัง และสำรวจพื้นที่เวทมนตร์ ถ้าต้องการข้อมูลล่าสุด ให้เริ่มจากหน้า Updates แล้วค่อยตรวจ Codes อย่างระวัง",
+    primaryAction: { label: "ดู Updates", href: "/th/updates/" },
+    secondaryAction: { label: "Check codes", href: "/th/codes/" }
   },
   summaryCards: [
     {
@@ -23,12 +23,12 @@ export const thBeginnersGuidePage: StrategyPageContent = {
       description: "เรียนรู้ UI เก็บวัตถุดิบพื้นฐาน ทดสอบระบบ Potion และอย่าใช้ทรัพยากรหายากก่อนตรวจสอบกลไกจริง"
     },
     {
-      title: "Code caution",
-      description: "RELEASE และ WIZARD เป็นโค้ดที่หน้า Roblox กล่าวถึง แต่รางวัลจริงและตำแหน่ง redeem UI ยังต้องทดสอบในเกม"
+      title: "Update first",
+      description: "ถ้าคุณค้นหา Wizard Alchemy หลังมีการเปลี่ยนแปลง ให้ดู Updates ก่อนเชื่อ patch, map, potion หรือ race claim"
     },
     {
-      title: "No fake meta",
-      description: "Race tier, element ที่ดีที่สุด, boss farming และลำดับ reroll ยังเป็นข้อมูล pending จนกว่าจะมีหลักฐานที่ดีกว่า"
+      title: "Code caution",
+      description: "RELEASE และ WIZARD เป็นโค้ดที่หน้า Roblox กล่าวถึง แต่รางวัลจริงและตำแหน่ง redeem UI ยังต้องทดสอบในเกม"
     }
   ],
   sections: [
@@ -42,7 +42,7 @@ export const thBeginnersGuidePage: StrategyPageContent = {
         "เปิดเกมจากหน้า Roblox ทางการ",
         "หาเมนูพื้นฐาน เช่น settings, inventory, spell และ reward interface",
         "เก็บวัตถุดิบก่อนตัดสิน build หรือ race",
-        "ทดสอบผลของ potion ในเกมก่อนเชื่อตารางจากภายนอก",
+        "อ่าน /th/updates/ ก่อน หากต้องการดูการเปลี่ยนแปลงล่าสุด",
         "ถ้าเจอ code UI ให้บันทึกตำแหน่งไว้ แต่อย่าเดารางวัลเอง"
       ]
     },
@@ -53,10 +53,24 @@ export const thBeginnersGuidePage: StrategyPageContent = {
         "RELEASE และ WIZARD ควรทดสอบก่อน เพราะอยู่ในคำอธิบายเกมบน Roblox แต่ยังต้องบันทึกผลในเกมก่อน"
       ],
       list: [
+        "ตรวจ /th/codes/ ก่อนใช้โค้ดหรือเชื่อ reward claim",
         "อย่าใช้ reroll ทันทีเพียงเพราะเว็บอื่นบอกว่า race หนึ่งเป็น S-tier",
         "อย่าใช้ code generator หรือ script tool ภายนอก",
         "อย่าเผยแพร่จำนวนรางวัลจนกว่าจะมีบันทึกจากในเกม",
         "MACHI ยังเป็น pending จนกว่าจะมีแหล่งที่แข็งแรงกว่าหรือผลทดสอบในเกม"
+      ]
+    },
+    {
+      heading: "Update-aware beginner path",
+      body: [
+        "ข้อมูลของเกม Roblox เปลี่ยนได้เร็ว ผู้เล่นใหม่ควรดูหน้า Updates ก่อนตัดสินว่า code, potion, chest route หรือ race ranking ยังใช้ได้อยู่หรือไม่",
+        "ถ้า update ใหม่เปลี่ยน map หรือระบบ potion คำแนะนำเก่าจากเว็บอื่นอาจล้าสมัยทันที"
+      ],
+      list: [
+        "ดู /th/updates/ เพื่อเช็ก source tracker",
+        "กลับมาที่ /th/codes/ เพื่อตรวจ code evidence",
+        "ใช้ Beginner Guide เป็นเส้นทางเล่น ไม่ใช่ตาราง meta สุดท้าย",
+        "อย่าเชื่อ exact rewards หากไม่มี in-game record"
       ]
     },
     {
@@ -88,22 +102,22 @@ export const thBeginnersGuidePage: StrategyPageContent = {
     }
   ],
   relatedLinks: [
-    { href: "/th/codes/", title: "Codes", description: "ตรวจสอบ RELEASE, WIZARD, MACHI และสถานะหลักฐานก่อน redeem" },
     { href: "/th/updates/", title: "Updates", description: "ดูการเปลี่ยนแปลงจากแหล่งสาธารณะที่ตรวจสอบได้ก่อนเชื่อ patch หรือ balance claim" },
+    { href: "/th/codes/", title: "Codes", description: "ตรวจสอบ RELEASE, WIZARD, MACHI และสถานะหลักฐานก่อน redeem" },
     { href: "/th/", title: "Guide hub", description: "กลับไปหน้าแรกเพื่อดู source status, pending topics และ research backlog" }
   ],
   faq: [
     {
       q: "ผู้เริ่มต้นควรทำอะไรก่อนใน Wizard Alchemy?",
-      a: "เปิดจากหน้า Roblox ทางการ เรียนรู้ UI เก็บวัตถุดิบ ทดสอบ potion flow และอย่าใช้ reroll หรือไล่ตาม race claim ก่อนตรวจสอบกลไกจริง"
+      a: "เปิดจากหน้า Roblox ทางการ เรียนรู้ UI เก็บวัตถุดิบ ทดสอบ potion flow และดูหน้า Updates ก่อนเชื่อ claim ใหม่จากเว็บอื่น"
+    },
+    {
+      q: "ควรดู Updates หรือ Codes ก่อน?",
+      a: "ถ้าคุณต้องการข้อมูลล่าสุด ให้ดู Updates ก่อน ถ้าคุณต้องการ redeem ให้ไป Codes และตรวจ evidence label ก่อนใช้โค้ด"
     },
     {
       q: "ควรใช้ RELEASE และ WIZARD ทันทีไหม?",
       a: "สองโค้ดนี้อยู่ในคำอธิบายเกมบน Roblox จึงเป็นโค้ดแรกที่ควรทดสอบ แต่รางวัลจริงต้องบันทึกจากในเกมก่อนถือว่า verified"
-    },
-    {
-      q: "MACHI ใช้ได้ปลอดภัยไหม?",
-      a: "MACHI ปรากฏใน claim จากเว็บอื่น แต่เว็บนี้ยังเก็บเป็น pending จนกว่าจะมีหลักฐานที่แข็งแรงกว่าหรือผลทดสอบในเกม"
     },
     {
       q: "ผู้เริ่มต้นควรตาม race tier list ตอนนี้ไหม?",
