@@ -1,5 +1,5 @@
 // input: English Wizard Alchemy beginner guide requirements, page-level GSC query signals, and safety video IDs
-// output: typed English beginner guide content object with tutorial, first-session route checklist, defensive automation-tool guidance, and video references
+// output: typed English beginner guide content object with tutorial, start-here navigation, first-session route checklist, defensive automation-tool guidance, and video references
 // pos: English beginners-guide SEO content（更新规则：新手页标题、视频、H2 或内链调整需同步此文件与所属目录 README）
 
 import type { StrategyPageContent } from "@/lib/content/page-types";
@@ -14,8 +14,8 @@ export const enBeginnersGuidePage: StrategyPageContent = {
     eyebrow: "Beginner route",
     h1: "Wizard Alchemy Beginner Guide",
     lede: "Start with the verified game frame: collect ingredients, brew potions, unlock spells, upgrade power, and explore magical areas. This guide gives a safe first-session tutorial without inventing race tiers, reward amounts, or build rankings.",
-    primaryAction: { label: "Check codes", href: "/codes/" },
-    secondaryAction: { label: "Read updates", href: "/updates/" }
+    primaryAction: { label: "Start First Session Route", href: "/beginners-guide/#wizard-alchemy-first-session-route" },
+    secondaryAction: { label: "Check codes safely", href: "/codes/" }
   },
   summaryCards: [
     {
@@ -49,6 +49,20 @@ export const enBeginnersGuidePage: StrategyPageContent = {
     ]
   },
   sections: [
+    {
+      heading: "Start Here",
+      body: [
+        "Use this page as a short route map, not a random collection of beginner notes. Start with the first-session route, confirm the checklist, then move to code safety, potions, updates, and account safety only when each step is clear.",
+        "This order keeps the beginner guide focused on learning the game instead of chasing unverified rewards, race claims, or tool advice too early."
+      ],
+      list: [
+        "1. Wizard Alchemy First Session Route: learn the UI and basic loop first.",
+        "2. First Session Checklist: confirm inventory, spells, one potion test, code UI, and updates.",
+        "3. What to Check Before Using Wizard Alchemy Codes: use code claims safely.",
+        "4. Beginner Route: Ingredients, Potions, Spells, and Updates: continue after the first pass.",
+        "5. Account safety rules: avoid unsafe tools and account-data requests."
+      ]
+    },
     {
       heading: "Wizard Alchemy Tutorial for New Players",
       body: [
@@ -189,6 +203,14 @@ export const enBeginnersGuidePage: StrategyPageContent = {
     {
       q: "What should I do first in Wizard Alchemy?",
       a: "Start from the official Roblox page, learn the UI, collect ingredients, test potion flow, check updates, and avoid spending rerolls or chasing race claims until the mechanics are verified."
+    },
+    {
+      q: "What is the best first route in Wizard Alchemy?",
+      a: "The best first route is to inspect the UI, find inventory and spell areas, collect basic ingredients, test one potion, check the code UI, read updates, and only then move to chests, potions, or race decisions."
+    },
+    {
+      q: "Why should new players avoid automation tools?",
+      a: "Automation tools can create account risk, device risk, and bad learning habits. This guide does not provide tool tutorials and recommends using only the Roblox game UI and official pages."
     },
     {
       q: "Should beginners use Wizard Alchemy scripts or macros?",
