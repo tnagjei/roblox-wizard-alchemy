@@ -1,5 +1,5 @@
 // input: English Wizard Alchemy beginner guide requirements, page-level GSC query signals, and safety video IDs
-// output: typed English beginner guide content object with tutorial, code checks, defensive automation-tool guidance, and video references
+// output: typed English beginner guide content object with tutorial, first-session route checklist, defensive automation-tool guidance, and video references
 // pos: English beginners-guide SEO content（更新规则：新手页标题、视频、H2 或内链调整需同步此文件与所属目录 README）
 
 import type { StrategyPageContent } from "@/lib/content/page-types";
@@ -64,17 +64,34 @@ export const enBeginnersGuidePage: StrategyPageContent = {
       ]
     },
     {
-      heading: "First-session route",
+      heading: "Wizard Alchemy First Session Route",
       body: [
-        "Open Wizard Alchemy from the official Roblox game page and spend the first session learning the game UI instead of chasing third-party tier claims.",
-        "Your first goal is to understand the basic loop shown in the Roblox description: gather resources, brew potions, unlock spells, upgrade power, and push into new areas."
+        "Open Wizard Alchemy from the official Roblox game page and use the first session as a route test, not as a race or build decision. The route is simple: inspect the UI, find where resources and rewards appear, collect basic ingredients, brew one potion, then check codes and updates only after you understand the menu.",
+        "This first-session route exists to stop new players from wasting rerolls, trusting old update claims, or following unverified tool advice. Keep the run small, write down what you see, and only move to chest routes, potions, or race rankings after the basic loop feels clear."
       ],
       list: [
-        "Launch from the official Roblox page.",
-        "Find the basic menu, settings, inventory, spell, and reward interfaces.",
-        "Collect ingredients before judging builds or races.",
-        "Test potion effects inside the game before trusting outside tables.",
-        "Record anything that looks like a code UI, but do not assume rewards before testing."
+        "Step 1: Launch from the official Roblox page.",
+        "Step 2: Find the menu, inventory, spell, reward, and settings areas.",
+        "Step 3: Collect basic ingredients before judging builds or races.",
+        "Step 4: Brew and test one potion, then note the visible effect.",
+        "Step 5: Check the code UI, but do not assume reward amounts before testing.",
+        "Step 6: Read the Updates page before following old route or patch advice.",
+        "Step 7: Move to Chest Locations, Potions, or Race Tier List only after this first pass."
+      ]
+    },
+    {
+      heading: "First Session Checklist",
+      body: [
+        "Use this checklist during the first run. It is intentionally basic because a beginner guide should reduce confusion before it tries to optimize every route. If you cannot confirm one item inside the game, leave it pending instead of copying a confident claim from another page.",
+        "The checklist also creates a clean path to the rest of the site: Codes for reward evidence, Updates for change tracking, Potions for brewing roles, Chest Locations for route planning, and Race Tier List for later reroll decisions."
+      ],
+      list: [
+        "Find inventory: confirm where collected ingredients and items appear.",
+        "Find spell area: confirm where spell unlocks or equipped skills are shown.",
+        "Test one potion: avoid spending multiple materials before you understand the effect.",
+        "Check code UI: use the Codes page only as an evidence guide, not as final reward proof.",
+        "Read updates: avoid following outdated route, potion, or race advice.",
+        "Avoid tools: keep the first session inside the Roblox game UI and official pages."
       ]
     },
     {
