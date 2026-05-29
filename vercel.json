@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "wizardalchemy.online"
+        }
+      ],
+      "destination": "https://www.wizardalchemy.online/$1",
+      "permanent": true
+    }
+  ]
+}
