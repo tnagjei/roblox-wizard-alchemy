@@ -1,6 +1,6 @@
 // input: typed localized strategy page content and locale
-// output: generic strategy guide page layout for tier list, updates, beginner guide, units, optional videos, and embedded ad banners
-// pos: components/templates/StrategyPageTemplate.tsx (更新规则：指南页面布局或广告位置调整需同步更新此文件与所属目录 README)
+// output: generic strategy guide page layout for tier list, updates, beginner guide, units, optional compact side-by-side videos, and embedded ad banners
+// pos: components/templates/StrategyPageTemplate.tsx (更新规则：指南页面布局、视频尺寸或广告位置调整需同步更新此文件与所属目录 README)
 
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
@@ -112,11 +112,29 @@ export function StrategyPageTemplate({ content, locale }: StrategyPageTemplatePr
             <h2>{content.videos.title}</h2>
           </div>
           <p className="home-video-lede">{content.videos.description}</p>
-          <div className="home-video-grid video-embed-grid">
+          <div
+            className="home-video-grid video-embed-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "16px",
+              width: "min(920px, 100%)",
+              margin: "24px auto 0"
+            }}
+          >
             {content.videos.items.map((video) => (
               <article className="home-video-card video-embed-card" key={video.id}>
                 <span>video-assisted</span>
-                <div className="home-video-frame video-embed-frame">
+                <div
+                  className="home-video-frame video-embed-frame"
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    overflow: "hidden",
+                    borderRadius: "16px"
+                  }}
+                >
                   <iframe
                     src={embedUrl(video.id)}
                     title={video.title}
@@ -124,6 +142,13 @@ export function StrategyPageTemplate({ content, locale }: StrategyPageTemplatePr
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: 0
+                    }}
                   />
                 </div>
                 <h3>{video.title}</h3>
