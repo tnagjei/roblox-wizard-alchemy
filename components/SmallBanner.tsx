@@ -1,7 +1,7 @@
 "use client";
 // input: optional placement flag ("inline" or "top") for 468x60 banner
-// output: 468x60 banner rendered dynamically inside the referencing component
-// pos: components/SmallBanner.tsx (更新规则：广告 ID 或脚本 URL 变更需同步更新此文件)
+// output: 468x60 banner rendered dynamically inside the referencing component without visible ad label text
+// pos: components/SmallBanner.tsx (更新规则：广告 ID、脚本 URL 或广告展示样式变更需同步更新此文件)
 
 import { useEffect, useRef } from "react";
 
@@ -39,8 +39,7 @@ export default function SmallBanner({ placement = "inline" }: SmallBannerProps) 
   }, [placement]);
 
   return (
-    <div className="small-banner-wrapper flex flex-col items-center justify-center w-full py-4 bg-gray-50/50 border-y border-gray-100 min-h-[90px]">
-      <span className="text-[9px] text-gray-400 mb-1 uppercase tracking-tighter">Sponsored</span>
+    <div className="small-banner-wrapper flex flex-col items-center justify-center w-full py-3 bg-gray-50/40 border-y border-gray-100 min-h-[76px]" aria-label="Sponsored placement">
       <div ref={bannerRef} className="flex justify-center w-full overflow-hidden" style={{ minHeight: "60px" }} />
     </div>
   );
